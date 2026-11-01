@@ -1,0 +1,1373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"/>
+  <meta name="theme-color" content="#07121f"/>
+  <meta name="description" content="《今晚拼出路》原创20关连线解谜：三选一房卡、旋转、房门连接、钥匙与机关。"/>
+  <title>今晚拼出路｜20关挑战版 G01-C V0.6</title>
+  <style>
+:root{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#eaf3ff;background:#07121f;font-synthesis:none}
+*{box-sizing:border-box}html{min-height:100%;background:#07121f}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 0%,#1c3554 0%,transparent 44%),radial-gradient(ellipse at 85% 14%,#1b2d47 0%,transparent 38%),#07121f}
+button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:3px solid #ffe2a0;outline-offset:3px}button:disabled{cursor:default}
+.shell{width:min(100%,760px);margin:0 auto;padding:22px 16px 48px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:19px}.brand-mark{display:flex;align-items:center;gap:10px;font-size:12px;letter-spacing:.12em;color:#a9c0d8;font-weight:700}.moon{width:30px;height:30px;display:grid;place-items:center;background:#f4d6a2;border-radius:50%;font-size:19px;box-shadow:0 0 27px #facb783d;color:#37435b}.mode{padding:7px 10px;background:#102a38;border:1px solid #2a5a60;color:#9ce5d3;font-size:11px;border-radius:999px;font-weight:800;white-space:nowrap}
+h1{font-size:clamp(28px,6vw,42px);margin:6px 0 7px;letter-spacing:-.05em;line-height:1.15;color:#fff5df}h1 span{color:#f6bc75}.subtitle{color:#adc1d7;line-height:1.7;font-size:13px;margin:0 0 22px}.panel{background:linear-gradient(145deg,rgba(24,43,64,.94),rgba(12,28,48,.98));border:1px solid #314963;border-radius:20px;box-shadow:0 12px 30px #0003;padding:16px}
+.levels{display:flex;justify-content:space-between;gap:8px;margin:0 0 18px}.level-btn{flex:1;height:43px;background:#142a42;color:#aac2d9;border:1px solid #345069;border-radius:11px;font-weight:750;display:flex;align-items:center;justify-content:center;gap:5px;transition:.14s}.level-btn.active{background:#f8c77f;border-color:#fbe0a9;color:#192a3e;box-shadow:0 0 0 2px #f8c77f20}.level-btn.done:not(.active){color:#a8e9d7;border-color:#458b83}.tiny-check{font-size:10px}
+.level-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.step-tag{color:#f5c580;background:#4c382d;padding:5px 9px;border-radius:7px;font-size:11px;font-weight:800;white-space:nowrap}.level-title{font-size:21px;font-weight:800;margin:9px 0 6px;color:#fff5de}.desc{font-size:13px;line-height:1.65;color:#cad9e7;margin:0}.teaching{border-left:3px solid #70d2b7;background:#122d3e;padding:8px 10px;margin:12px 0 14px;color:#cae8e1;font-size:12px;line-height:1.55;border-radius:0 9px 9px 0}
+.board-wrap{background:#0b1e31;border:1px solid #36536d;border-radius:18px;padding:13px 12px 11px;margin:0 auto;max-width:460px}.board-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#91adca;margin-bottom:10px}.board{display:grid;gap:7px;grid-template-columns:repeat(var(--cols),minmax(0,1fr));width:100%;aspect-ratio:var(--cols)/var(--rows)}.cell{position:relative;aspect-ratio:1;min-width:0;min-height:0;padding:0;border-radius:11px;border:1px solid #38526f;background:#223b55;color:#fbf6e6;overflow:hidden;display:flex;align-items:center;justify-content:center;box-shadow:inset 0 -3px #0c1a2c55;transition:background .15s,transform .15s}.cell.blank{background:#203650;border:2px dashed #67809a;color:#afc5d9}.cell.blank:hover,.cell.blank:active{background:#305574}.cell.wall{background:repeating-linear-gradient(45deg,#14263a,#14263a 7px,#162b40 7px,#162b40 14px);border:1px solid #263b55;box-shadow:none;cursor:default}.cell.room{background:#2c4c65}.cell.room.key{background:#614a3f}.cell.room.switch{background:#3e5663}.cell.room.start{background:#194f56;border-color:#66b5ae}.cell.room.exit{background:#5a3f4d;border-color:#a87790}.cell.reachable{background:#2a6466;border-color:#70caba}.cell.route{background:#367f66;border-color:#b3e9a9;box-shadow:0 0 0 2px #9bdfa866 inset}.cell.hintcell{outline:3px solid #f6c779;outline-offset:-3px}.cell-center{z-index:1;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;line-height:1.15;gap:4px}.cell-symbol{font-size:clamp(17px,5vw,26px);font-weight:900}.cell-label{font-size:clamp(9px,2.5vw,12px);font-weight:750}.cell.blank .cell-symbol{font-size:23px;font-weight:400}.cell.wall .cell-center{opacity:.2}.door{position:absolute;background:#ffe2a4;border-radius:3px;z-index:2;box-shadow:0 0 4px #f8c87940}.door.n{top:-1px;left:34%;width:32%;height:13%;border-radius:0 0 4px 4px}.door.s{bottom:-1px;left:34%;width:32%;height:13%;border-radius:4px 4px 0 0}.door.e{right:-1px;top:34%;height:32%;width:13%;border-radius:4px 0 0 4px}.door.w{left:-1px;top:34%;height:32%;width:13%;border-radius:0 4px 4px 0}.board-legend{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;color:#a3c3c9;font-size:11px;margin:12px 0 0}.legend-dot{width:8px;height:8px;display:inline-block;border-radius:2px;margin-right:4px}.legend-dot.g{background:#76d4c0}.legend-dot.y{background:#ffe2a4}
+.requirements{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}.requirement{background:#153047;border:1px solid #3c5a73;border-radius:999px;padding:6px 11px;font-size:12px;color:#afc7d7}.requirement.met{color:#abf6dc;border-color:#47a78f;background:#12483e}
+.deck-title{display:flex;align-items:center;justify-content:space-between;margin:18px 0 10px}.deck-title h2{margin:0;font-size:16px}.counter{font-size:12px;color:#a7bfda}.deck{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}.card{border:1px solid #446078;color:#d8e7f4;background:#132b43;border-radius:12px;min-width:0;min-height:122px;padding:10px 4px 8px;display:flex;flex-direction:column;align-items:center;gap:7px}.card.selected{border-color:#f6cd89;background:#4b413c;box-shadow:0 0 0 2px #f6cd8920}.card-name{font-size:12px;font-weight:800}.card-note{font-size:10px;color:#b9cbd5}.card.selected .card-note{color:#fff1d9}.card-preview{position:relative;width:54px;height:54px;border-radius:9px;background:#2a4a64;border:1px solid #6c8496;display:flex;align-items:center;justify-content:center;font-size:19px;font-weight:850}.card.selected .card-preview{background:#46635a}.card-preview .door{background:#ffdf9b}.empty-deck{padding:25px;text-align:center;border:1px dashed #3b5e73;border-radius:12px;font-size:13px;color:#afc7d7}
+.controls{display:flex;gap:9px;flex-wrap:wrap;margin:12px 0 0}.control-btn{min-height:42px;flex:1 1 100px;border-radius:11px;background:#244158;border:1px solid #48647a;color:#e7f3fd;font-weight:700;font-size:13px;padding:9px}.control-btn:disabled{opacity:.45}.control-btn.primary{background:#f3c47e;border-color:#f4d6a6;color:#1f2b3e;flex:2 1 120px;font-size:15px}.control-btn.secondary{background:#1b424b;border-color:#3e7773;color:#caf7e4}
+.feedback{border-radius:11px;background:#102a3a;border:1px solid #36586b;color:#c4dfec;padding:12px;min-height:49px;font-size:13px;line-height:1.55;margin-top:13px}.feedback.warn{background:#44332b;border-color:#92664c;color:#ffdbab}.feedback.good{background:#164539;border-color:#398c70;color:#c9f7df}.feedback strong{color:#fff}.next-row{display:flex;gap:9px;margin-top:12px}.next-row button{min-height:44px;flex:1;border-radius:11px;background:#4b856a;border:1px solid #7fc3a0;color:#fff;font-weight:800}
+.foot{color:#829bb2;font-size:11px;line-height:1.75;padding:15px 4px;text-align:center}.kbd{font-size:10px;color:#799cb7}
+@media(max-width:470px){.shell{padding:18px 12px 36px}.panel{padding:13px}.board-wrap{padding:9px}.board{gap:5px}.cell{border-radius:9px}.levels{gap:6px}.level-btn{height:42px}.card{min-height:116px}.top{margin-bottom:15px}.subtitle{margin-bottom:16px}.control-btn{flex:1 1 80px;font-size:12px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+.next-row[hidden]{display:none}
+/* G01-C V0.6: switch between five-level chapters without expanding the first screen. */
+.chapter-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;margin-bottom:9px}
+.chapter-btn{min-height:39px;border:1px solid #425f7b;background:#142b44;color:#a9c5dc;border-radius:9px;padding:5px 3px;font-size:11px;font-weight:800}
+.chapter-btn.active{background:#225366;border-color:#70b8ae;color:#e4fffa}
+.chapter-btn:focus-visible{outline:2px solid #ffe0a6;outline-offset:2px}
+.level-btn.locked{opacity:.48;border-style:dashed;cursor:default}
+@media(max-width:360px){.chapter-tabs{gap:4px}.chapter-btn{font-size:10px;padding:5px 1px}}
+
+/* G01-B: first-time instruction, touch targets, and voluntary offline test report. */
+.coach{border:1px solid #bba16d;background:#352f2b;color:#ffe2a6;border-radius:10px;padding:9px 11px;font-size:12px;font-weight:750;line-height:1.5;margin:0 0 10px}
+.coach[hidden]{display:none}
+.coach-target{outline:3px solid #ffcf78;outline-offset:2px;box-shadow:0 0 0 5px rgba(255,207,120,.12)}
+.test-panel{margin-top:16px;border:1px solid #38546b;background:#11283d;border-radius:15px;padding:12px;color:#dcecf8}
+.test-panel summary{cursor:pointer;font-size:14px;font-weight:780;min-height:44px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.test-panel summary span{font-size:11px;color:#96b7cc;font-weight:400}
+.test-body{padding-top:8px;font-size:13px;line-height:1.65}
+.test-body p{color:#abc0d3;font-size:12px}
+.test-body fieldset{border:1px solid #426079;border-radius:11px;margin:10px 0;padding:10px}
+.test-body legend{color:#f6d7a1;font-weight:700}
+.test-body fieldset label{display:block;padding:7px 0;min-height:35px;cursor:pointer}
+.test-body input[type=radio]{accent-color:#e9b96d;width:17px;height:17px;vertical-align:middle;margin-right:7px}
+.test-select-label{font-weight:750;display:block;margin:12px 0 5px}
+.test-body select,.test-body textarea{display:block;width:100%;border:1px solid #617789;border-radius:9px;background:#0d2133;color:#eef6ff;padding:10px;font:inherit}
+.test-body textarea{resize:vertical}
+.test-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:15px}
+.test-actions button{min-height:44px;border:1px solid #789a9a;border-radius:10px;background:#174651;color:#f5fbfa;font-weight:700}
+.test-message{min-height:18px}
+@media(max-width:470px){
+  .shell{padding:10px 10px max(22px,env(safe-area-inset-bottom))}
+  .top{margin-bottom:6px;align-items:center}.brand-mark{font-size:10px;gap:6px}.moon{width:24px;height:24px;font-size:15px}.mode{padding:5px 7px;font-size:10px}
+  h1{font-size:26px;margin:4px 0}.subtitle{display:none}
+  .levels{margin-bottom:9px}.level-btn{height:44px;border-radius:9px}
+  .panel{border-radius:14px;padding:10px}.level-title{font-size:17px;margin:3px 0}.step-tag{padding:4px 7px;font-size:10px}
+  .desc{font-size:11px;line-height:1.3}.teaching{font-size:11px;line-height:1.3;padding:6px 8px;margin:7px 0}
+  .coach{padding:5px 8px;font-size:11px;line-height:1.3;margin:0 0 8px}
+  .board-wrap{max-width:292px;padding:7px;margin-inline:auto;border-radius:12px}
+  .board-top{font-size:10px;margin-bottom:5px}.board{gap:5px}
+  .cell{border-radius:8px}.cell-symbol{font-size:19px}.cell-label{font-size:10px}.board-legend{font-size:10px;margin:6px 0 0;gap:10px}
+  .requirements{margin-top:8px}.requirement{padding:3px 8px;font-size:10px}
+  .deck-title{margin:9px 0 6px}.deck-title h2{font-size:14px}.counter{font-size:10px}
+  .deck{gap:6px}.card{min-height:78px;gap:3px;border-radius:9px;padding:5px 2px 4px}
+  .card-preview{width:37px;height:37px;font-size:16px;border-radius:6px}.card-name{font-size:11px}.card-note{font-size:9px}
+  .controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:8px}
+  .control-btn{min-height:44px;font-size:11px;padding:7px 4px;flex:none;border-radius:9px}
+  .control-btn.primary{grid-column:span 2;font-size:13px}.control-btn#retry{grid-column:span 1}
+  .feedback{min-height:30px;margin-top:8px;font-size:11px;line-height:1.45;padding:7px 9px}
+  .next-row{margin-top:7px}
+  .test-panel{margin-top:12px}.foot{margin-top:8px;font-size:10px;padding:8px 4px}
+}
+@media(max-width:470px) and (max-height:745px){
+  .board-wrap{max-width:236px}
+  .level-head{gap:5px}.teaching{margin:4px 0}.subtitle{margin-bottom:6px}
+  .card{min-height:69px}.card-preview{width:32px;height:32px}.card-note{font-size:8px}
+  .cell-symbol{font-size:17px}.cell-label{font-size:9px}.deck-title{margin:6px 0 4px}
+}
+
+/* G01-B V0.3: achievement feedback and cosmetic-only unlocks. */
+.mode.star-hud{background:#3e3326;border-color:#ad8457;color:#ffe0a4}
+.reward-dialog[hidden]{display:none!important}
+.reward-dialog{position:fixed;z-index:2000;inset:0;display:grid;place-items:center;padding:16px;background:rgba(4,13,27,.78);backdrop-filter:blur(5px)}
+.reward-card{width:min(100%,410px);border:1px solid #eac68a;border-radius:22px;background:linear-gradient(165deg,#283d58,#132539 85%);box-shadow:0 24px 85px rgba(0,0,0,.55);padding:26px 22px 22px;text-align:center;color:#fff5df}
+.reward-eyebrow{font-size:12px;font-weight:850;letter-spacing:.16em;color:#f5cc85}
+.reward-card h2{margin:9px 0 4px;font-size:27px}
+.reward-stars{font-size:43px;letter-spacing:.05em;color:#ffd47e;margin:5px 0 12px;min-height:55px;white-space:nowrap}
+.reward-stars span{display:inline-block;animation:reward-pop .55s both;animation-delay:calc(var(--n) * .12s)}
+.reward-stars span.empty{color:#6b7685}
+.reward-total{font-weight:800;font-size:17px;margin:8px 0}
+.reward-detail{font-size:12px;line-height:1.65;color:#c9dbea;margin:3px 0 12px}
+.reward-unlock{background:#254e4d;border:1px solid #64bca5;border-radius:11px;padding:9px;margin:12px 0;color:#c9ffe9;font-weight:800;font-size:13px;line-height:1.5}
+.reward-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}
+.reward-actions button{min-height:48px;font-weight:850;font-size:13px;border-radius:11px;border:1px solid #648497;background:#1b3b50;color:#e3f3ff}
+.reward-actions button.primary{background:#f4ca86;color:#253045;border-color:#ffe3ac}
+.shell.theme-warm .board-wrap{box-shadow:0 0 23px rgba(250,183,101,.22);border-color:#ad895d}
+.shell.theme-warm .cell.room:not(.start):not(.exit){box-shadow:inset 0 -3px rgba(75,43,15,.35),0 0 8px rgba(239,174,83,.18)}
+.shell.theme-starlight .board-wrap{box-shadow:0 0 30px rgba(133,159,255,.4);border-color:#9bb0f4}
+.shell.theme-starlight .cell.route{background:#51808d;border-color:#b8f4fe;box-shadow:0 0 9px rgba(173,229,255,.44)}
+@keyframes reward-pop{0%{opacity:0;transform:translateY(14px) scale(.5)}75%{opacity:1;transform:translateY(-3px) scale(1.15)}100%{transform:translateY(0) scale(1);opacity:1}}
+@media(max-width:470px){.reward-card{padding:22px 15px 17px}.reward-stars{font-size:38px}.reward-card h2{font-size:25px}.mode.star-hud{font-size:10px}}
+/* G01-D: one lightweight entry link only; original game engine and its stored scores are unchanged. */
+.story-lab-entry{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;margin:-5px 0 12px;padding:10px 12px;border:1px solid #a68d5c;border-radius:11px;background:#302e31;color:#f5e4bd;text-decoration:none;font-size:12px;font-weight:850;line-height:1.4}
+.story-lab-entry .tiny-note{font-size:10px;color:#c4d5d6;font-weight:600}
+@media(max-width:470px){.story-lab-entry{padding:8px 9px;margin:0 0 9px;font-size:11px}.story-lab-entry .tiny-note{font-size:9px}}
+</style>
+</head>
+<body>
+  <main class="shell">
+    <header class="top">
+      <div class="brand-mark"><div class="moon" aria-hidden="true">☾</div><span>ROOM PATH</span></div>
+      <span class="mode star-hud" id="starHud" aria-label="累计过关星星">★ 0/60 · 20关试玩</span>
+    </header>
+    <h1>今晚，<span>拼出路。</span></h1>
+    <p class="subtitle">从三张房卡中选一张，旋转、放置、连接通道。<br>不必跑得快，只需要选得对。</p>
+    <nav id="chapters" class="chapter-tabs" aria-label="选择挑战章节"></nav>
+    <nav id="levels" class="levels" aria-label="选择关卡"></nav>
+    <a class="story-lab-entry" href="./ye-lou-act2-puzzle-v092.html?v=0.9.2" aria-label="进入夜楼档案第一章六幕悬疑剧情"><span>✦ 悬疑新章：三格改写结局</span><span class="tiny-note">六幕故事 · 多结局 ›</span></a>
+    <section class="panel" aria-label="游戏关卡">
+      <div class="level-head"><div><div id="levelTitle" class="level-title">第一扇门</div><p id="levelDesc" class="desc"></p></div><span class="step-tag" id="guide">第 1 / 20 关</span></div>
+      <div id="teaching" class="teaching"></div>
+      <div id="coach" class="coach" role="status" aria-live="polite"></div>
+      <div class="board-wrap">
+        <div class="board-top"><span id="boardMeta"></span><span>两侧都开门，才可通过</span></div>
+        <div class="board" id="board" aria-label="拼房间地图"></div>
+        <div class="board-legend"><span><i class="legend-dot g"></i>与入口连通</span><span><i class="legend-dot y"></i>房门方向</span></div>
+      </div>
+      <div id="requirements" class="requirements" aria-label="关卡门禁条件"></div>
+      <div class="deck-title"><h2>选择一张房卡</h2><span id="deckCount" class="counter"></span></div>
+      <div id="deck" class="deck"></div>
+      <div class="controls">
+        <button id="rotate" class="control-btn" type="button">↻ 旋转房间</button>
+        <button id="undo" class="control-btn" type="button">↶ 撤销</button>
+        <button id="hint" class="control-btn secondary" type="button">提示</button>
+        <button id="check" class="control-btn primary" type="button">试逃脱 →</button>
+        <button id="retry" class="control-btn" type="button">重玩本关</button>
+      </div>
+      <div id="feedback" class="feedback" role="status" aria-live="polite"></div>
+      <div id="nextWrap" class="next-row" hidden><button id="nextBtn" type="button">继续下一关 →</button></div>
+    </section>
+    <details id="testPanel" class="test-panel">
+      <summary>试玩完成后，提交体验反馈 <span>不上传数据，保存或复制结果</span></summary>
+      <div class="test-body">
+        <p>不收集姓名、手机号或设备识别码。以下回答只保存在当前页面，点击按钮后由你自行发送给测试组织者。</p>
+        <fieldset><legend>刚开始30秒，你理解怎么玩了吗？</legend>
+          <label><input type="radio" name="understood" value="yes"> 理解了</label>
+          <label><input type="radio" name="understood" value="partial"> 有点不清楚</label>
+          <label><input type="radio" name="understood" value="no"> 没理解</label>
+        </fieldset>
+        <fieldset><legend>体验新关卡后，还想继续挑战吗？</legend>
+          <label><input type="radio" name="continue" value="yes"> 想</label>
+          <label><input type="radio" name="continue" value="maybe"> 看情况</label>
+          <label><input type="radio" name="continue" value="no"> 不想</label>
+        </fieldset>
+        <label class="test-select-label" for="obstacle">最影响体验的地方</label>
+        <select id="obstacle">
+          <option value="none">没有明显问题</option>
+          <option value="rules">看不懂房门规则</option>
+          <option value="selection">选择房卡不直观</option>
+          <option value="rotate">旋转方向不清楚</option>
+          <option value="scroll">地图与操作区需要来回滚动</option>
+          <option value="difficulty">关卡太难或太简单</option>
+          <option value="other">其他</option>
+        </select>
+        <label class="test-select-label" for="feedbackText">其他建议（选填，不填个人信息）</label>
+        <textarea id="feedbackText" maxlength="250" rows="2" placeholder="哪一关卡住了？为什么？"></textarea>
+        <div class="test-actions">
+          <button type="button" id="downloadReport">保存体验报告</button>
+          <button type="button" id="copyReport">复制体验反馈</button>
+        </div>
+        <p class="test-message" id="testMessage" role="status"></p>
+      </div>
+    </details>
+    <footer class="foot">原创玩法测试 V0.6 · 不主动上传游戏进度和反馈数据、无账号 · 仅在当前设备保存测试进度<br><span class="kbd">电脑快捷键：R 旋转 · Ctrl/⌘+Z 撤销</span></footer>
+  </main>
+  <div id="rewardDialog" class="reward-dialog" role="dialog" aria-modal="true" aria-labelledby="rewardTitle" hidden>
+    <section class="reward-card">
+      <div class="reward-eyebrow">★ ROOM CLEARED ★</div>
+      <h2 id="rewardTitle">成功逃出！</h2>
+      <div id="rewardStars" class="reward-stars" aria-label="本关星级"></div>
+      <p id="rewardTotal" class="reward-total"></p>
+      <p id="rewardDetail" class="reward-detail"></p>
+      <p id="rewardUnlock" class="reward-unlock" hidden></p>
+      <div class="reward-actions">
+        <button id="rewardStay" type="button">查看本关路线</button>
+        <button id="rewardContinue" class="primary" type="button">继续下一关 →</button>
+      </div>
+    </section>
+  </div>
+  <script>
+/* G01-A: original standalone game engine, no third-party code. */
+(function (root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  root.G01Core = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function () {
+  'use strict';
+  const N = 1, E = 2, S = 4, W = 8;
+  const DIRS = [
+    { dr: -1, dc: 0, bit: N, opposite: S, label: '北' },
+    { dr: 0, dc: 1, bit: E, opposite: W, label: '东' },
+    { dr: 1, dc: 0, bit: S, opposite: N, label: '南' },
+    { dr: 0, dc: -1, bit: W, opposite: E, label: '西' }
+  ];
+  const ROOMS = Object.freeze({
+    straight: { label: '直通房', doors: N | S, icon: '通' },
+    corner: { label: '转角房', doors: N | E, icon: '转' },
+    tee: { label: '三岔房', doors: N | E | W, icon: '岔' },
+    cross: { label: '四通房', doors: N | E | S | W, icon: '十' },
+    key: { label: '钥匙房', doors: N | S, icon: '钥' },
+    switch: { label: '开关房', doors: N | S, icon: '机' }
+  });
+  const definitions = [
+    {
+      id: 'G01-01', name: '第一扇门', description: '只差一间房：把入口和出口连接起来。',
+      teaching: '点击房卡、旋转方向，再点击地图中的空格。', rows: 3, cols: 3,
+      start: 3, exit: 5, startDoors: E, exitDoors: W, slots: [4], budget: 1,
+      offers: [['straight', 'corner', 'tee']], required: [], fixed: {}
+    },
+    {
+      id: 'G01-02', name: '两个拐角', description: '房间可旋转；需要让门两两对接。',
+      teaching: '上、右、下、左的房门只有与邻居对齐才能通行。', rows: 3, cols: 3,
+      start: 6, exit: 1, startDoors: N, exitDoors: S, slots: [3, 4], budget: 2,
+      offers: [['corner', 'straight', 'tee'], ['straight', 'corner', 'cross']], required: [], fixed: {}
+    },
+    {
+      id: 'G01-03', name: '锁住的出口', description: '先路过钥匙房，才能开启出口。',
+      teaching: '本关有钥匙条件：路线经过钥匙房才会获得钥匙。', rows: 3, cols: 3,
+      start: 6, exit: 5, startDoors: E, exitDoors: S, slots: [7, 8], budget: 2,
+      offers: [['key', 'corner', 'straight'], ['straight', 'corner', 'tee']], required: ['key'], fixed: {}
+    },
+    {
+      id: 'G01-04', name: '先打开机关', description: '开关房已经在地图上；经过它才能打开出口。',
+      teaching: '房间相邻不代表连通，注意门口方向。', rows: 3, cols: 3,
+      start: 6, exit: 2, startDoors: E, exitDoors: S, slots: [8, 5], budget: 2,
+      offers: [['corner', 'straight', 'tee'], ['straight', 'corner', 'cross']],
+      required: ['switch'], fixed: { 7: { kind: 'switch', doors: E | W } }
+    },
+    {
+      id: 'G01-05', name: '双重门禁', description: '三张房卡、两道条件：带上钥匙并启动机关。',
+      teaching: '三选一有取舍；放错了可以撤销，不必重来。', rows: 4, cols: 4,
+      start: 12, exit: 7, startDoors: E, exitDoors: W, slots: [13, 14, 6], budget: 3,
+      offers: [['key', 'straight', 'tee'], ['corner', 'straight', 'tee'], ['corner', 'cross', 'straight']],
+      required: ['key', 'switch'], fixed: { 10: { kind: 'switch', doors: N | S } }
+    },
+    {"id":"G01-06","name":"长廊里的岔口","description":"看清哪些空位必须连接；多余房间可能诱导你走错。","teaching":"先看出入口，再决定房间应该放在哪个空位。","rows":4,"cols":4,"start":12,"exit":15,"startDoors":2,"exitDoors":8,"slots":[13,14,9],"budget":2,"offers":[["straight","corner","cross"],["tee","straight","key"]],"required":[],"fixed":{}},
+    {"id":"G01-07","name":"楼梯拐弯","description":"转角与直通组合，两种房门方向不要混淆。","teaching":"有一间房已经固定，先找出缺失的两段路线。","rows":4,"cols":4,"start":0,"exit":7,"startDoors":4,"exitDoors":8,"slots":[4,6,9],"budget":2,"offers":[["tee","corner","key"],["cross","switch","straight"]],"required":[],"fixed":{"5":{"kind":"straight","doors":10}}},
+    {"id":"G01-08","name":"沿墙绕行","description":"需要先绕开一段墙，再向出口折回。","teaching":"直通房转90度仍是直通，转角房会改变连接方向。","rows":4,"cols":4,"start":3,"exit":15,"startDoors":8,"exitDoors":8,"slots":[2,6,14,11],"budget":3,"offers":[["cross","switch","corner"],["straight","key","corner"],["switch","corner","tee"]],"required":[],"fixed":{"10":{"kind":"straight","doors":5}}},
+    {"id":"G01-09","name":"回旋走廊","description":"路线两次转弯；注意选择位置与方向。","teaching":"先找固定的通道，再补齐能连到入口的房间。","rows":4,"cols":4,"start":12,"exit":2,"startDoors":1,"exitDoors":4,"slots":[9,10,6,13],"budget":3,"offers":[["straight","key","corner"],["switch","corner","tee"],["corner","cross","straight"]],"required":[],"fixed":{"8":{"kind":"corner","doors":6}}},
+    {"id":"G01-10","name":"看得见的钥匙","description":"钥匙房已经固定在楼里，但必须走到它才算拿到。","teaching":"不要只看出口是否连通，要让通路经过钥匙房。","rows":4,"cols":4,"start":12,"exit":7,"startDoors":2,"exitDoors":8,"slots":[13,14,6,11],"budget":3,"offers":[["corner","straight","cross"],["tee","switch","corner"],["corner","cross","straight"]],"required":["key"],"fixed":{"10":{"kind":"key","doors":5}}},
+    {"id":"G01-11","name":"先把钥匙放对","description":"这次钥匙房在候选卡里，放对方向才能拿到钥匙。","teaching":"钥匙房也是直通型房间，旋转后可连东西两侧。","rows":4,"cols":4,"start":4,"exit":7,"startDoors":2,"exitDoors":8,"slots":[5,6,1],"budget":2,"offers":[["straight","tee","key"],["straight","cross","corner"]],"required":["key"],"fixed":{}},
+    {"id":"G01-12","name":"激活备用电源","description":"出口需要先经过地图上的固定开关房。","teaching":"开关房必须接入真实路线；隔着墙不能触发。","rows":4,"cols":4,"start":0,"exit":11,"startDoors":4,"exitDoors":8,"slots":[4,9,10,5],"budget":3,"offers":[["straight","cross","corner"],["key","straight","tee"],["corner","cross","straight"]],"required":["switch"],"fixed":{"8":{"kind":"switch","doors":3}}},
+    {"id":"G01-13","name":"开关自己放","description":"开关卡这回由你放，选择正确的路段才能激活。","teaching":"开关与钥匙一样，必须让路线真正经过它。","rows":4,"cols":4,"start":12,"exit":7,"startDoors":1,"exitDoors":8,"slots":[8,5,6,9],"budget":3,"offers":[["tee","switch","key"],["corner","cross","straight"],["straight","tee","key"]],"required":["switch"],"fixed":{"4":{"kind":"corner","doors":6}}},
+    {"id":"G01-14","name":"钥匙和开关","description":"两项条件都满足后才能离开。","teaching":"关键房卡需依次选对，并接入连续路线。","rows":4,"cols":4,"start":12,"exit":7,"startDoors":2,"exitDoors":8,"slots":[13,14,10,9],"budget":3,"offers":[["straight","tee","key"],["corner","straight","cross"],["tee","switch","straight"]],"required":["key","switch"],"fixed":{"6":{"kind":"corner","doors":6}}},
+    {"id":"G01-15","name":"绕远才有出口","description":"先触发开关、拿到钥匙，才允许到终点。","teaching":"不必贪图最短路径，先找出必须经过的关键房间。","rows":4,"cols":4,"start":0,"exit":15,"startDoors":4,"exitDoors":1,"slots":[4,8,9,5],"budget":3,"offers":[["switch","corner","cross"],["tee","corner","straight"],["cross","corner","key"]],"required":["key","switch"],"fixed":{"10":{"kind":"straight","doors":10},"11":{"kind":"corner","doors":12}}},
+    {"id":"G01-16","name":"逆向调查","description":"先倒推出口需要哪些门，路径自然会清晰。","teaching":"从出口方向倒推，减少盲目尝试房卡。","rows":4,"cols":4,"start":3,"exit":12,"startDoors":8,"exitDoors":2,"slots":[2,6,10,9,14],"budget":4,"offers":[["tee","corner","straight"],["cross","corner","key"],["corner","straight","cross"],["tee","corner","straight"]],"required":["key","switch"],"fixed":{"13":{"kind":"switch","doors":9}}},
+    {"id":"G01-17","name":"星夜长廊","description":"长通道和双机关交错，错位会让整条路线断开。","teaching":"注意每轮只有一张房卡可选，但可以把它放在不同空位。","rows":4,"cols":4,"start":12,"exit":15,"startDoors":1,"exitDoors":8,"slots":[8,5,10,14,9],"budget":4,"offers":[["cross","corner","key"],["straight","corner","cross"],["corner","switch","cross"],["cross","tee","corner"]],"required":["key","switch"],"fixed":{"4":{"kind":"corner","doors":6},"6":{"kind":"corner","doors":12}}},
+    {"id":"G01-18","name":"机房深处","description":"出口靠近右下角，双条件都要沿路收集。","teaching":"三选一只是房卡选择，放置位置更重要。","rows":4,"cols":4,"start":0,"exit":15,"startDoors":2,"exitDoors":1,"slots":[1,2,6,10,7],"budget":4,"offers":[["key","straight","tee"],["tee","corner","straight"],["tee","straight","switch"],["corner","straight","cross"]],"required":["key","switch"],"fixed":{"11":{"kind":"corner","doors":12}}},
+    {"id":"G01-19","name":"折返之夜","description":"绕过楼梯间，获得钥匙并触发机关。","teaching":"有些固定房间是必经点，先确认它们与旁边门能否对接。","rows":4,"cols":4,"start":3,"exit":0,"startDoors":4,"exitDoors":2,"slots":[7,11,10,9,6],"budget":4,"offers":[["tee","straight","corner"],["cross","tee","corner"],["straight","corner","cross"],["tee","corner","straight"]],"required":["key","switch"],"fixed":{"5":{"kind":"key","doors":5},"1":{"kind":"switch","doors":12}}},
+    {"id":"G01-20","name":"最后的星门","description":"四次放置同时满足钥匙与开关两项条件，抵达最终出口。","teaching":"先确定钥匙与机关各在哪里，再安排其余转角。","rows":4,"cols":4,"start":12,"exit":3,"startDoors":2,"exitDoors":8,"slots":[13,9,6,2,10],"budget":4,"offers":[["cross","tee","corner"],["key","cross","corner"],["tee","corner","straight"],["cross","tee","corner"]],"required":["key","switch"],"fixed":{"5":{"kind":"switch","doors":6}}}
+  ];
+
+  function rotate(mask, times) {
+    let m = mask;
+    for (let i = 0; i < ((times % 4) + 4) % 4; i++) {
+      m = ((m << 1) & 15) | ((m & 8) >> 3);
+    }
+    return m;
+  }
+  function roomAt(level, placements, index) {
+    if (index === level.start) return { kind: 'start', doors: level.startDoors, fixed: true };
+    if (index === level.exit) return { kind: 'exit', doors: level.exitDoors, fixed: true };
+    if (Object.prototype.hasOwnProperty.call(level.fixed, index)) return { ...level.fixed[index], fixed: true };
+    const placed = placements.find(p => p.index === index);
+    return placed ? { ...placed, fixed: false } : null;
+  }
+  function create(levelIndex) {
+    const level = definitions[levelIndex];
+    if (!level) throw new Error('找不到关卡');
+    return { levelIndex, placements: [], turn: 0, history: [] };
+  }
+  function place(state, cardIndex, cellIndex, rotation) {
+    const level = definitions[state.levelIndex];
+    if (state.turn >= level.budget) throw new Error('本关房卡已用完，请尝试撤销');
+    if (!level.slots.includes(cellIndex)) throw new Error('这里不能放置房间');
+    if (roomAt(level, state.placements, cellIndex)) throw new Error('这个格子已经有房间');
+    const kind = level.offers[state.turn][cardIndex];
+    if (!kind || !ROOMS[kind]) throw new Error('请选择一张可用的房卡');
+    const p = { kind, doors: rotate(ROOMS[kind].doors, rotation), index: cellIndex, rotation: rotation % 4 };
+    return {
+      ...state,
+      placements: [...state.placements, p],
+      turn: state.turn + 1,
+      history: [...state.history, { placements: state.placements.slice(), turn: state.turn }]
+    };
+  }
+  function undo(state) {
+    if (!state.history.length) return state;
+    const prev = state.history[state.history.length - 1];
+    return { ...state, placements: prev.placements.slice(), turn: prev.turn, history: state.history.slice(0, -1) };
+  }
+  function neighbor(level, index, direction) {
+    const row = Math.floor(index / level.cols), col = index % level.cols;
+    const rr = row + direction.dr, cc = col + direction.dc;
+    return rr >= 0 && rr < level.rows && cc >= 0 && cc < level.cols ? rr * level.cols + cc : -1;
+  }
+  function connectedNeighbors(level, placements, index) {
+    const room = roomAt(level, placements, index);
+    if (!room) return [];
+    const result = [];
+    for (const dir of DIRS) {
+      if (!(room.doors & dir.bit)) continue;
+      const next = neighbor(level, index, dir);
+      if (next === -1) continue;
+      const other = roomAt(level, placements, next);
+      if (other && (other.doors & dir.opposite)) result.push(next);
+    }
+    return result;
+  }
+  function flood(level, placements) {
+    const seen = new Set([level.start]), queue = [level.start];
+    for (let i = 0; i < queue.length; i++) {
+      for (const next of connectedNeighbors(level, placements, queue[i])) {
+        if (!seen.has(next)) { seen.add(next); queue.push(next); }
+      }
+    }
+    return seen;
+  }
+  function check(state) {
+    const level = definitions[state.levelIndex];
+    const reachable = flood(level, state.placements);
+    const needs = level.required.reduce((mask, kind) => mask | (kind === 'key' ? 1 : 2), 0);
+    const queue = [{ cell: level.start, flags: 0, path: [level.start] }];
+    const visited = new Set([`${level.start}:0`]);
+    let bestFlags = 0;
+    for (let i = 0; i < queue.length; i++) {
+      const current = queue[i];
+      bestFlags |= current.flags;
+      if (current.cell === level.exit && (current.flags & needs) === needs) {
+        return { win: true, reachable: [...reachable], path: current.path, key: Boolean(current.flags & 1), switchOn: Boolean(current.flags & 2), cause: '全部条件满足，逃出成功！' };
+      }
+      for (const next of connectedNeighbors(level, state.placements, current.cell)) {
+        const room = roomAt(level, state.placements, next);
+        const flags = current.flags | (room.kind === 'key' ? 1 : 0) | (room.kind === 'switch' ? 2 : 0);
+        const sig = `${next}:${flags}`;
+        if (!visited.has(sig)) {
+          visited.add(sig);
+          queue.push({ cell: next, flags, path: [...current.path, next] });
+        }
+      }
+    }
+    if (!reachable.has(level.exit)) {
+      return { win: false, reachable: [...reachable], key: !!(bestFlags & 1), switchOn: !!(bestFlags & 2), cause: '出口还没有连通，检查房门方向与缺失的房间。' };
+    }
+    const missing = [];
+    if ((needs & 1) && !(bestFlags & 1)) missing.push('钥匙');
+    if ((needs & 2) && !(bestFlags & 2)) missing.push('机关');
+    return { win: false, reachable: [...reachable], key: !!(bestFlags & 1), switchOn: !!(bestFlags & 2), cause: `虽然连到了出口，但还缺少：${missing.join('、')}。` };
+  }
+  function solutions(state, cap = 1) {
+    const level = definitions[state.levelIndex];
+    const found = [];
+    let visitedStates = 0;
+    const seen = new Set();
+    function dfs(placements, turn, moves) {
+      if (found.length >= cap) return;
+      const cur = { levelIndex: state.levelIndex, placements, turn, history: [] };
+      if (check(cur).win) { found.push(moves); return; }
+      if (turn >= level.budget) return;
+      const key = `${turn}:${placements.map(p => `${p.index}-${p.kind}-${p.doors}`).sort().join(';')}`;
+      if (seen.has(key)) return;
+      seen.add(key); visitedStates++;
+      if (visitedStates > 60000) return;
+      for (const cell of level.slots) {
+        if (roomAt(level, placements, cell)) continue;
+        for (let c = 0; c < level.offers[turn].length; c++) {
+          const kind = level.offers[turn][c];
+          const distinct = new Set();
+          for (let rot = 0; rot < 4; rot++) {
+            const doors = rotate(ROOMS[kind].doors, rot);
+            if (distinct.has(doors)) continue;
+            distinct.add(doors);
+            const next = { kind, doors, index: cell, rotation: rot };
+            dfs([...placements, next], turn + 1, [...moves, { kind, cardIndex: c, cellIndex: cell, rotation: rot }]);
+            if (found.length >= cap) return;
+          }
+        }
+      }
+    }
+    dfs(state.placements, state.turn, []);
+    return found;
+  }
+  function validateLevel(levelIndex) {
+    const level = definitions[levelIndex];
+    const allowed = new Set([level.start, level.exit, ...level.slots, ...Object.keys(level.fixed).map(Number)]);
+    if (allowed.size !== level.slots.length + 2 + Object.keys(level.fixed).length) throw new Error('房间位置发生重叠');
+    if (Math.max(...allowed) >= level.rows * level.cols || Math.min(...allowed) < 0) throw new Error('房间位置出界');
+    if (level.offers.length !== level.budget) throw new Error('卡牌轮次与步数不匹配');
+    const solutionsFound = solutions(create(levelIndex), 1);
+    if (solutionsFound.length === 0) throw new Error(`关卡${level.id}无解`);
+    const witness = solutionsFound[0];
+    let state = create(levelIndex);
+    for (const move of witness) state = place(state, move.cardIndex, move.cellIndex, move.rotation);
+    if (!check(state).win) throw new Error('求解回放与判定不一致');
+    return { id: level.id, solved: true, witness };
+  }
+  return { N, E, S, W, DIRS, ROOMS, levels: definitions, rotate, roomAt, neighbor, connectedNeighbors, flood, create, place, undo, check, solutions, validateLevel };
+});
+
+</script>
+  <script>
+/* G01-B mobile trial: no network calls; progress and voluntary tester report remain local. */
+(function () {
+  'use strict';
+  const core = window.G01Core;
+  const $ = (s) => document.querySelector(s);
+  const els = {
+    levels: $('#levels'), chapters: $('#chapters'), title: $('#levelTitle'), desc: $('#levelDesc'), teaching: $('#teaching'),
+    board: $('#board'), boardMeta: $('#boardMeta'), deck: $('#deck'), deckCount: $('#deckCount'),
+    needs: $('#requirements'), status: $('#feedback'), rotate: $('#rotate'), undo: $('#undo'),
+    retry: $('#retry'), hint: $('#hint'), check: $('#check'), next: $('#nextWrap'), nextBtn: $('#nextBtn'),
+    guide: $('#guide'), coach: $('#coach'), stars: $('#starHud'),
+    rewardDialog: $('#rewardDialog'), rewardTitle: $('#rewardTitle'), rewardStars: $('#rewardStars'),
+    rewardTotal: $('#rewardTotal'), rewardDetail: $('#rewardDetail'), rewardUnlock: $('#rewardUnlock'),
+    rewardStay: $('#rewardStay'), rewardContinue: $('#rewardContinue'),
+    copyReport: $('#copyReport'), downloadReport: $('#downloadReport'),
+    testMessage: $('#testMessage'), obstacle: $('#obstacle'), feedbackText: $('#feedbackText')
+  };
+  const SAVE_KEY = 'g01-a.roompath.prototype.v0.1'; // preserve G01-A progress on same origin
+  const TEST_KEY = 'g01-b.local-trial.v0.2';
+  const REWARD_KEY = 'g01-b.reward.v0.3';
+  let completed = [];
+  let state = core.create(0);
+  let chosen = 0;
+  let rotation = 0;
+  let hintCell = null;
+  let winningPath = [];
+  let won = false;
+  let lastMessage = '';
+  let lastKind = '';
+  let cardTouched = false;
+  let usedHintThisLevel = false;
+  let failedChecksThisLevel = 0;
+  let rewards = { schema: 1, best: core.levels.map(() => 0) };
+  let visibleChapter = 0;
+  function newMetrics() {
+    return { schema: 1, openedAt: new Date().toISOString(), visitDates: [], firstPlacementSeconds: null,
+      firstWinSeconds: null, actions: {}, levelWins: [], completedAt: null };
+  }
+  function loadMetrics() {
+    try {
+      const stored = JSON.parse(localStorage.getItem(TEST_KEY) || 'null');
+      if (stored && stored.schema === 1 && stored.actions && Array.isArray(stored.levelWins)) return stored;
+    } catch (e) { /* storage may be disabled */ }
+    return newMetrics();
+  }
+  let metrics = loadMetrics();
+  const localDay = () => {
+    const d = new Date();
+    return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`;
+  };
+  if (!Array.isArray(metrics.visitDates)) metrics.visitDates = [];
+  if (!metrics.visitDates.includes(localDay())) metrics.visitDates.push(localDay());
+  function persistMetrics() {
+    try { localStorage.setItem(TEST_KEY, JSON.stringify(metrics)); } catch (e) { /* local only */ }
+  }
+  persistMetrics();
+  function track(action) {
+    metrics.actions[action] = (metrics.actions[action] || 0) + 1;
+    persistMetrics();
+  }
+  function firstElapsed() { return Math.max(0, Math.round((Date.now() - Date.parse(metrics.openedAt)) / 1000)); }
+  function renderCoach() {
+    els.deck.classList.remove('coach-target');
+    els.rotate.classList.remove('coach-target');
+    els.board.classList.remove('coach-target');
+    els.check.classList.remove('coach-target');
+    if (state.levelIndex !== 0) { els.coach.hidden = true; return; }
+    els.coach.hidden = false;
+    const level = core.levels[state.levelIndex];
+    if (won) { els.coach.textContent = '✓ 第一关完成！点“继续下一关”体验新规则。'; return; }
+    if (state.turn > 0) {
+      els.coach.textContent = '第4步：点“试逃脱”，检查有没有连接成功。';
+      els.check.classList.add('coach-target'); return;
+    }
+    if (!cardTouched) {
+      els.coach.textContent = '第1步：先点下面任意一张房卡。';
+      els.deck.classList.add('coach-target'); return;
+    }
+    const kind = level.offers[0][chosen];
+    const base = core.ROOMS[kind].doors;
+    const canConnect = ((core.rotate(base, rotation) & (core.E | core.W)) === (core.E | core.W));
+    const canEverConnect = [0,1,2,3].some(n => ((core.rotate(base,n) & (core.E|core.W)) === (core.E|core.W)));
+    if (!canEverConnect) {
+      els.coach.textContent = '这张房卡无法同时连接左右两个门。试着改选直通房或三岔房。';
+      els.deck.classList.add('coach-target'); return;
+    }
+    if (!canConnect) {
+      els.coach.textContent = '第2步：点“旋转房间”，让黄色门口指向左右。';
+      els.rotate.classList.add('coach-target'); return;
+    }
+    els.coach.textContent = '第3步：方向正确！现在点地图中间的“＋”放置房间。';
+    els.board.classList.add('coach-target');
+  }
+
+
+  function safeLoad() {
+    try {
+      const obj = JSON.parse(localStorage.getItem(SAVE_KEY) || '{}');
+      completed = Array.isArray(obj.completed) ? obj.completed.filter(x => Number.isInteger(x) && x >= 0 && x < core.levels.length) : [];
+      usedHintThisLevel = obj.usedHint === true;
+      failedChecksThisLevel = Number.isInteger(obj.failedChecks) && obj.failedChecks >= 0 ? obj.failedChecks : 0;
+      if (!Number.isInteger(obj.levelIndex) || obj.levelIndex < 0 || obj.levelIndex >= core.levels.length) return;
+      let reconstructed = core.create(obj.levelIndex);
+      if (Array.isArray(obj.moves)) {
+        for (const move of obj.moves) {
+          if (!move || !Number.isInteger(move.cardIndex) || !Number.isInteger(move.cellIndex) || !Number.isInteger(move.rotation)) return;
+          reconstructed = core.place(reconstructed, move.cardIndex, move.cellIndex, move.rotation);
+        }
+      }
+      state = reconstructed;
+    } catch (err) {
+      state = core.create(0);
+    }
+  }
+  function persist() {
+    try {
+      const level = core.levels[state.levelIndex];
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+        version: 1,
+        completed,
+        levelIndex: state.levelIndex,
+        usedHint: usedHintThisLevel,
+        failedChecks: failedChecksThisLevel,
+        moves: state.placements.map((p, turn) => ({
+          cardIndex: level.offers[turn].indexOf(p.kind), cellIndex: p.index, rotation: p.rotation
+        }))
+      }));
+    } catch (err) { /* Private browsing may disable persistent storage; gameplay still works. */ }
+  }
+  function explain(message, type = '') {
+    lastMessage = message;
+    lastKind = type;
+    els.status.textContent = message;
+    els.status.className = `feedback ${type}`;
+  }
+  function smallRoom(kind, doors, mini = false) {
+    const el = document.createElement('div');
+    el.className = mini ? 'card-preview' : 'cell-center';
+    const glyph = document.createElement('span');
+    glyph.className = mini ? '' : 'cell-symbol';
+    glyph.textContent = ({start:'入',exit:'出',key:'钥',switch:'机',straight:'直',corner:'转',tee:'岔',cross:'十'})[kind] || '';
+    el.appendChild(glyph);
+    if (!mini) {
+      const label = document.createElement('span');
+      label.className = 'cell-label';
+      label.textContent = ({start:'入口',exit:'出口',key:'钥匙',switch:'机关',straight:'直通',corner:'转角',tee:'三岔',cross:'四通'})[kind] || '';
+      el.appendChild(label);
+    }
+    for (const {bit, label} of core.DIRS) {
+      if (!(doors & bit)) continue;
+      const door = document.createElement('span');
+      door.className = `door ${({北:'n',东:'e',南:'s',西:'w'})[label]}`;
+      el.appendChild(door);
+    }
+    return el;
+  }
+  // Best-of-level stars prevent farming by replay and preserve previous V0.2 clears.
+  function readRewards() {
+    let stored = null;
+    try { stored = JSON.parse(localStorage.getItem(REWARD_KEY) || 'null'); } catch (e) { /* unavailable */ }
+    const oldBest = (stored && stored.schema === 1 && Array.isArray(stored.best)) ? stored.best : [];
+    rewards = { schema: 1, best: core.levels.map((_, i) => {
+      const v = oldBest[i];
+      return Number.isInteger(v) && v >= 0 && v <= 3 ? Math.max(v, completed.includes(i) ? 1 : 0) : (completed.includes(i) ? 1 : 0);
+    }) };
+    for (let i = 0; i < rewards.best.length; i++) {
+      if (rewards.best[i] && !completed.includes(i)) completed.push(i);
+    }
+    completed.sort((a,b) => a - b);
+    storeRewards();
+  }
+  function storeRewards() {
+    try { localStorage.setItem(REWARD_KEY, JSON.stringify(rewards)); } catch (e) { /* session only */ }
+  }
+  function totalStars() { return rewards.best.reduce((a, b) => a + b, 0); }
+  function themeTier(points) { return points >= 10 ? 2 : (points >= 5 ? 1 : 0); }
+  function updateRewardHud() {
+    const total = totalStars();
+    els.stars.textContent = `★ ${total}/${core.levels.length * 3} · ${core.levels.length}关试玩`;
+    els.stars.setAttribute('aria-label', `累计获得${total}颗星，最多${core.levels.length * 3}颗`);
+    const tier = themeTier(total);
+    const shell = $('.shell');
+    shell.classList.toggle('theme-warm', tier === 1);
+    shell.classList.toggle('theme-starlight', tier === 2);
+  }
+  function openReward(stars, added, oldTotal, pathLength) {
+    const total = totalStars();
+    const levelName = core.levels[state.levelIndex].name;
+    els.rewardTitle.textContent = `第${state.levelIndex + 1}关 · ${levelName}`;
+    els.rewardStars.replaceChildren();
+    for (let i = 0; i < 3; i++) {
+      const mark = document.createElement('span');
+      mark.textContent = i < stars ? '★' : '☆';
+      if (i >= stars) mark.className = 'empty';
+      mark.style.setProperty('--n', String(i));
+      els.rewardStars.appendChild(mark);
+    }
+    els.rewardStars.setAttribute('aria-label', `本次获得${stars}星，最多3星`);
+    els.rewardTotal.textContent = `本次 ${stars}★ · 新增 ${added}★ · 累计 ${total}/${core.levels.length * 3}★`;
+    els.rewardDetail.textContent = `路线经过${pathLength}间房。奖励按每关历史最高星级累计：过关1星，不用提示再加1星，且一次成功再加1星。重复通关不重复领取，提升成绩可补领差额。`;
+    const oldTier = themeTier(oldTotal), newTier = themeTier(total);
+    const unlocked = newTier > oldTier;
+    const newBadge = [60,40,20].find(goal => oldTotal < goal && total >= goal);
+    els.rewardUnlock.hidden = false;
+    if (newBadge) {
+      els.rewardUnlock.textContent = newBadge === 60 ? '满星逃脱王称号已解锁！' : newBadge === 40 ? '金星探路徽章已解锁！' : '银星探路徽章已解锁！';
+    } else if (unlocked) {
+      els.rewardUnlock.textContent = newTier === 2 ? '新装扮解锁：星夜通道！房间已自动切换星光效果。' : '新装扮解锁：暖光房间！地图已自动点亮。';
+    } else if (total < 5) {
+      els.rewardUnlock.textContent = `再收集${5-total}★，解锁「暖光房间」装扮。`;
+    } else if (total < 10) {
+      els.rewardUnlock.textContent = `已解锁暖光房间！再收集${10-total}★，解锁「星夜通道」。`;
+    } else {
+      els.rewardUnlock.textContent = total >= 60 ? '满星逃脱王！20关已全部取得3星。' : total >= 40 ? `金星探路徽章已获得！距离满星还差${60-total}★。` : total >= 20 ? `银星探路徽章已获得！再收集${40-total}★解锁金徽章。` : `星夜通道已解锁！再收集${20-total}★解锁银徽章。`;
+    }
+    els.rewardContinue.textContent = state.levelIndex === core.levels.length - 1 ? '重温第一关 →' : '继续下一关 →';
+    els.rewardDialog.hidden = false;
+    els.rewardContinue.focus();
+  }
+  function closeReward() {
+    els.rewardDialog.hidden = true;
+    els.nextBtn.focus();
+  }
+  function chapterUnlocked(index) { return index < 5 || completed.includes(index - 1); }
+  function renderChapters() {
+    els.chapters.replaceChildren();
+    for (let ch = 0; ch < Math.ceil(core.levels.length / 5); ch++) {
+      const begin = ch * 5, end = Math.min(core.levels.length, begin + 5);
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'chapter-btn' + (visibleChapter === ch ? ' active' : '');
+      button.setAttribute('aria-pressed', String(visibleChapter === ch));
+      button.textContent = `${String(begin + 1).padStart(2,'0')}—${String(end).padStart(2,'0')}`;
+      button.addEventListener('click', () => {visibleChapter = ch; renderChapters(); renderLevels();});
+      els.chapters.appendChild(button);
+    }
+  }
+  function renderLevels() {
+    els.levels.replaceChildren();
+    core.levels.forEach((level, i) => {
+      if (Math.floor(i/5) !== visibleChapter) return;
+      const b = document.createElement('button');
+      b.className = `level-btn${state.levelIndex === i ? ' active' : ''}${completed.includes(i) ? ' done' : ''}${!chapterUnlocked(i) ? ' locked' : ''}`;
+      b.type = 'button';
+      b.setAttribute('aria-label', `第${i+1}关 ${level.name}${completed.includes(i) ? '，已通关' : ''}`);
+      b.textContent = String(i + 1).padStart(2,'0');
+      b.disabled = !chapterUnlocked(i);
+      if (b.disabled) b.title = '先完成上一关后解锁';
+      if (completed.includes(i)) {
+        const span = document.createElement('span');
+        span.className = 'tiny-check'; span.textContent = rewards.best[i] ? `${rewards.best[i]}★` : '✓'; b.appendChild(span);
+      }
+      b.addEventListener('click', () => startLevel(i));
+      els.levels.appendChild(b);
+    });
+  }
+  function renderBoard() {
+    const level = core.levels[state.levelIndex];
+    const res = core.check(state);
+    const connected = new Set(res.reachable);
+    const route = new Set(winningPath);
+    els.board.style.setProperty('--cols', level.cols);
+    els.board.style.setProperty('--rows', level.rows);
+    els.board.replaceChildren();
+    els.boardMeta.textContent = `${level.rows} × ${level.cols} 房间地图`;
+    for (let idx = 0; idx < level.rows * level.cols; idx++) {
+      const room = core.roomAt(level, state.placements, idx);
+      const slot = level.slots.includes(idx);
+      const b = document.createElement('button');
+      b.type = 'button';
+      let className = 'cell';
+      if (room) className += ` room ${room.kind}`;
+      else className += slot ? ' blank' : ' wall';
+      if (room && connected.has(idx)) className += ' reachable';
+      if (room && route.has(idx)) className += ' route';
+      if (hintCell === idx && !room) className += ' hintcell';
+      b.className = className;
+      const row = Math.floor(idx / level.cols) + 1;
+      const col = idx % level.cols + 1;
+      b.setAttribute('aria-label', `${row}行${col}列，${room ? (core.ROOMS[room.kind]?.label || (room.kind==='start'?'入口':'出口')) : slot ? '可以放置房间' : '墙壁'}`);
+      if (room) b.appendChild(smallRoom(room.kind, room.doors));
+      else if (slot) {
+        const center = document.createElement('div'); center.className='cell-center';
+        center.innerHTML = '<span class="cell-symbol">＋</span><span class="cell-label">放房间</span>';
+        b.appendChild(center);
+      }
+      if (!slot || room || won) b.disabled = true;
+      if (slot && !room && !won) b.addEventListener('click', () => onPlace(idx));
+      els.board.appendChild(b);
+    }
+    els.needs.replaceChildren();
+    level.required.forEach(kind => {
+      const el = document.createElement('span');
+      const met = kind === 'key' ? res.key : res.switchOn;
+      el.className = `requirement${met ? ' met' : ''}`;
+      el.textContent = `${met ? '✓' : '○'} ${kind === 'key' ? '路线取得钥匙' : '路线触发机关'}`;
+      els.needs.appendChild(el);
+    });
+  }
+  function renderCards() {
+    const level = core.levels[state.levelIndex];
+    els.deck.replaceChildren();
+    els.deckCount.textContent = `${state.turn} / ${level.budget} 张已放置`;
+    const options = level.offers[state.turn];
+    if (won || !options) {
+      const p = document.createElement('div');
+      p.className = 'empty-deck';
+      p.textContent = won ? '本关成功！可以继续下一关。' : '房卡已经放完。点击「试逃脱」或使用「撤销」。';
+      p.style.gridColumn = '1 / -1'; els.deck.appendChild(p); return;
+    }
+    options.forEach((kind, idx) => {
+      const b = document.createElement('button'); b.type='button';
+      b.className = `card${cardTouched && chosen === idx ? ' selected' : ''}`;
+      b.setAttribute('aria-pressed', String(cardTouched && chosen === idx));
+      b.setAttribute('aria-label', `${core.ROOMS[kind].label}${cardTouched && chosen === idx ? '，当前选中' : ''}`);
+      b.appendChild(smallRoom(kind, core.rotate(core.ROOMS[kind].doors, chosen === idx && cardTouched ? rotation : 0), true));
+      const name = document.createElement('span'); name.className = 'card-name'; name.textContent = core.ROOMS[kind].label;
+      const note = document.createElement('span'); note.className = 'card-note'; note.textContent = chosen === idx && cardTouched ? `已旋转 ${rotation * 90}°` : '点击选择';
+      b.append(name, note);
+      b.addEventListener('click', () => { chosen = idx; rotation = 0; cardTouched = true; track('selectCard'); hintCell = null; render(); explain(`已选择「${core.ROOMS[kind].label}」。点击“旋转房间”，然后点地图中的「＋」放置。`); });
+      els.deck.appendChild(b);
+    });
+  }
+  function render() {
+    const level = core.levels[state.levelIndex];
+    renderChapters(); renderLevels();
+    updateRewardHud();
+    els.title.textContent = level.name;
+    els.desc.textContent = level.description;
+    els.teaching.textContent = level.teaching;
+    els.guide.textContent = `第 ${state.levelIndex + 1} / ${core.levels.length} 关`;
+    renderBoard(); renderCards();
+    els.rotate.disabled = won || state.turn >= level.budget || !cardTouched;
+    els.undo.disabled = won || state.turn === 0;
+    els.hint.disabled = won;
+    els.check.disabled = won;
+    els.next.hidden = !won;
+    if (won) { els.nextBtn.textContent = state.levelIndex === core.levels.length - 1 ? '已完成全部20关 · 再玩第一关' : '继续下一关 →'; }
+    renderCoach();
+  }
+  function onPlace(index) {
+    try {
+      if (won) return;
+      if (!cardTouched) {
+        track('earlyPlace'); explain('先点下方一张房卡，再决定旋转和放置位置。', 'warn'); return;
+      }
+      state = core.place(state, chosen, index, rotation);
+      hintCell = null; chosen = 0; rotation = 0; cardTouched = false;
+      if (metrics.firstPlacementSeconds === null) metrics.firstPlacementSeconds = firstElapsed();
+      track('placeRoom');
+      persist(); render();
+      const level = core.levels[state.levelIndex];
+      explain(state.turn < level.budget ? '房间已放置。观察门是否连通，继续选择下一张房卡。' : '最后一张房卡已放置！点击「试逃脱」检查是否满足条件。');
+    } catch(err) { track('invalidPlace'); explain(err.message, 'warn'); }
+  }
+  function startLevel(index) {
+    if (!Number.isInteger(index) || index < 0 || index >= core.levels.length || !chapterUnlocked(index)) {explain('先完成上一关，再解锁后续关卡。','warn');return;}
+    visibleChapter = Math.floor(index/5);
+    if (completed.includes(index)) track('revisitCompleted');
+    track('startLevel');
+    state = core.create(index); chosen = 0; rotation = 0; cardTouched = false; hintCell = null; won = false; winningPath = [];
+    usedHintThisLevel = false; failedChecksThisLevel = 0; els.rewardDialog.hidden = true;
+    persist(); render();
+    explain(index === 0 ? '选择一张房卡，可以顺时针旋转，再点击带「＋」的空位放置。' : '房卡每轮只能选择一张。注意房门必须两端对齐，过关条件都需要满足。');
+  }
+  function tryEscape() {
+    if (won) return;
+    track('tryEscape');
+    const res = core.check(state);
+    if (res.win) {
+      const oldTotal = totalStars();
+      const earned = usedHintThisLevel ? 1 : (failedChecksThisLevel ? 2 : 3);
+      const oldBest = rewards.best[state.levelIndex];
+      const added = Math.max(0, earned - oldBest);
+      rewards.best[state.levelIndex] = Math.max(oldBest, earned);
+      storeRewards();
+      won = true; winningPath = res.path;
+      if (!completed.includes(state.levelIndex)) completed.push(state.levelIndex);
+      if (!metrics.levelWins.includes(state.levelIndex + 1)) metrics.levelWins.push(state.levelIndex + 1);
+      if (metrics.firstWinSeconds === null) metrics.firstWinSeconds = firstElapsed();
+      if (core.levels.slice(0,5).every((_,i)=>completed.includes(i)) && !metrics.completedAt) metrics.completedAt = new Date().toISOString();
+      if (completed.length === core.levels.length && !metrics.completed20At) metrics.completed20At = new Date().toISOString();
+      track('levelWin');
+      persist(); render(); explain(`成功逃出！本次${earned}星，累计${totalStars()}/${core.levels.length*3}星。${state.levelIndex === core.levels.length-1 ? '20关全部完成！' : '继续探索下一关。'}`, 'good');
+      openReward(earned, added, oldTotal, res.path.length);
+    } else {
+      track('failedEscape');
+      failedChecksThisLevel++; persist();
+      const level = core.levels[state.levelIndex];
+      const suffix = state.turn >= level.budget ? ' 本轮已经放完房卡；可以撤销修改或重玩。' : ' 还可以放置房间或使用提示。';
+      explain(res.cause + suffix, 'warn');
+    }
+  }
+  function giveHint() {
+    usedHintThisLevel = true; persist();
+    track('hint');
+    const found = core.solutions(state, 1);
+    if (!found.length) { hintCell = null; render(); explain('当前摆法已经无法满足通关条件。请点击「撤销」调整上一张房卡。', 'warn'); return; }
+    if (!found[0].length) { explain('路线已经满足条件，点击「试逃脱」即可！', 'good'); return; }
+    const move = found[0][0];
+    const level = core.levels[state.levelIndex];
+    hintCell = move.cellIndex;
+    chosen = move.cardIndex;
+    cardTouched = true;
+    rotation = move.rotation;
+    render();
+    explain(`提示：选择「${core.ROOMS[move.kind].label}」，旋转 ${move.rotation * 90}°，放在第${Math.floor(move.cellIndex / level.cols)+1}行第${(move.cellIndex % level.cols)+1}列。`);
+  }
+  els.rotate.addEventListener('click', () => { track('rotate'); rotation = (rotation + 1) % 4; hintCell=null; render(); explain(`已顺时针旋转到 ${rotation * 90}°，现在点地图空位即可放置。`); });
+  els.undo.addEventListener('click', () => { track('undo'); state=core.undo(state); chosen=0; rotation=0; cardTouched=false; hintCell=null; winningPath=[]; persist(); render(); explain('已撤销上一张房卡，可以重新选择房间和方向。'); });
+  els.retry.addEventListener('click', () => {track('retry'); startLevel(state.levelIndex);});
+  els.hint.addEventListener('click', giveHint);
+  els.check.addEventListener('click', tryEscape);
+  els.nextBtn.addEventListener('click', () => startLevel((state.levelIndex+1)%core.levels.length));
+  els.rewardContinue.addEventListener('click', () => startLevel((state.levelIndex+1)%core.levels.length));
+  els.rewardStay.addEventListener('click', closeReward);
+  document.addEventListener('keydown', (event) => {
+    if (!els.rewardDialog.hidden && event.key === 'Escape') { event.preventDefault(); closeReward(); return; }
+    if (!els.rewardDialog.hidden) return;
+    if (event.key.toLowerCase() === 'r' && !els.rotate.disabled) els.rotate.click();
+    if (event.key.toLowerCase() === 'z' && (event.ctrlKey || event.metaKey) && !els.undo.disabled) { event.preventDefault(); els.undo.click(); }
+  });
+  function report() {
+    const selected = (name) => document.querySelector(`input[name="${name}"]:checked`)?.value || 'not_answered';
+    return {
+      product: '今晚拼出路 G01-C V0.6', exportedAt: new Date().toISOString(),
+      trial: { firstOpened: metrics.openedAt, visitDates: [...metrics.visitDates], firstPlacementSeconds: metrics.firstPlacementSeconds,
+        firstWinSeconds: metrics.firstWinSeconds, levelsWon: [...metrics.levelWins].sort(),
+        actions: { ...metrics.actions }, allFiveCompleted: Boolean(metrics.completedAt), allTwentyCompleted: Boolean(metrics.completed20At),
+        bestStars: [...rewards.best], totalStars: totalStars(), unlockedTheme: themeTier(totalStars()) },
+      feedback: { understoodIn30Seconds: selected('understood'), wantsMoreLevels: selected('continue'),
+        biggestObstacle: els.obstacle.value, note: els.feedbackText.value.trim().slice(0,250) },
+      environment: { viewport: `${window.innerWidth}x${window.innerHeight}`, urlProtocol: location.protocol },
+      note: '本报告由玩家主动导出或复制，游戏本身不上传答题或反馈数据。网页托管服务可能记录常规访问日志；指标来自本机记录，不代表实际留存率。'
+    };
+  }
+  els.downloadReport.addEventListener('click', () => {
+    const json = JSON.stringify(report(), null, 2);
+    const blob = new Blob([json], {type:'application/json;charset=utf-8'});
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement('a');
+    anchor.href = url; anchor.download = '今晚拼出路_试玩反馈_G01-B.json';
+    document.body.appendChild(anchor); anchor.click(); anchor.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    els.testMessage.textContent = '已请求浏览器保存报告。保存后可以自行发送给测试组织者。';
+  });
+  els.copyReport.addEventListener('click', async () => {
+    const f = report();
+    const text = `试玩G01-C V0.6\n完成关卡：${f.trial.levelsWon.join('、') || '无'}\n首个放置用时：${f.trial.firstPlacementSeconds ?? '未记录'}秒\n30秒内理解规则：${f.feedback.understoodIn30Seconds}\n是否想继续：${f.feedback.wantsMoreLevels}\n最困扰：${f.feedback.biggestObstacle}\n其他：${f.feedback.note || '无'}\n操作统计：${JSON.stringify(f.trial.actions)}`;
+    if (!navigator.clipboard?.writeText) { els.testMessage.textContent = '当前浏览器不能直接复制，请使用“保存体验报告”。'; return; }
+    try { await navigator.clipboard.writeText(text); els.testMessage.textContent = '体验反馈已复制，请自行粘贴发送。'; }
+    catch (e) { els.testMessage.textContent = '复制被浏览器阻止，请使用“保存体验报告”。'; }
+  });
+  safeLoad();
+  readRewards();
+  visibleChapter = Math.floor(state.levelIndex/5);
+  render();
+  explain('点击下方房卡选择房间 → 旋转 → 点击地图「＋」放置。放好后试逃脱。');
+})();
+
+</script>
+<script>
+/* G01-C V0.6 | 20-level offline friend leaderboard; migrate the original 5-level data. */
+(() => {
+  'use strict';
+  const RANK_KEY = 'g01-friend-leaderboard.v0.4';
+  const REWARD_KEY = 'g01-b.reward.v0.3';
+  const COUNT = window.G01Core?.levels?.length || 20;
+  const MAX_PEERS = 30;
+  const $ = id => document.getElementById(id);
+  const clampTime = n => Number.isInteger(n) && n >= 1 && n <= 86400 ? n : null;
+  const cleanName = value => String(value || '').trim().replace(/[<>\r\n\t]/g, '').slice(0, 12);
+  const validStars = b => Array.isArray(b) && b.length === COUNT && b.every(n => Number.isInteger(n) && n >= 0 && n <= 3);
+  const uuid = () => 'p' + Array.from(crypto.getRandomValues(new Uint8Array(8)), b => b.toString(16).padStart(2, '0')).join('');
+  const safeRead = key => { try { return JSON.parse(localStorage.getItem(key) || 'null'); } catch (_) { return null; } };
+  let saved = safeRead(RANK_KEY);
+  if (!saved || saved.v !== 1 || typeof saved.id !== 'string' || !/^[a-z0-9]{6,40}$/i.test(saved.id)) {const id=uuid();saved = { v:1, id, name:'夜行玩家'+id.slice(-4), records:[], peers:[] };}
+  saved.name = cleanName(saved.name) || '夜行玩家';
+  if (!Array.isArray(saved.records)) saved.records = [];
+  if (!Array.isArray(saved.peers)) saved.peers = [];
+  saved.peers = saved.peers.slice(0,MAX_PEERS).map(normalizeScore).filter(p=>p && p.id !== saved.id);
+  function store() { try {localStorage.setItem(RANK_KEY, JSON.stringify(saved));} catch (_) { /* private mode */ } }
+  function normalizeScore(p) {
+    if(!p || ![1,2].includes(p.v) || typeof p.id !== 'string' ||
+      !/^[a-z0-9]{6,40}$/i.test(p.id) || typeof p.name !== 'string' ||
+      cleanName(p.name).length === 0 || p.name.length > 12 || !Array.isArray(p.best) ||
+      !Array.isArray(p.times) || ![5, COUNT].includes(p.best.length) ||
+      p.times.length !== p.best.length || !p.best.every(n => Number.isInteger(n) && n >= 0 && n <= 3) ||
+      !p.times.every(x => x === null || clampTime(x) !== null)) return null;
+    // Old 5-level friend links are still readable: preserve results for levels 1–5.
+    return {v:2, id:p.id, name:cleanName(p.name), best:[...p.best,...Array(COUNT-p.best.length).fill(0)],
+      times:[...p.times,...Array(COUNT-p.times.length).fill(null)]};
+  }
+  function isValidScore(p) {return normalizeScore(p) !== null;}
+  function bestStars() {
+    const a = safeRead(REWARD_KEY)?.best;
+    return validStars(a) ? a : Array(COUNT).fill(0);
+  }
+  function selfScore() {
+    const best=bestStars(), times=best.map((s,i)=>{
+      const r=saved.records[i];
+      return r && r.stars === s ? clampTime(r.seconds) : null;
+    });
+    return {v:2,id:saved.id,name:saved.name,best,times};
+  }
+  function total(s) {return s.best.reduce((a,b)=>a+b,0);}
+  function done(s) {return s.best.filter(x=>x>0).length;}
+  function fullTime(s) {return s.times.every(x=>x!==null) && done(s)===COUNT ? s.times.reduce((a,b)=>a+b,0) : null;}
+  function sortScores(a,b) {return total(b)-total(a) || done(b)-done(a) || (fullTime(a)??Infinity)-(fullTime(b)??Infinity) || a.name.localeCompare(b.name,'zh-CN');}
+  function rankList() {return [selfScore(), ...saved.peers].sort(sortScores);}
+  function ownRank() {return rankList().findIndex(s=>s.id===saved.id)+1;}
+  function encode(data) {
+    const bytes = new TextEncoder().encode(JSON.stringify(data));
+    let raw=''; bytes.forEach(b=>raw+=String.fromCharCode(b));
+    return btoa(raw).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');
+  }
+  function decode(str) {
+    if(typeof str!=='string' || str.length<16 || str.length>1200 || !/^[A-Za-z0-9_-]+$/.test(str)) throw Error('成绩码格式无效');
+    let data;
+    try {
+      const raw=atob(str.replace(/-/g,'+').replace(/_/g,'/'));
+      const bytes=Uint8Array.from(raw,c=>c.charCodeAt(0));
+      data=JSON.parse(new TextDecoder('utf-8',{fatal:true}).decode(bytes));
+    } catch (_) {throw Error('成绩码格式无效');}
+    const normalized=normalizeScore(data);
+    if(!normalized) throw Error('成绩内容不符合5关或20关格式');
+    if(normalized.id===saved.id) throw Error('这是你自己的挑战记录');
+    return normalized;
+  }
+  function parseInput(raw) {
+    let value=raw.trim();
+    if(value.length>3000) throw Error('输入过长');
+    if(value.includes('://')) {try {value=new URL(value).searchParams.get('pk')||'';} catch (_) {throw Error('链接格式错误');}}
+    else if(value.startsWith('pk=')) value=value.slice(3);
+    return decode(value);
+  }
+  const css=document.createElement('style');
+  css.textContent=`
+  .rank-shortcuts{display:flex;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+  .rank-open,.reward-rank{color:#ffe2aa;background:#263a53;border:1px solid #e7b774;border-radius:10px;font-size:12px;font-weight:800;min-height:42px;padding:5px 10px}
+  .reward-rank{width:100%;margin-top:10px;min-height:44px}
+  .rank-dialog[hidden]{display:none!important}
+  .rank-dialog{position:fixed;z-index:3100;inset:0;display:grid;place-items:center;background:rgba(4,12,25,.84);padding:12px;backdrop-filter:blur(4px)}
+  .rank-card{width:min(100%,460px);max-height:92dvh;overflow-y:auto;border-radius:19px;border:1px solid #739bb6;background:#11283c;color:#e9f6fd;padding:18px;box-shadow:0 14px 50px #0008}
+  .rank-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .rank-head h2{margin:0;font-size:22px;color:#ffdb99}
+  .rank-close{min-width:44px;min-height:44px;border-radius:11px;background:#244359;border:1px solid #698ba2;color:#fff;font-size:20px}
+  .rank-note{font-size:12px;color:#a9c3d4;line-height:1.6;margin:7px 0 12px}
+  .rank-self{display:flex;gap:8px;align-items:center;margin-bottom:12px}
+  .rank-self label{font-size:12px;color:#a9c3d4;white-space:nowrap}
+  .rank-self input{min-width:0;flex:1;background:#0b1c2e;color:#fff;border:1px solid #52718a;border-radius:8px;padding:11px;font:inherit}
+  .rank-save,.rank-action{min-height:43px;border-radius:9px;padding:8px 12px;font-size:13px;font-weight:800;background:#305b68;color:#e9fffe;border:1px solid #79b3a7}
+  .rank-list{display:grid;gap:6px;margin:8px 0 12px}
+  .rank-row{display:grid;grid-template-columns:34px minmax(0,1fr) 70px 76px;align-items:center;gap:7px;border-radius:10px;padding:10px 8px;background:#1d364d;border:1px solid #3d5e78;font-size:12px}
+  .rank-row.mine{border-color:#efca83;background:#3b3d42}
+  .rank-pos{font-size:18px;font-weight:900;color:#ffd184;text-align:center}
+  .rank-name{font-weight:800;overflow-wrap:anywhere}.rank-name small{display:block;color:#9db7ca;font-weight:400;font-size:10px}
+  .rank-score{text-align:right;font-weight:800;color:#fff0bc}.rank-time{text-align:right;color:#afcad9;font-size:11px}
+  .rank-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+  .rank-actions .rank-action{width:100%}
+  .rank-input{width:100%;min-height:43px;background:#0b1d30;border:1px solid #617e93;color:#eaf4ff;border-radius:9px;padding:10px;font:inherit;font-size:12px;resize:vertical}
+  .rank-label{display:block;color:#cdddea;font-weight:750;font-size:12px;margin:13px 0 7px}
+  .rank-status{min-height:22px;font-size:12px;color:#f8d99f;line-height:1.5;margin:5px 0}
+  .rank-bottom{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:7px}
+  .rank-bottom button{background:none;border:0;color:#aac3d9;text-decoration:underline;font-size:11px;min-height:35px}
+  .rank-tiny{font-size:10px;color:#88a8bd;line-height:1.6}
+  .rank-win{font-size:12px;color:#ffdfaa;margin:6px 0 4px}
+  @media(max-width:470px){.rank-shortcuts{gap:4px}.rank-open{font-size:10px;padding:4px 7px}.rank-card{padding:13px}.rank-row{grid-template-columns:29px minmax(0,1fr) 57px 65px;gap:3px;padding:8px 5px}.rank-name{font-size:11px}.rank-self{gap:5px}}
+  `;
+  document.head.appendChild(css);
+  const starHud=$('starHud');
+  const header=starHud?.parentElement;
+  if(!starHud || !header) return;
+  const actions=document.createElement('div'); actions.className='rank-shortcuts';
+  header.insertBefore(actions,starHud); actions.appendChild(starHud);
+  const openButton=document.createElement('button');openButton.type='button';openButton.className='rank-open';openButton.textContent='🏆 排行榜';actions.appendChild(openButton);
+  const overlay=document.createElement('div');overlay.className='rank-dialog';overlay.id='rankDialog';overlay.hidden=true;overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','rankHeading');
+  overlay.innerHTML=`<section class="rank-card"><div class="rank-head"><h2 id="rankHeading">🏆 好友挑战榜</h2><button type="button" id="rankClose" class="rank-close" aria-label="关闭排行榜">×</button></div>
+  <p class="rank-note">同样的20关，累计星星越多越靠前；星数相同且完整记录计时的玩家，比总用时。只比较本机和你主动加入的好友成绩。旧5关记录会保留并迁移到20关榜。</p>
+  <div class="rank-self"><label for="rankNickname">我的昵称</label><input id="rankNickname" maxlength="12" autocomplete="off" aria-label="昵称，不要填写真实姓名"><button type="button" id="rankSave" class="rank-save">保存</button></div>
+  <div id="rankList" class="rank-list"></div><div id="rankStatus" class="rank-status" role="status" aria-live="polite"></div>
+  <div class="rank-actions"><button id="rankShare" class="rank-action" type="button">分享战绩挑战好友</button><button id="rankImport" class="rank-action" type="button">加入好友成绩</button></div>
+  <label class="rank-label" for="rankShareLink">我的挑战链接（可长按复制）</label><textarea id="rankShareLink" class="rank-input" rows="2" readonly></textarea>
+  <label class="rank-label" for="rankPaste">粘贴好友分享的链接或成绩码</label><textarea id="rankPaste" class="rank-input" rows="2" maxlength="3000" placeholder="收到好友战绩链接后粘贴到这里"></textarea>
+  <div class="rank-bottom"><span class="rank-tiny">排名仅存在本机，好友数据为自行分享，未经服务端防作弊验证。请勿使用真实姓名。</span><button id="rankClear" type="button">清空好友成绩</button></div></section>`;
+  document.body.appendChild(overlay);
+  const winLink=document.createElement('button');winLink.type='button';winLink.className='reward-rank';winLink.textContent='🏆 查看我的好友榜排名';
+  const rewardActions=document.querySelector('.reward-actions');if(rewardActions)rewardActions.after(winLink);
+  const winMessage=document.createElement('p');winMessage.className='rank-win';winLink.before(winMessage);
+  const $el=id=>$(id);
+  const rankStatus=text=>{ $el('rankStatus').textContent=text; };
+  function renderRank() {
+    $el('rankNickname').value=saved.name;
+    const rows=$el('rankList');rows.replaceChildren();
+    const all=rankList();
+    all.forEach((score,i)=>{
+      const row=document.createElement('div');row.className='rank-row'+(score.id===saved.id?' mine':'');
+      const place=document.createElement('span');place.className='rank-pos';place.textContent='#'+(i+1);
+      const name=document.createElement('span');name.className='rank-name';name.textContent=score.name;
+      const sub=document.createElement('small');sub.textContent=score.id===saved.id?'我（本机成绩）':'好友（自报成绩）';name.appendChild(sub);
+      const stars=document.createElement('span');stars.className='rank-score';stars.textContent=`★ ${total(score)}/${COUNT*3}`;
+      const seconds=document.createElement('span');seconds.className='rank-time';const t=fullTime(score);seconds.textContent=t===null?`${done(score)}/${COUNT}关`:`${t}秒`;
+      row.append(place,name,stars,seconds);rows.appendChild(row);
+    });
+    if(all.length===1)rankStatus('当前仅有自己的纪录，分享挑战链接邀请朋友加入排名。');
+    $el('rankShareLink').value=challengeLink();
+  }
+  function challengeLink() {
+    const u=new URL(location.href);u.search='';u.hash='';u.searchParams.set('pk',encode(selfScore()));return u.toString();
+  }
+  function openRank(message) {renderRank();if(message)rankStatus(message);overlay.hidden=false;$el('rankClose').focus();}
+  function closeRank() {overlay.hidden=true;openButton.focus();}
+  openButton.addEventListener('click',()=>openRank());
+  winLink.addEventListener('click',()=>openRank());
+  $el('rankClose').addEventListener('click',closeRank);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)closeRank();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden){e.preventDefault();e.stopImmediatePropagation();closeRank();}},true);
+  $el('rankSave').addEventListener('click',()=>{saved.name=cleanName($el('rankNickname').value)||'夜行玩家';store();renderRank();rankStatus('昵称已在本机保存。分享时只包含昵称和成绩。');});
+  function addPeer(p) {
+    const existing=saved.peers.findIndex(x=>x.id===p.id);
+    if(existing===-1 && saved.peers.length>=MAX_PEERS) throw Error('最多保存30位好友，请先清理旧成绩');
+    if(existing>=0){
+      const prev=saved.peers[existing];
+      if(sortScores(p,prev)<0)saved.peers[existing]=p;
+      else if(total(p)===total(prev)) saved.peers[existing]={...prev,name:p.name};
+    } else saved.peers.push(p);
+    store();renderRank();rankStatus(`已加入 ${p.name} 的成绩。目前你的好友榜排名：第${ownRank()} / ${rankList().length}名。`);
+  }
+  $el('rankImport').addEventListener('click',()=>{try{addPeer(parseInput($el('rankPaste').value));$el('rankPaste').value='';}catch(e){rankStatus(e.message||'无法导入成绩');}});
+  $el('rankShare').addEventListener('click',async()=>{
+    const link=challengeLink();$el('rankShareLink').value=link;
+    try {if(navigator.share){await navigator.share({title:'今晚拼出路 · 好友PK',text:`我已经拿到${total(selfScore())}/${COUNT*3}颗星，你能超过我吗？`,url:link});rankStatus('已打开系统分享菜单。');return;}}
+    catch(e){if(e.name==='AbortError'){rankStatus('已取消分享，可长按下方链接复制。');return;}}
+    try {await navigator.clipboard.writeText(link);rankStatus('挑战链接已复制，可以发送给微信好友。');}
+    catch(e){$el('rankShareLink').focus();$el('rankShareLink').select();rankStatus('浏览器未允许自动复制，请长按下方链接复制。');}
+  });
+  $el('rankClear').addEventListener('click',()=>{if(confirm('只清除本机导入的好友成绩，不影响你的闯关记录。确定吗？')){saved.peers=[];store();renderRank();rankStatus('已清空本机好友成绩。');}});
+  let startedAt=Date.now();
+  function resetTimer(){startedAt=Date.now();}
+  const levels=$('levels');
+  if(levels)levels.addEventListener('click',e=>{if(e.target.closest('button'))resetTimer();},true);
+  ['nextBtn','rewardContinue','retry'].forEach(id=>$(id)?.addEventListener('click',resetTimer,true));
+  const rewardDialog=$('rewardDialog');
+  if(rewardDialog){new MutationObserver(()=>{
+    if(rewardDialog.hidden) return;
+    const match=$('rewardTitle')?.textContent.match(/第(\d+)关/);
+    const star=$('rewardStars')?.getAttribute('aria-label')?.match(/获得(\d+)星/);
+    if(!match||!star)return;
+    const index=Number(match[1])-1, earned=Number(star[1]);
+    if(index<0||index>=COUNT||earned<1||earned>3)return;
+    const seconds=Math.max(1,Math.min(86400,Math.round((Date.now()-startedAt)/1000)));
+    const old=saved.records[index];
+    if(!old || earned>old.stars || (earned===old.stars && seconds<(clampTime(old.seconds)??Infinity))){saved.records[index]={stars:earned,seconds};store();}
+    const all=rankList(),num=ownRank();
+    winMessage.textContent=all.length===1?'恭喜！你是本机排行榜的首位挑战者。':`你目前在已加入的${all.length}人好友榜中排第${num}名，继续挑战！`;
+    startedAt=Date.now();
+  }).observe(rewardDialog,{attributes:true,attributeFilter:['hidden']});}
+  try{
+    const incoming=new URL(location.href).searchParams.get('pk');
+    if(incoming){const challenger=decode(incoming);$el('rankPaste').value=incoming;openRank(`收到 ${challenger.name} 的挑战：${total(challenger)}/${COUNT*3}★。点击“加入好友成绩”进行比较。`);}
+  }catch(e){openRank('收到的挑战链接无法识别，可能已过期或内容不完整。');}
+  // Read-only snapshot for V0.6 share posters. All values remain local/self-reported.
+  window.G01FriendScores = Object.freeze({
+    snapshot() {
+      const self = selfScore();
+      const count = rankList().length;
+      return {
+        nickname: self.name, stars: total(self), levels: done(self), levelCount: COUNT, maxStars: COUNT*3,
+        best: [...self.best], fullTimeSeconds: fullTime(self),
+        rank: count > 1 ? {position:ownRank(), participants:count, scope:'仅本机已加入好友'} : null,
+        challengeUrl: challengeLink()
+      };
+    }
+  });
+  store();
+})();
+
+</script>
+<script>
+/* G01-C V0.6 · Optional local boast posters for domestic social apps.
+   Self-reported local score; no network, tracking, app auto-posting or fabricated global ranks. */
+(() => {
+  'use strict';
+  const game = window.G01FriendScores;
+  const rewards = document.getElementById('rewardDialog');
+  const starHud = document.getElementById('starHud');
+  if (!game || !starHud) return;
+
+  const HOME = 'https://d7gkdrs4pk-gif.github.io/ye-lou-archives-game/';
+  const QR_MAP = [
+    '0000000000000000000000000000000000000000000',
+    '0000000000000000000000000000000000000000000',
+    '0000000000000000000000000000000000000000000',
+    '0001111111001110010111101101011001111111000',
+    '0001000001000110111100111000100001000001000',
+    '0001011101010111010011111010010001011101000',
+    '0001011101001001010010100010111101011101000',
+    '0001011101011010100001011011101001011101000',
+    '0001000001011010110100110001110101000001000',
+    '0001111111010101010101010101010101111111000',
+    '0000000000000111010101101110010000000000000',
+    '0000100101010101000011001111111010110100000',
+    '0000111000101100001001111110000111111000000',
+    '0000010001111100011101001010110110100100000',
+    '0001111000011101001011011011010010001111000',
+    '0000100101101100011100111101001011000110000',
+    '0000100100101000010100111010011110010110000',
+    '0001111001100011011001110011111001111110000',
+    '0000001100111110100001000101000000110101000',
+    '0001101001110011101000000101001011101101000',
+    '0000001010101010010110000000111100111000000',
+    '0001110111110011001001001000001010111100000',
+    '0001011100001110110111101101001111010101000',
+    '0000101011101000101111101111001011001110000',
+    '0001011100100110010110010110011000010100000',
+    '0000001111000001101110111010111101000100000',
+    '0001101000111110001101101011100111100100000',
+    '0000011101100101011011111100101110110110000',
+    '0001010110101101001110100010110001001100000',
+    '0000011001011111100111010011011010010010000',
+    '0000010000001101100101011010001101111111000',
+    '0001100111000010011110011111010111110001000',
+    '0000000000011011111111010010100100011010000',
+    '0001111111001000011001111111110101011100000',
+    '0001000001000110010000101001010100010111000',
+    '0001011101011011110101010000000111111101000',
+    '0001011101000111011000100101111101100000000',
+    '0001011101001011100011101111000001001110000',
+    '0001000001010011110010111010011000110110000',
+    '0001111111000001011001011100001010000111000',
+    '0000000000000000000000000000000000000000000',
+    '0000000000000000000000000000000000000000000',
+    '0000000000000000000000000000000000000000000'
+  ];
+  const $ = id => document.getElementById(id);
+  const origins = Object.freeze({
+    wechat: '微信好友：先尝试“系统分享图片”并选择微信。若微信不在分享选项里，先保存图片，再从微信聊天的相册里发送。挑战链接可另行复制发给好友。',
+    moments: '微信朋友圈：点击“保存海报”，或长按图片保存到相册；打开朋友圈选择图片发布。可以复制挑战文案使用，外链是否可点击取决于平台。',
+    qq: 'QQ / QQ空间：先尝试系统分享；或保存图片，在QQ聊天或QQ空间动态里选择相册图片，再添加你的挑战文案。',
+    rednote: '小红书：保存竖屏战绩海报，打开小红书创建图文笔记，从相册选择图片；挑战文案可复制粘贴。不要假定外部链接可直接跳转。',
+    weibo: '微博：保存海报，在微博发布图文时选择图片，粘贴挑战文案即可。',
+    douyin: '抖音：保存海报后按应用当前支持的图文发布流程上传图片；不要将外部链接视为必然可点击。'
+  });
+  const style = document.createElement('style');
+  style.textContent = `
+  .brag-open,.brag-reward{min-height:41px;border-radius:10px;border:1px solid #efbb79;background:#443725;color:#ffe5b0;font-weight:850;padding:7px 10px;font-size:12px}
+  .brag-reward{display:block;width:100%;margin-top:9px;min-height:47px;font-size:14px;background:linear-gradient(110deg,#ad7028,#e7b967);color:#1d2b3e;border-color:#ffda96}
+  .brag-overlay[hidden]{display:none!important}
+  .brag-overlay{position:fixed;z-index:4300;inset:0;display:grid;place-items:center;background:rgba(2,10,22,.88);padding:9px;backdrop-filter:blur(7px)}
+  .brag-card{width:min(100%,490px);max-height:96dvh;overflow-y:auto;overscroll-behavior:contain;border-radius:20px;background:#12273c;color:#eaf3ff;border:1px solid #a77e4b;box-shadow:0 24px 80px #0009;padding:15px}
+  .brag-head{display:flex;gap:10px;align-items:center;justify-content:space-between}
+  .brag-head h2{font-size:20px;margin:0;color:#ffdc9f}
+  .brag-close{border:1px solid #7292a3;border-radius:10px;background:#254259;color:white;min-height:42px;min-width:44px;font-size:22px}
+  .brag-desc{margin:7px 0 9px;font-size:12px;line-height:1.45;color:#c1d7e4}
+  .brag-tabs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 0}
+  .brag-tabs button{min-height:39px;background:#173449;border:1px solid #547283;border-radius:10px;color:#d2e8ec;font-weight:750;font-size:12px}
+  .brag-tabs button[aria-pressed=true]{background:#59462d;border-color:#f3c97e;color:#ffe8b8}
+  .brag-picture{display:flex;justify-content:center;background:#081827;border:1px solid #3f5469;border-radius:12px;padding:7px;overflow:hidden}
+  .brag-picture img{display:block;max-width:100%;max-height:43dvh;object-fit:contain;border-radius:7px;touch-action:manipulation;user-select:none;-webkit-user-select:default}
+  .brag-picture figcaption{font-size:10px;color:#b4cbd6;text-align:center;margin-top:4px}
+  .brag-summary{font-size:12px;text-align:center;line-height:1.45;color:#efdaa7;margin:7px 0}
+  .brag-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:10px 0}
+  .brag-actions button{min-height:45px;padding:7px 5px;border:1px solid #7090a0;background:#21465a;color:#f4fbff;border-radius:10px;font-size:12px;font-weight:800}
+  .brag-actions button.primary{background:#f1c67e;color:#203249;border-color:#ffda96}
+  .brag-status{font-size:12px;min-height:22px;line-height:1.5;color:#ffdfa2;margin:5px 0}
+  .brag-guidance{border:1px solid #35566b;border-radius:12px;padding:10px;margin-top:8px;background:#0e2235}
+  .brag-guidance h3{margin:0 0 7px;font-size:12px;color:#dce5ec}
+  .brag-platforms{display:flex;gap:6px;flex-wrap:wrap}
+  .brag-platforms button{min-height:39px;background:#1b3c51;color:#dcecf6;border:1px solid #567387;padding:6px 10px;font-size:11px;border-radius:999px}
+  .brag-platforms button[aria-pressed=true]{background:#4b533a;border-color:#b7d697;color:#f5ffd8}
+  .brag-tip{font-size:11px;line-height:1.55;color:#b9ccd9;margin:8px 0 0}
+  .brag-privacy{color:#8fadc0;font-size:10px;line-height:1.6;margin-top:8px}
+  @media(max-width:470px){.brag-card{padding:10px;max-height:97dvh}.brag-head h2{font-size:17px}.brag-open{font-size:11px;min-height:40px;padding:6px}.brag-picture img{max-height:39dvh}.brag-actions button{font-size:11px}}
+  `;
+  document.head.appendChild(style);
+  const shortcut=document.createElement('button');
+  shortcut.className='brag-open'; shortcut.type='button'; shortcut.textContent='晒战绩';
+  const group=document.querySelector('.rank-shortcuts');
+  (group || starHud.parentElement).appendChild(shortcut);
+  if (rewards) {
+    const btn=document.createElement('button');btn.type='button';btn.className='brag-reward';btn.textContent='晒出本关成绩 · 向好友发起挑战';
+    const rankBtn=document.querySelector('.reward-rank');
+    (rankBtn || rewards.querySelector('.reward-actions'))?.after(btn);
+    btn.addEventListener('click',()=>openPoster('record'));
+  }
+  const overlay=document.createElement('div');overlay.id='bragOverlay';overlay.className='brag-overlay';overlay.hidden=true;
+  overlay.setAttribute('role','dialog');overlay.setAttribute('aria-modal','true');overlay.setAttribute('aria-labelledby','bragHeading');
+  overlay.innerHTML=`<section class="brag-card">
+    <div class="brag-head"><h2 id="bragHeading">晒出我的通关成绩</h2><button id="bragClose" class="brag-close" type="button" aria-label="关闭战绩海报">×</button></div>
+    <p class="brag-desc">根据你真实保存在本机的成绩生成海报；分享给微信、朋友圈、QQ、小红书、微博等国内社交平台。</p>
+    <div class="brag-tabs"><button type="button" data-poster="record" aria-pressed="true">★ 炫耀战绩</button><button type="button" data-poster="challenge" aria-pressed="false">⚔ 邀请好友PK</button></div>
+    <figure class="brag-picture" style="margin:0"><div><img id="bragImage" alt="我的通关成绩海报，可长按保存图片"><figcaption>长按图片可尝试保存到手机相册</figcaption></div></figure>
+    <p id="bragSummary" class="brag-summary"></p>
+    <div class="brag-actions">
+      <button id="bragNative" type="button" class="primary">分享战绩图片</button>
+      <button id="bragSave" type="button">保存PNG海报</button>
+      <button id="bragCopyText" type="button">复制炫耀文案</button>
+      <button id="bragCopyUrl" type="button">复制PK挑战链接</button>
+    </div>
+    <p id="bragStatus" class="brag-status" role="status" aria-live="polite"></p>
+    <section class="brag-guidance"><h3>分享到国内社交软件（选择查看操作方式）</h3>
+      <div class="brag-platforms" id="bragPlatforms">
+        <button type="button" data-app="wechat" aria-pressed="true">微信</button>
+        <button type="button" data-app="moments" aria-pressed="false">朋友圈</button>
+        <button type="button" data-app="qq" aria-pressed="false">QQ / QQ空间</button>
+        <button type="button" data-app="rednote" aria-pressed="false">小红书</button>
+        <button type="button" data-app="weibo" aria-pressed="false">微博</button>
+        <button type="button" data-app="douyin" aria-pressed="false">抖音</button>
+      </div><p id="bragTip" class="brag-tip"></p>
+    </section>
+    <p class="brag-privacy">海报中的分数、称号和好友排名均来自当前设备记录，好友榜不是全国或全服实时排名，好友提交成绩也未经服务器核验。生成海报不上传任何记录；是否公开由你自己决定。</p>
+  </section>`;
+  document.body.appendChild(overlay);
+  let mode='record', activeApp='wechat', posterData='', lastFocused=null;
+  const cnGame='今晚拼出路';
+  function setStatus(text){$('bragStatus').textContent=text;}
+  function trackLabel(s){
+    if(s.stars===60) return '满星逃脱王';
+    if(s.stars>=50) return '星门统领';
+    if(s.stars>=40) return '机关破解者';
+    if(s.stars>=25) return '夜行探路王';
+    if(s.stars>=10) return '走廊探险家';
+    if(s.stars>0) return '初露锋芒';
+    return '等待首个通关';
+  }
+  function data(){return game.snapshot();}
+  function words(s){
+    const rank=s.rank?`在本机已加入的${s.rank.participants}人好友榜中排第${s.rank.position}名。`:'';
+    return `我在《${cnGame}》已经收集${s.stars}/${s.maxStars}颗星，通关${s.levels}/${s.levelCount}关，拿到「${trackLabel(s)}」称号！${rank}一起来拼房间，比比谁的星更多：${s.challengeUrl}`;
+  }
+  const canvas=document.createElement('canvas');canvas.width=1080;canvas.height=1920;
+  const ctx=canvas.getContext('2d',{alpha:false});
+  function rounded(x,y,w,h,r){
+    const rr=Math.min(r,w/2,h/2);ctx.beginPath();ctx.moveTo(x+rr,y);ctx.arcTo(x+w,y,x+w,y+h,rr);ctx.arcTo(x+w,y+h,x,y+h,rr);ctx.arcTo(x,y+h,x,y,rr);ctx.arcTo(x,y,x+w,y,rr);ctx.closePath();
+  }
+  function box(x,y,w,h,r,fill,stroke){rounded(x,y,w,h,r);if(fill){ctx.fillStyle=fill;ctx.fill();}if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=3;ctx.stroke();}}
+  function text(t,x,y,size,color='#fff7e7',weight=700,align='left'){
+    ctx.font=`${weight} ${size}px system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif`;
+    ctx.textAlign=align;ctx.textBaseline='middle';ctx.fillStyle=color;ctx.fillText(String(t),x,y);
+  }
+  function fit(t,x,y,base,maxwidth,color='#fff7e7',weight=700,align='left'){
+    let size=base;
+    for(;size>25;size-=2){ctx.font=`${weight} ${size}px system-ui,"PingFang SC","Microsoft YaHei",sans-serif`;if(ctx.measureText(String(t)).width<=maxwidth)break;}
+    text(t,x,y,size,color,weight,align);
+  }
+  function drawQR(x,y,size){
+    const n=QR_MAP.length;
+    box(x-15,y-15,size+30,size+30,12,'#fffdf7');
+    const pixel=size/n;
+    ctx.fillStyle='#162234';
+    QR_MAP.forEach((row,iy)=>{for(let ix=0;ix<n;ix++){if(row[ix]==='1')ctx.fillRect(x+ix*pixel,y+iy*pixel,pixel+.13,pixel+.13);}});
+  }
+  function draw(s){
+    if(!ctx) return '';
+    const W=canvas.width,H=canvas.height;
+    const bg=ctx.createLinearGradient(0,0,W,H);bg.addColorStop(0,'#132b4b');bg.addColorStop(.53,'#071627');bg.addColorStop(1,'#263749');ctx.fillStyle=bg;ctx.fillRect(0,0,W,H);
+    const glow=ctx.createRadialGradient(700,320,40,700,320,860);glow.addColorStop(0,'rgba(245,190,105,.25)');glow.addColorStop(1,'rgba(245,190,105,0)');ctx.fillStyle=glow;ctx.fillRect(0,0,W,H);
+    for(let i=0;i<48;i++){
+      const x=((i*373+79)%970)+48, y=((i*563+101)%1440)+50;
+      ctx.fillStyle=(i%3===0)?'rgba(252,212,147,.6)':'rgba(197,227,249,.32)';ctx.beginPath();ctx.arc(x,y,i%9===0?4:2,0,Math.PI*2);ctx.fill();
+    }
+    // Moon, logo and top title
+    ctx.beginPath();ctx.arc(116,128,45,0,2*Math.PI);ctx.fillStyle='#ffe0a2';ctx.fill();
+    ctx.beginPath();ctx.arc(135,104,40,0,2*Math.PI);ctx.fillStyle='#132b4b';ctx.fill();
+    text('ROOM PATH',190,112,38,'#e6c590',850);
+    text('今晚拼出路',190,169,32,'#d3e5f5',700);
+    text(mode==='challenge'?'谁敢来挑战我？':'今晚，我成功突围！',540,296,62,'#fff2d5',900,'center');
+    text('★ 20关房间连线挑战 · 原创解谜 ★',540,365,28,'#ecd39e',600,'center');
+    box(80,432,920,800,48,'rgba(26,51,77,.92)','#b88b56');
+    box(117,477,846,108,24,'rgba(250,210,141,.1)');
+    fit(s.nickname,540,531,47,780,'#ffdfad',850,'center');
+    fit(trackLabel(s),540,652,60,780,'#ffe5b3',900,'center');
+    text('★',540,740,90,'#ffc872',800,'center');
+    text(`${s.stars}`,492,887,190,'#ffe4a5',900,'right');
+    text(`/ ${s.maxStars}`,504,906,66,'#e1cfb3',750,'left');
+    text('累计星星',540,1008,34,'#bfdbdd',650,'center');
+    box(140,1071,800,103,23,'#142e40','#487583');
+    text(`已通关 ${s.levels} / ${s.levelCount} 关`,540,1124,40,'#e8f5fa',800,'center');
+    if(s.rank){
+      box(100,1265,880,120,22,'#253c4c','#b99256');
+      fit(`本机好友榜 第 ${s.rank.position} / ${s.rank.participants} 名`,540,1315,42,780,'#ffe0a0',800,'center');
+      text('仅包含当前设备已导入的好友 · 非全服排名',540,1368,21,'#b6c9d4',500,'center');
+    }else{
+      box(100,1265,880,120,22,'#253c4c','#608393');
+      text('好友对决，等你开战',540,1318,42,'#ffe0a0',800,'center');
+      text('复制挑战链接，邀请朋友加入本机排行榜',540,1367,21,'#b6c9d4',500,'center');
+    }
+    // Verified only if all five timing records are present
+    if(s.fullTimeSeconds!==null){text(`完整计时记录：${s.fullTimeSeconds} 秒`,540,1439,27,'#d8e6ef',600,'center');}
+    else{text('挑战进度来自本机记录',540,1439,26,'#d8e6ef',600,'center');}
+    box(84,1500,912,305,34,'#f5e7cf');
+    drawQR(128,1539,226);
+    text(mode==='challenge'?'扫码进游戏，跟我拼一局！':'扫码来玩，你能超过我吗？',400,1602,38,'#26394e',900);
+    text('3选1房卡 · 旋转 · 拼通道',400,1677,25,'#436075',650);
+    text('微信 / 朋友圈 / QQ / 小红书 / 微博',400,1735,21,'#5e7184',600);
+    text('d7gkdrs4pk-gif.github.io/ye-lou-archives-game/',540,1849,23,'#90aabd',600,'center');
+    text('战绩来自个人设备，好友排名非全球榜；分享内容由玩家自行发布',540,1890,19,'#9db3c3',450,'center');
+    return canvas.toDataURL('image/png');
+  }
+  function renderPoster(){
+    const s=data();posterData=draw(s);
+    $('bragImage').src=posterData;
+    $('bragHeading').textContent=mode==='record'?'晒出我的通关战绩':'邀请好友来挑战';
+    $('bragSummary').textContent=`${trackLabel(s)} · ${s.stars}/${s.maxStars}★ · ${s.levels}/${s.levelCount}关${s.rank?` · 本机好友榜第${s.rank.position}/${s.rank.participants}名`:''}`;
+  }
+  function setMode(newMode){mode=newMode;overlay.querySelectorAll('[data-poster]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.poster===mode)));renderPoster();}
+  function setApp(app){activeApp=app;overlay.querySelectorAll('[data-app]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.app===app)));$('bragTip').textContent=origins[app];}
+  function openPoster(preferred){
+    lastFocused=document.activeElement;mode=preferred==='challenge'?'challenge':'record';
+    setMode(mode);setApp(activeApp);setStatus('海报已在本机生成。可长按保存，或点击“分享战绩图片”。');
+    overlay.hidden=false;$('bragClose').focus();
+  }
+  function closePoster(){overlay.hidden=true;posterData='';$('bragImage').removeAttribute('src');lastFocused?.focus?.();}
+  shortcut.addEventListener('click',()=>openPoster('record'));
+  $('bragClose').addEventListener('click',closePoster);
+  overlay.addEventListener('click',e=>{if(e.target===overlay)closePoster();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!overlay.hidden){e.preventDefault();e.stopImmediatePropagation();closePoster();}},true);
+  overlay.querySelectorAll('[data-poster]').forEach(b=>b.addEventListener('click',()=>setMode(b.dataset.poster)));
+  overlay.querySelectorAll('[data-app]').forEach(b=>b.addEventListener('click',()=>setApp(b.dataset.app)));
+  function pngBlob(url){
+    const raw=atob(url.split(',')[1]);const bytes=new Uint8Array(raw.length);
+    for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+    return new Blob([bytes],{type:'image/png'});
+  }
+  $('bragNative').addEventListener('click',async()=>{
+    if(!posterData)renderPoster();
+    let file;
+    try{file=new File([pngBlob(posterData)],`今晚拼出路_${mode==='record'?'炫耀战绩':'好友挑战'}.png`,{type:'image/png'});}
+    catch(_){setStatus('图片生成失败，请先选择“保存PNG海报”。');return;}
+    if(navigator.share && navigator.canShare?.({files:[file]})){
+      // The share call must be initiated by this click; avoid awaiting beforehand.
+      try{await navigator.share({files:[file],title:'今晚拼出路 · 战绩挑战',text:'我的游戏战绩！欢迎来挑战。'});setStatus('已唤起系统分享。可选择微信、QQ等已安装应用。');}
+      catch(e){setStatus(e.name==='AbortError'?'已取消系统分享。也可长按海报保存到相册。':'当前浏览器未完成图片分享。请长按海报保存后从微信、QQ或小红书发布。');}
+    }else{
+      setStatus('当前浏览器不支持直接分享PNG文件。长按上面的海报保存至相册，再从微信、朋友圈、QQ、小红书、微博等应用选择图片发布。');
+    }
+  });
+  $('bragSave').addEventListener('click',()=>{
+    if(!posterData)renderPoster();
+    const a=document.createElement('a');a.href=posterData;a.download='今晚拼出路_我的游戏战绩.png';
+    document.body.appendChild(a);a.click();a.remove();
+    setStatus('已请求浏览器保存PNG；iPhone部分浏览器会打开图片预览，此时长按海报选择“存储到照片”或使用系统分享保存。');
+  });
+  async function copy(value,success){
+    try{if(!navigator.clipboard?.writeText)throw Error('unsupported');await navigator.clipboard.writeText(value);setStatus(success);}
+    catch(_){
+      const ta=document.createElement('textarea');ta.value=value;ta.readOnly=true;ta.style.cssText='position:fixed;left:4px;top:4px;opacity:0;';document.body.appendChild(ta);ta.select();
+      let ok=false;try{ok=document.execCommand('copy');}catch(_){}ta.remove();
+      setStatus(ok?success:'浏览器阻止复制。请使用系统分享或先保存海报。');
+    }
+  }
+  $('bragCopyText').addEventListener('click',()=>copy(words(data()),'战绩文案已复制，可在微信、朋友圈、QQ、小红书或微博中粘贴。'));
+  $('bragCopyUrl').addEventListener('click',()=>copy(data().challengeUrl,'好友PK挑战链接已复制，发给朋友打开就能对照成绩。'));
+  setApp('wechat');
+})();
+
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#08091b">
+<title>夜楼档案｜2.5D动态视觉实验</title>
+<style>
+:root{font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif;color:#f8f8ff;background:#070916;--mood:#6a7cff;--glow:rgba(83,110,255,.5);--back-x:0px;--back-y:0px;--mid-x:0px;--mid-y:0px;--front-x:0px;--front-y:0px;--gold:#ffd66e}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden}button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+body{display:grid;place-items:center;background:radial-gradient(ellipse at 50% 25%,#191936,#070913 77%)}
+#app{position:relative;width:min(100%,480px);height:100dvh;min-height:460px;overflow:hidden;isolation:isolate;background:#090d20;box-shadow:0 0 0 1px #303753,0 10px 70px #000b;touch-action:pan-y}
+#app[data-mood="danger"]{--mood:#ff285f;--glow:rgba(255,39,93,.58)}#app[data-mood="discover"]{--mood:#35dfd7;--glow:rgba(22,211,213,.45)}#app[data-mood="truth"]{--mood:#a977fb;--glow:rgba(173,87,255,.48)}#app[data-mood="hope"]{--mood:#ffc34b;--glow:rgba(255,194,57,.56)}
+.backdrop{position:absolute;inset:0;overflow:hidden;background:radial-gradient(ellipse at 50% 46%,var(--glow),transparent 42%),linear-gradient(160deg,#090a20 14%,#07192a 46%,#0a081e 100%);transition:background .9s}
+.backdrop:after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle,#0000 60%,#01030fdc 97%),linear-gradient(90deg,#08091d55,transparent 32%,transparent 70%,#08091b55);z-index:13}
+/* Three separate graphic planes: far skyline, corridor, silhouetted foreground. */
+.parallax{position:absolute;inset:-3%;will-change:transform;transition:transform .35s ease-out}
+.sky{z-index:1;transform:translate(var(--back-x),var(--back-y)) scale(1.05)}
+.sky svg{position:absolute;inset:0;width:100%;height:100%}
+.sky:before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 60% 26%,#2f3f923d,transparent 39%);mix-blend-mode:screen}
+.corridor{z-index:3;transform:translate(var(--mid-x),var(--mid-y)) scale(1.04);transition:transform .4s ease-out}
+.corridor svg{position:absolute;inset:0;width:100%;height:100%}
+.fore{z-index:5;transform:translate(var(--front-x),var(--front-y)) scale(1.02);transition:transform .3s ease-out}
+.fore svg{position:absolute;inset:0;width:100%;height:100%}
+.beam{position:absolute;left:50%;top:33%;width:46%;height:34%;z-index:4;pointer-events:none;transform-origin:8% 55%;transform:rotate(-8deg);clip-path:polygon(0 46%,100% 0,100% 100%);background:linear-gradient(90deg,#a4fff421,#b8e5ff03);mix-blend-mode:screen;animation:sweep 9s ease-in-out infinite alternate}
+@keyframes sweep{0%,18%{transform:rotate(-12deg);opacity:.20}42%,70%{transform:rotate(10deg);opacity:.58}100%{transform:rotate(-5deg);opacity:.3}}
+.fog{position:absolute;z-index:6;inset:42% -35% 0;pointer-events:none;background:radial-gradient(ellipse at 30% 90%,#475b9270,transparent 49%),radial-gradient(ellipse at 76% 83%,#6946a450,transparent 37%);filter:blur(22px);opacity:.6;animation:fogmove 12s ease-in-out infinite alternate}
+@keyframes fogmove{from{transform:translateX(-10%)}to{transform:translateX(13%)}}
+.rain{position:absolute;inset:0;z-index:9;opacity:.48;pointer-events:none;background-image:repeating-linear-gradient(110deg,transparent 0,transparent 36px,#9af3ff42 37px,#9af3ff42 38px,transparent 39px,transparent 76px);background-size:160px 310px;animation:rainfall .64s linear infinite}
+@keyframes rainfall{to{background-position:-70px 310px}}
+.halftone{position:absolute;inset:0;z-index:8;pointer-events:none;opacity:.18;background-image:radial-gradient(#fff 0.75px,transparent 1px);background-size:6px 6px;mask-image:linear-gradient(90deg,#000 0,transparent 32%,transparent 70%,#000 100%)}
+.neon{position:absolute;top:39%;left:50%;z-index:6;transform:translateX(-50%) rotate(-3deg);font-weight:1000;font-size:clamp(75px,23vw,114px);line-height:1;color:#ff3b81;text-shadow:0 0 7px #ff267e,0 0 24px #ff1270,4px 3px 0 #000;letter-spacing:-.11em;animation:neonflicker 6s infinite}
+@keyframes neonflicker{0%,86%,90%,100%{opacity:1}87%,89%{opacity:.2}92%{opacity:.8}}
+.backdrop[data-open="1"] .neon{animation:neonflicker 6s infinite,gateopen 1s ease-out 1}
+@keyframes gateopen{50%{text-shadow:0 0 8px #fff,0 0 85px var(--mood),0 0 145px var(--mood)}}
+.mood-strip{position:absolute;z-index:10;inset:0;pointer-events:none;background:linear-gradient(170deg,transparent 40%,var(--glow) 100%);opacity:.38;transition:background .8s}
+.flash{position:absolute;inset:0;z-index:18;pointer-events:none;background:#fff;opacity:0}
+.flash.pulse{animation:flashbang .48s ease-out}
+@keyframes flashbang{0%{opacity:0}16%{opacity:.55}100%{opacity:0}}
+/* comic panels stay fixed while environment gains subtle apparent depth */
+.corner-label{position:absolute;top:calc(13px + env(safe-area-inset-top));left:19px;right:19px;z-index:20;display:flex;align-items:center;justify-content:space-between;font-size:11px;color:#d4d5ef;letter-spacing:.13em;font-weight:760}
+.lettermark{display:flex;align-items:center;gap:9px}.lettermark:before{content:"";width:23px;height:23px;display:inline-block;background:linear-gradient(130deg,#ff357b,#6144e7);clip-path:polygon(2% 0,100% 0,63% 40%,100% 100%,4% 100%,37% 55%);box-shadow:0 0 13px #ff2977}
+.pill{padding:7px 10px;border:1px solid #787aa466;border-radius:99px;background:#050b19ac;backdrop-filter:blur(8px);font-size:10px;letter-spacing:.06em}
+.corner-tools{display:flex;align-items:center;gap:5px}.motion-toggle{border:1px solid #787aa466;background:#071224df;color:#d8e7ff;border-radius:99px;min-height:32px;white-space:nowrap;font-size:10px;font-weight:750;padding:5px 8px}.motion-toggle[aria-pressed="false"]{color:#a6abc0;border-color:#505775}#app.motion-off .rain,#app.motion-off .fog,#app.motion-off .beam,#app.motion-off .neon,#app.motion-off .relic,#app.motion-off .reward-glow:before,#app.motion-off .reward-glow:after{animation:none!important}#app.motion-off .parallax{transform:none!important;transition:none!important}
+.screen{position:absolute;inset:0;z-index:16;display:none;flex-direction:column;align-items:stretch;overflow-y:auto;padding:calc(68px + env(safe-area-inset-top)) 21px calc(109px + env(safe-area-inset-bottom));scrollbar-width:none;overscroll-behavior:contain}
+.screen::-webkit-scrollbar{display:none}.screen.active{display:flex;animation:screenin .38s ease-out}
+@keyframes screenin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.kicker{font-size:11px;font-weight:900;color:#b6b8f5;letter-spacing:.26em;display:flex;align-items:center;gap:8px}.kicker:before{content:"";width:27px;height:2px;background:var(--mood);box-shadow:0 0 11px var(--mood)}
+h1,h2,p{margin:0}h1{margin-top:14px;font-size:clamp(43px,12.7vw,61px);font-weight:1000;line-height:1.11;letter-spacing:-.085em;text-shadow:4px 4px #000,0 0 22px #110b24;-webkit-text-stroke:.4px #fff}
+h1 em{font-style:normal;color:#ffd95e;text-shadow:3px 4px #1c1330,0 0 18px #f7b33775}
+.lead{font-size:15px;color:#e4e8fb;line-height:1.7;margin-top:15px;max-width:300px;text-shadow:0 2px 8px #03091d}
+.note{font-size:12px;line-height:1.65;color:#d3cde9}
+.cover .story-note{position:absolute;left:21px;right:21px;bottom:calc(147px + env(safe-area-inset-bottom));display:flex;align-items:center;gap:13px;max-width:390px;background:#090b20c7;padding:12px 13px;border:1px solid #ffdb7859;box-shadow:0 7px 29px #0008;backdrop-filter:blur(12px);clip-path:polygon(0 0,100% 0,100% 88%,95% 100%,0 100%)}
+.story-note strong{font-size:27px;color:#ffd759}.story-note p{font-size:13px;line-height:1.55}
+.bottom{position:absolute;bottom:calc(19px + env(safe-area-inset-bottom));left:19px;right:19px;z-index:22;display:flex;gap:9px;align-items:stretch;flex-direction:column}
+.cta{width:100%;min-height:57px;border:2px solid #0c0b15;background:linear-gradient(110deg,#ffe47a,#ff9e44);color:#130b21;font-weight:1000;font-size:18px;letter-spacing:.01em;clip-path:polygon(0 0,95% 0,100% 22%,100% 100%,5% 100%,0 80%);box-shadow:inset 0 -6px 0 #e0873670;transition:filter .2s,transform .15s}
+.cta:active{transform:scale(.975);filter:brightness(1.1)}.cta:disabled{filter:grayscale(.8);opacity:.6}.under-cta{font-size:11px;color:#b9b9d6;text-align:center}
+.glass{border:1px solid #d4ddff3a;background:linear-gradient(140deg,#111a33e8,#0c1428ea);box-shadow:0 10px 25px #01040e88, inset 0 1px #ffffff25;backdrop-filter:blur(14px)}
+.story h2,.route h2,.reward h2{font-size:28px;font-weight:1000;line-height:1.12;margin:9px 0 8px;letter-spacing:-.06em;text-shadow:2px 2px #050616}
+.screen-sub{font-size:13px;color:#c7cce0;line-height:1.5}
+.story-step{display:flex;gap:8px;margin:18px 0 10px}.stepbox{flex:1;height:43px;border:1px dashed #96a2c077;display:flex;align-items:center;justify-content:center;background:#0e1534b8;color:#b0b6cf;font-size:12px;font-weight:800;position:relative;transform:skewX(-4deg)}.stepbox.filled{background:color-mix(in srgb,var(--mood) 22%,#0c1024);border:1px solid var(--mood);color:#fff}.stepbox:before{content:attr(data-number);position:absolute;left:5px;top:3px;font-size:9px;color:#8793af}
+.event-list{display:grid;gap:9px;margin-top:7px}.event{width:100%;min-height:76px;display:flex;align-items:center;text-align:left;gap:13px;padding:11px 12px;color:#fff;border:1px solid #6b7498a0;clip-path:polygon(0 0,96% 0,100% 19%,100% 100%,4% 100%,0 83%);background:linear-gradient(115deg,#1d2851e8,#0b1429ed);transition:transform .2s,background .25s}.event:disabled{opacity:.46}.event:active{transform:scale(.985)}.event-icon{flex-shrink:0;width:52px;height:51px;display:grid;place-items:center;font-size:27px;background:radial-gradient(circle at 30% 20%,#55709e,#0b1536);border:1px solid #8ca0bd;box-shadow:3px 3px 0 #050a1a}.event strong{display:block;font-size:16px}.event small{display:block;font-size:11px;color:#c0cbe0;margin-top:5px;line-height:1.35}
+.reaction{margin-top:11px;padding:10px 12px;border-left:4px solid var(--mood);color:#e2ebff;background:#0b0e27c9;font-size:12px;min-height:41px;line-height:1.55}
+.route .map{width:min(100%,322px);margin:20px auto 12px;position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,94px);gap:6px;transform:perspective(900px) rotateX(11deg) rotateZ(-2deg);box-shadow:0 20px 35px #000a}.room{position:relative;background:linear-gradient(145deg,#152c4f,#0c1429);border:2px solid #40537f;display:grid;place-items:center;color:#d1dbed;font-size:11px;font-weight:800;text-align:center;min-width:0}.room.wall{background:repeating-linear-gradient(135deg,#13162d 0 11px,#1c203b 11px 21px);opacity:.48}.room.start{background:linear-gradient(160deg,#175a64,#093337);border-color:#6ae9e2}.room.exit{background:linear-gradient(160deg,#5e315d,#30182e);border-color:#ffbc59}.room.slot{background:#181b37;border:2px dashed var(--mood);font-size:28px;cursor:pointer;box-shadow:inset 0 0 25px #25286f}.room.fitted{border-color:#ffcf5d;background:linear-gradient(140deg,#2c476a,#203052)}.room .door{position:absolute;background:#ffd666;box-shadow:0 0 10px #ffc55dbb;z-index:2}.room .door.n{top:-2px;left:36%;width:28%;height:9px}.room .door.s{bottom:-2px;left:36%;width:28%;height:9px}.room .door.w{left:-2px;top:36%;height:28%;width:9px}.room .door.e{right:-2px;top:36%;height:28%;width:9px}
+.cards{display:flex;gap:8px;margin:10px 0}.map-card{flex:1;min-height:68px;padding:8px 6px;background:#131b36ea;color:#f7f8ff;border:1px solid #6680a3;text-align:center;font-size:12px;font-weight:800}.map-card.active{border:2px solid #ffd66c;background:#293853}.map-card span{display:block;font-size:24px;margin-bottom:4px}
+.mini-controls{display:flex;gap:8px}.mini-controls button{flex:1;min-height:43px;border:1px solid #9daace;background:#152042e8;color:#fff;font-weight:750}.mini-controls button:active{background:#253a64}
+.route-info{margin-top:9px;font-size:12px;color:#e6dbff;line-height:1.5;background:#080e22d7;padding:8px 10px;border-left:3px solid var(--mood)}
+.reward{justify-content:flex-start}.reward-glow{display:grid;place-items:center;margin:16px auto 7px;width:230px;height:211px;background:radial-gradient(circle,#ffc35b80 0%,#e98e3040 32%,transparent 67%);filter:drop-shadow(0 0 20px #f3ae4b5d)}.relic{height:142px;width:116px;position:relative;transform:rotate(-11deg);border:3px solid #ffe8a1;background:linear-gradient(145deg,#513e45,#1b1d3f 60%,#071225);box-shadow:0 0 0 9px #e5ae4a22,0 0 25px #ffb93ea6,15px 20px 30px #0008;display:grid;place-items:center;animation:floatrelic 3.2s ease-in-out infinite}.relic:before{content:"";position:absolute;inset:8px;border:1px solid #ffdc8e5a}.relic b{font-size:67px;color:#ffb652;text-shadow:0 0 24px #ffc154}.relic small{position:absolute;bottom:7px;font-size:9px;color:#ffe7bc}.reward-glow:before,.reward-glow:after{content:"✦";position:absolute;color:#ffe6a6;font-size:28px;animation:sparkle 1.4s ease-in-out infinite alternate}.reward-glow:before{transform:translate(-103px,-65px)}.reward-glow:after{transform:translate(103px,44px);animation-delay:.65s}
+@keyframes floatrelic{0%,100%{transform:translateY(6px) rotate(-11deg)}50%{transform:translateY(-8px) rotate(-7deg)}}@keyframes sparkle{from{opacity:.15;filter:blur(2px)}to{opacity:1;filter:blur(0)}}
+.reward-contents{padding:17px;max-width:400px}.reward-contents h2{font-size:31px;color:#ffda74;text-align:center}.reward-contents .lead2{font-size:14px;line-height:1.65;color:#f2e9d6;text-align:center}.relic-desc{margin-top:15px;background:#080e24dc;border-left:4px solid #ffd066;padding:13px;font-size:13px;line-height:1.7}.reward .bottom{left:19px;right:19px}
+.mood-guide{display:flex;justify-content:center;gap:5px;padding:0 10px}.dot{width:25px;height:3px;background:#36435e}.dot.on{background:var(--mood);box-shadow:0 0 8px var(--mood)}
+.camera-hint{position:absolute;z-index:14;right:12px;top:27%;font-size:9px;color:#accfff82;writing-mode:vertical-rl;letter-spacing:.17em}
+#app[data-screen="story"] .corridor,#app[data-screen="route"] .corridor{filter:brightness(.72) saturate(1.2)}#app[data-screen="reward"] .corridor{filter:brightness(.42)}
+@media(max-height:780px){.screen{padding-top:calc(57px + env(safe-area-inset-top));padding-bottom:calc(95px + env(safe-area-inset-bottom))}.story h2,.route h2{font-size:25px}.event{min-height:65px}.event-icon{height:42px;width:45px}.route .map{grid-template-rows:repeat(3,75px);margin:10px auto}.reward-glow{height:175px;margin:4px auto}.relic{transform:scale(.85)}.lead{margin-top:6px}.cover .story-note{bottom:calc(135px + env(safe-area-inset-bottom))}}
+@media(max-height:640px){.cover .story-note{display:none}.route .map{grid-template-rows:repeat(3,61px)}.screen{padding-top:45px}.event{min-height:57px}.event small{display:none}.story-step{margin:7px 0}.reward-glow{height:110px}.relic{height:108px;width:90px}.relic b{font-size:47px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div id="app" data-screen="cover" data-mood="suspense">
+  <div class="backdrop" id="backdrop">
+    <div class="parallax sky" aria-hidden="true"><svg viewBox="0 0 400 850" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="skyGrad" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1547"/><stop offset=".5" stop-color="#16214d"/><stop offset="1" stop-color="#070b23"/></linearGradient></defs><rect width="400" height="850" fill="url(#skyGrad)"/><circle cx="306" cy="160" r="78" fill="#a14ed0" opacity=".18"/><path d="M0 60L55 25V530H0ZM52 150L116 55V580H45ZM326 75L400 12V600H319ZM300 185L342 120V550H296Z" fill="#04091c"/><g fill="#3868ba" opacity=".45"><rect x="15" y="125" width="12" height="26"/><rect x="50" y="175" width="10" height="25"/><rect x="70" y="115" width="9" height="31"/><rect x="356" y="164" width="12" height="26"/><rect x="379" y="220" width="12" height="18"/></g><path d="M0 504L400 455V850H0" fill="#091227"/><g stroke="#3c3b75" opacity=".35" stroke-width="2"><path d="M0 555L400 555M0 640L400 611M0 735L400 665"/><path d="M0 525L160 850M400 511L226 850"/></g></svg></div>
+    <div class="parallax corridor" aria-hidden="true"><svg viewBox="0 0 400 850" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="wallL" x1="0" x2="1" y1="0" y2="0"><stop stop-color="#17102f"/><stop offset="1" stop-color="#1f3672"/></linearGradient><linearGradient id="wallR" x1="0" x2="1"><stop stop-color="#223456"/><stop offset="1" stop-color="#140d30"/></linearGradient><linearGradient id="floorG" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#213663"/><stop offset="1" stop-color="#070a18"/></linearGradient></defs><path d="M0 82L136 184L136 546L0 692Z" fill="url(#wallL)" stroke="#5364ae" stroke-width="3"/><path d="M400 68L264 184L264 546L400 693Z" fill="url(#wallR)" stroke="#40376f" stroke-width="3"/><path d="M136 184L264 184V546H136Z" fill="#090e27" stroke="#52618b" stroke-width="3"/><path d="M136 546L264 546L400 705L0 705Z" fill="url(#floorG)"/><path d="M136 184L264 184L400 70L0 82Z" fill="#101b43"/><g stroke="#2d4773" fill="none" stroke-width="3"><path d="M40 124V640M94 169V593M358 124V635M313 166V598"/><path d="M0 330H135M265 335H400M0 499H135M265 499H400"/><path d="M136 546L0 705M264 546L400 705M190 546L170 705M211 546L240 705"/></g><g opacity=".5" stroke="#9b62db" stroke-width="2"><path d="M80 240l27 -13 0 110 -27 15Z"/><path d="M318 231l-27 -13 0 110 27 15Z"/></g><rect x="153" y="255" width="94" height="291" fill="#0b1021" stroke="#8792b2" stroke-width="4"/><rect x="165" y="271" width="70" height="263" fill="#0c1831" stroke="#353866" stroke-width="2"/><path d="M200 271V534" stroke="#839ac0" stroke-opacity=".55" stroke-width="2"/><rect x="165" y="220" width="70" height="29" fill="#050611" stroke="#cc3f80" stroke-width="2"/><text x="198" y="243" fill="#ff4f87" font-size="22" font-weight="900" text-anchor="middle">13</text><rect x="150" y="500" width="99" height="12" fill="#ca88b9" opacity=".32"/><path d="M164 538L95 700M235 538L300 700" stroke="#5860ab" stroke-width="2" opacity=".7"/><path d="M200 570L200 705" stroke="#be97d6" opacity=".3" stroke-width="4"/></svg></div>
+    <div class="beam"></div><span class="neon" aria-hidden="true">13</span>
+    <div class="parallax fore" aria-hidden="true"><svg viewBox="0 0 400 850" preserveAspectRatio="xMidYMid slice"><defs><linearGradient id="coat" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#092338"/><stop offset="1" stop-color="#010313"/></linearGradient></defs><path d="M-30 670Q65 615 112 694L122 850H0Z" fill="#0a0820" stroke="#513ba1" stroke-width="4"/><path d="M310 664Q355 603 440 674L430 850H291Z" fill="#0a0d23" stroke="#38296c" stroke-width="4"/><g transform="translate(272,490)"><path d="M-11 116Q-60 148 -68 300H91Q61 164 23 126Z" fill="url(#coat)" stroke="#355481" stroke-width="3"/><path d="M-44 153Q-66 173 -49 224L-14 226L-13 154" fill="#081729" stroke="#7c3daa" stroke-width="3"/><ellipse cx="4" cy="72" rx="42" ry="48" fill="#1e1a39" stroke="#3f4f76" stroke-width="3"/><path d="M-42 71Q-35 7 16 13Q57 29 42 80Q37 30 6 43Q-25 36 -42 71Z" fill="#05071b"/><path d="M-8 112L24 117L34 139L-31 136Z" fill="#d44977"/><rect x="-55" y="144" width="48" height="93" rx="11" fill="#17102d" stroke="#b03c81" stroke-width="3"/><path d="M-53 175L-7 177M-30 141V233" stroke="#8869bb" opacity=".6" stroke-width="4"/></g><path d="M0 790Q80 774 145 810Q200 835 272 802T400 806" stroke="#8f5aa2" opacity=".55" stroke-width="4" fill="none"/><path d="M0 812Q65 790 145 835Q200 853 273 829T400 834" stroke="#b453b8" opacity=".38" stroke-width="2" fill="none"/></svg></div>
+    <div class="fog"></div><div class="rain"></div><div class="halftone"></div><div class="mood-strip"></div><div class="camera-hint">2.5D · PARALLAX · MOTION CONCEPT</div>
+  </div>
+  <div class="flash" id="flash"></div>
+  <header class="corner-label"><span class="lettermark">NIGHT ARCHIVE</span><span class="corner-tools"><span class="pill" id="topTag">视觉实验 · 01</span><button class="motion-toggle" id="motionToggle" type="button" aria-pressed="true">动效开</button></span></header>
+  <section class="screen cover active" id="screen-cover" aria-label="故事封面">
+    <div class="kicker">THE MISSING FLOOR / EP.01</div>
+    <h1>夜楼档案<br><em>第十三层</em></h1>
+    <p class="lead">23:47，没有号码的短信再次亮起。<br>「不要去十三层。」<br>可这栋楼，明明只有十二层。</p>
+    <div class="story-note"><strong>?</strong><p><b>你听见了另一串脚步声。</b><br>它恰好比你的脚步快半秒。</p></div>
+  </section>
+  <section class="screen story" id="screen-story" aria-label="三格故事">
+    <div class="kicker">SCENE 01 · CHOOSE THE CAUSE</div>
+    <h2>谁先动了开关？</h2>
+    <p class="screen-sub">按你认为的顺序选择三件事。<br>第一步改变剧情；点已选的步骤可撤回。</p>
+    <div class="story-step" id="storyStep"><div class="stepbox" data-number="01">待选</div><div class="stepbox" data-number="02">待选</div><div class="stepbox" data-number="03">待选</div></div>
+    <div class="event-list" id="eventList">
+      <button class="event" data-act="record" type="button"><span class="event-icon">📋</span><span><strong>查看检修记录</strong><small>有人提前签下了你的名字</small></span></button>
+      <button class="event" data-act="alarm" type="button"><span class="event-icon">🚨</span><span><strong>开启警报</strong><small>可能驱散影子，也可能暴露位置</small></span></button>
+      <button class="event" data-act="lift" type="button"><span class="event-icon">🛗</span><span><strong>检查电梯</strong><small>显示屏闪过一个不存在的楼层</small></span></button>
+    </div>
+    <div class="reaction" id="reaction" role="status">◈ 在每种情绪里，空间的颜色和灯光也会跟着变化。</div>
+  </section>
+  <section class="screen route" id="screen-route" aria-label="拼接逃生路线">
+    <div class="kicker">SCENE 02 · ESCAPE PATH</div>
+    <h2>让门对上门</h2>
+    <p class="screen-sub" id="branchLine">档案里出现了不同的路。</p>
+    <div class="map" id="roomMap">
+      <div class="room wall">阴影</div><div class="room wall">监控</div><div class="room wall">断电</div>
+      <div class="room start">入口<span class="door e"></span></div><button class="room slot" id="slot" aria-label="将选中的房间放置在中间空位">+</button><div class="room exit">出口<span class="door w"></span></div>
+      <div class="room wall">封锁</div><div class="room wall">楼梯</div><div class="room wall">异常</div>
+    </div>
+    <div class="cards" id="roomCards">
+      <button class="map-card active" data-room="straight" type="button"><span>│</span>直通房</button>
+      <button class="map-card" data-room="corner" type="button"><span>┐</span>转角房</button>
+      <button class="map-card" data-room="junction" type="button"><span>┼</span>四通房</button>
+    </div>
+    <div class="mini-controls"><button type="button" id="rotate">↻ 旋转房卡</button><button type="button" id="undo">↶ 撤销放置</button></div>
+    <div class="route-info" role="status" id="routeInfo">将房卡旋转成左右相通，然后点地图中间的“＋”。</div>
+  </section>
+  <section class="screen reward" id="screen-reward" aria-label="过关奖励">
+    <div class="kicker">MISSION CLEAR · EVIDENCE FOUND</div>
+    <div class="reward-glow"><div class="relic"><b>13</b><small>CLASSIFIED / 001</small></div></div>
+    <div class="reward-contents glass"><h2>逃脱成功</h2><p class="lead2" id="achievement">你发现了一份隐藏的档案。</p><div class="relic-desc" id="rewardStory">在检修记录背面，竟出现了一行尚未发生的日期。</div></div>
+  </section>
+  <div class="bottom">
+    <div class="mood-guide" id="moodGuide"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <button class="cta" type="button" id="mainButton">开始调查 →</button><p class="under-cta" id="footerNote">动态概念样机 · 不修改现有六幕进度</p>
+  </div>
+</div>
+<script>
+(()=>{
+ 'use strict';
+ const app=document.getElementById('app'),backdrop=document.getElementById('backdrop');
+ const $=id=>document.getElementById(id);let screen='cover',mood='suspense',events=[],selection='straight',rotation=0,placed=null;
+ const moodBy={record:'discover',alarm:'danger',lift:'truth'};
+ const texts={record:{title:'档案发现者',story:'你翻开的检修记录，签署日期竟是明天。姓名栏写着：阿岚。'},alarm:{title:'红灯逃脱者',story:'警报响起时，监控记录了两道不同方向的影子。第二道影子没有主人。'},lift:{title:'午夜观察者',story:'电梯里明明没有13层按钮，屏幕却显示：正在抵达13层。'}};
+ const labels={record:'检修记录',alarm:'触发警报',lift:'检查电梯'};
+ let motionEnabled=!window.matchMedia('(prefers-reduced-motion: reduce)').matches;const motionButton=$('motionToggle');function syncMotion(){app.classList.toggle('motion-off',!motionEnabled);motionButton.setAttribute('aria-pressed',String(motionEnabled));motionButton.textContent=motionEnabled?'动效开':'动效关'}syncMotion();motionButton.addEventListener('click',()=>{motionEnabled=!motionEnabled;syncMotion()});
+ function setMood(m){mood=m;app.dataset.mood=m}
+ function setScreen(s){screen=s;app.dataset.screen=s;Object.values(document.querySelectorAll('.screen')).forEach(x=>x.classList.remove('active'));$('screen-'+s).classList.add('active');$('topTag').textContent=({cover:'视觉实验 · 01',story:'选择顺序 · 02',route:'寻找通路 · 03',reward:'收集证据 · 04'})[s];const idx=['cover','story','route','reward'].indexOf(s);document.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('on',i===idx));$('mainButton').textContent=({cover:'开始调查 →',story:events.length===3?'进入逃生现场 →':'先选择三件事',route:'试着逃脱 →',reward:'重新调查另一种结局 ↻'})[s];$('mainButton').disabled=s==='story'&&events.length!==3;$('footerNote').textContent=({cover:'真实动态CSS · 单屏交互样机',story:'不同首步 · 不同情绪光效',route:'旋转房卡 · 让左右两扇门连通',reward:'仅为视觉概念，不写入正式游戏存档'})[s];}
+ function burst(){const f=$('flash');f.classList.remove('pulse');void f.offsetWidth;f.classList.add('pulse');setTimeout(()=>f.classList.remove('pulse'),560)}
+ function react(){const first=events[0];if(first){setMood(moodBy[first]);const p=events.length;if(p===1)$('reaction').textContent=({record:'✓ 发现一份被提前签名的档案。灯光转为冷青色。',alarm:'! 警报提前拉响，整条走廊变成猩红色。',lift:'◈ 电梯闪过隐藏楼层13，紫色异常光开始蔓延。'})[first];else if(p===3)$('reaction').textContent=`✦ 你选择的顺序：${events.map(x=>labels[x]).join(' → ')}。这一幕将留下不同的线索。`;else $('reaction').textContent='故事正在改写。继续选择最后一张事件卡。'}else{$('reaction').textContent='◈ 请选择第一步，环境会跟随你的决定变色。';setMood('suspense')}
+ $('storyStep').querySelectorAll('.stepbox').forEach((n,i)=>{n.classList.toggle('filled',i<events.length);n.textContent=events[i]?labels[events[i]]:'待选'});
+ document.querySelectorAll('.event').forEach(b=>b.disabled=events.includes(b.dataset.act));setScreen('story');}
+ function roomDoors(){if(selection==='junction')return ['n','e','s','w'];if(selection==='corner')return rotation%4===0?['n','e']:rotation%4===1?['e','s']:rotation%4===2?['s','w']:['w','n'];return rotation%2===0?['n','s']:['e','w']}
+ function renderRoom(){const slot=$('slot');slot.innerHTML='';slot.classList.toggle('fitted',!!placed);if(!placed){slot.textContent='+';return}const symbol={straight:'│',corner:'┐',junction:'┼'}[placed.kind];const el=document.createElement('span');el.textContent=symbol;el.style.fontSize='32px';el.style.transform=`rotate(${placed.rotation*90}deg)`;slot.appendChild(el);const doors=placed.kind==='junction'?['n','e','s','w']:placed.kind==='corner'?(['n','e'],['e','s'],['s','w'],['w','n'])[placed.rotation]:placed.rotation%2?['e','w']:['n','s'];doors.forEach(dir=>{const d=document.createElement('span');d.className='door '+dir;slot.appendChild(d)});}
+ function prepareRoute(){rotation=0;selection='straight';placed=null;document.querySelectorAll('.map-card').forEach((b,i)=>b.classList.toggle('active',i===0));renderRoom();const first=events[0];$('branchLine').textContent=({record:'档案指出一条旧通路。只要让左右房门相接，就能抵达出口。',alarm:'警报仍在响。你必须在红光中找到通往出口的通道。',lift:'电梯停在不存在的楼层。通往出口的路只能由你重新拼出。'})[first];$('routeInfo').textContent='旋转直通房，让门开在左右两侧，再放到中心空位。';setScreen('route');}
+ $('mainButton').addEventListener('click',()=>{if(screen==='cover'){setScreen('story');react()}else if(screen==='story'){if(events.length===3){prepareRoute();burst()}}else if(screen==='route'){if(!placed){$('routeInfo').textContent='先选择房卡并放入中央格子。';return}const valid=placed.kind==='junction'||(placed.kind==='straight'&&placed.rotation%2===1);if(!valid){$('routeInfo').textContent='房门没有同时朝向左右。可以撤销，改用直通房旋转90°。';setMood('danger');return}setMood('hope');backdrop.dataset.open='1';$('achievement').textContent=`获得称号：${texts[events[0]].title}`;$('rewardStory').textContent=texts[events[0]].story;setScreen('reward');burst()}else if(screen==='reward'){events=[];rotation=0;placed=null;backdrop.dataset.open='0';setMood('suspense');setScreen('cover');react();setScreen('cover')}});
+ document.querySelectorAll('.event').forEach(b=>b.addEventListener('click',()=>{if(events.includes(b.dataset.act))return;events.push(b.dataset.act);react();if(events.length===1)burst()}));
+ document.querySelectorAll('.stepbox').forEach((box,i)=>box.addEventListener('click',()=>{if(i<events.length){events.splice(i,1);react()}}));
+ document.querySelectorAll('.map-card').forEach(b=>b.addEventListener('click',()=>{selection=b.dataset.room;rotation=0;document.querySelectorAll('.map-card').forEach(k=>k.classList.toggle('active',k===b));$('routeInfo').textContent='房卡已经选中，点击“旋转房卡”调整门的方向，再点击中央空位。';}));
+ $('rotate').addEventListener('click',()=>{rotation=(rotation+1)%4;const t={straight:'直通房',corner:'转角房',junction:'四通房'}[selection];$('routeInfo').textContent=`${t}已旋转${rotation*90}°，现在可以放置。`;});
+ $('slot').addEventListener('click',()=>{placed={kind:selection,rotation};renderRoom();$('routeInfo').textContent=(placed.kind==='junction'||(placed.kind==='straight'&&placed.rotation%2===1))?'✓ 房门已连接！点击下方“试着逃脱”。':'两侧还没有同时连通，可以撤销调整。';});
+ $('undo').addEventListener('click',()=>{placed=null;renderRoom();$('routeInfo').textContent='已撤销。重新选择、旋转并放置房卡。'});
+ let last=0;app.addEventListener('pointermove',e=>{if(!motionEnabled)return;if(e.pointerType==='touch'&&e.buttons===0)return;const now=performance.now();if(now-last<30)return;last=now;const rect=app.getBoundingClientRect();let x=(e.clientX-rect.left)/rect.width-.5;let y=(e.clientY-rect.top)/rect.height-.5;x=Math.max(-.5,Math.min(.5,x));y=Math.max(-.5,Math.min(.5,y));app.style.setProperty('--back-x',`${-x*5}px`);app.style.setProperty('--back-y',`${-y*4}px`);app.style.setProperty('--mid-x',`${-x*14}px`);app.style.setProperty('--mid-y',`${-y*9}px`);app.style.setProperty('--front-x',`${-x*30}px`);app.style.setProperty('--front-y',`${-y*18}px`)});
+ setScreen('cover');
+})();
+</script>
+</body>
+</html>
