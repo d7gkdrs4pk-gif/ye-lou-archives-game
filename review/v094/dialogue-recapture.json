@@ -1,0 +1,92 @@
+{
+  "scope": "Dialogue-only recapture after identity calibration; other seven artworks and functional HTML/CSS unchanged",
+  "cases": [
+    {
+      "viewport": [
+        320,
+        568
+      ],
+      "http": 200,
+      "stage": 2,
+      "speech": {
+        "text": "阿岚：电梯和消防门都在催我，但两段广播不可能都是真的。",
+        "rect": {
+          "x": 154.84375,
+          "y": 160.1875,
+          "width": 139.15625,
+          "height": 69.8125,
+          "top": 160.1875,
+          "right": 294,
+          "bottom": 230,
+          "left": 154.84375
+        },
+        "scrollWidth": 135,
+        "clientWidth": 135,
+        "scrollHeight": 66,
+        "clientHeight": 66
+      },
+      "errors": [],
+      "dialogue_screenshot": "/tmp/ye-lou-v094/candidate/320x568-dialogue.png",
+      "story_screenshot": "/tmp/ye-lou-v094/candidate/320x568-story-top.png"
+    },
+    {
+      "viewport": [
+        375,
+        667
+      ],
+      "http": 200,
+      "stage": 2,
+      "speech": {
+        "text": "阿岚：电梯和消防门都在催我，但两段广播不可能都是真的。",
+        "rect": {
+          "x": 186.28125,
+          "y": 149.328125,
+          "width": 162.71875,
+          "height": 78.671875,
+          "top": 149.328125,
+          "right": 349,
+          "bottom": 228,
+          "left": 186.28125
+        },
+        "scrollWidth": 159,
+        "clientWidth": 159,
+        "scrollHeight": 75,
+        "clientHeight": 75
+      },
+      "errors": [],
+      "dialogue_screenshot": "/tmp/ye-lou-v094/candidate/375x667-dialogue.png",
+      "story_screenshot": "/tmp/ye-lou-v094/candidate/375x667-story-top.png"
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "http": 200,
+      "stage": 2,
+      "speech": {
+        "text": "阿岚：电梯和消防门都在催我，但两段广播不可能都是真的。",
+        "rect": {
+          "x": 194.09375,
+          "y": 164.5,
+          "width": 169.90625,
+          "height": 80.96875,
+          "top": 164.5,
+          "right": 364,
+          "bottom": 245.46875,
+          "left": 194.09375
+        },
+        "scrollWidth": 166,
+        "clientWidth": 166,
+        "scrollHeight": 77,
+        "clientHeight": 77
+      },
+      "errors": [],
+      "dialogue_screenshot": "/tmp/ye-lou-v094/candidate/390x844-dialogue.png",
+      "story_screenshot": "/tmp/ye-lou-v094/candidate/390x844-story-top.png"
+    }
+  ],
+  "page_errors": [],
+  "dialogue_asset_sha256": "e490de1354bc8a9f85cf0c28185a5525d5daf5082cd584a325a62c03d7f1cd78",
+  "browser": "154.0.8037.57"
+}

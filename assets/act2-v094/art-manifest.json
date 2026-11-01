@@ -1,0 +1,153 @@
+{
+  "art_reference_file": "ye-lou-act1-comic-v082.html",
+  "art_reference_git_blob": "f4ceeb59caf333161e6938e940b0717d3e93e221",
+  "program_reference_file": "ye-lou-act2-puzzle-v092.html",
+  "program_reference_git_blob": "b4c5bdc28bb785a2569324aa57bd580a8a055876",
+  "provenance": "Original imagegen artwork guided by frozen first-act character and paintings. Seven scenes split from the main atlas; dialogue separately corrected to the approved jaw/hair silhouette, cropped and uniformly resized. WebP encoded; no V0.9.3 art reused.",
+  "original_generated_atlas_sha256": "e6601fb5701245bd9b3a5ead569366bc4a8ea0885e688a785b16328273a7a709",
+  "atlas_dimensions": [
+    1536,
+    1024
+  ],
+  "files": [
+    {
+      "path": "battery.webp",
+      "crop": [
+        0,
+        0,
+        768,
+        256
+      ],
+      "dimensions": [
+        768,
+        256
+      ],
+      "bytes": 64458,
+      "sha256": "dbeb61568bc0c791d52c8455e859417750cb010e5ed0642e47dc2dc0dfb25664",
+      "git_blob": "9d61882feebff0ac7da9b6a6ef308859b50657bc"
+    },
+    {
+      "path": "circuit.webp",
+      "crop": [
+        768,
+        0,
+        1536,
+        256
+      ],
+      "dimensions": [
+        768,
+        256
+      ],
+      "bytes": 59346,
+      "sha256": "b77eda9ccbe0826c96fb913093dc10811a11feda4ad7a7de1d43e4703af88fa6",
+      "git_blob": "f8eac7e4ab3745b9d30869314d08955fc8caf02b"
+    },
+    {
+      "path": "lift.webp",
+      "crop": [
+        0,
+        256,
+        768,
+        512
+      ],
+      "dimensions": [
+        768,
+        256
+      ],
+      "bytes": 61280,
+      "sha256": "1c7940dc6bf2d8c4445e17cb4101002edbadd788de54c0acc22f41be220a12f8",
+      "git_blob": "7c6346f34e86116e9c3a9daa18ed6dc223a548a4"
+    },
+    {
+      "path": "alarm.webp",
+      "crop": [
+        768,
+        256,
+        1536,
+        512
+      ],
+      "dimensions": [
+        768,
+        256
+      ],
+      "bytes": 61292,
+      "sha256": "808844785a9ef58a6d0ef83ae6fab38f9b06e664a945b9b3e32b4bcae5fdd3a2",
+      "git_blob": "99e2962a86be975586cf5c81d9f7b4987299860e"
+    },
+    {
+      "path": "latch.webp",
+      "crop": [
+        0,
+        512,
+        768,
+        768
+      ],
+      "dimensions": [
+        768,
+        256
+      ],
+      "bytes": 55370,
+      "sha256": "5897fd5d281dbfec1d93af0af918a2d6f916a74978b2741d3d20d1257d13538b",
+      "git_blob": "322fadd36c0d41f3b93f1df4ba216515b455f63e"
+    },
+    {
+      "path": "door.webp",
+      "crop": [
+        768,
+        512,
+        1536,
+        768
+      ],
+      "dimensions": [
+        768,
+        256
+      ],
+      "bytes": 74390,
+      "sha256": "a3b0fdde4d3263a589f928db68cdbf88d43a1f188f1937d7cc8377376443435c",
+      "git_blob": "684eba07b866bc269b7ac2cf7811fc640aa055a0"
+    },
+    {
+      "path": "dialogue.webp",
+      "crop": [
+        250,
+        0,
+        973,
+        241
+      ],
+      "dimensions": [
+        768,
+        256
+      ],
+      "bytes": 32808,
+      "sha256": "e490de1354bc8a9f85cf0c28185a5525d5daf5082cd584a325a62c03d7f1cd78",
+      "git_blob": "8504e56e1b30d2cf8ebf81351da0d55bc8fb4e80",
+      "resized_to": [
+        768,
+        256
+      ],
+      "source": "separate identity-corrected portrait atlas, first strip",
+      "source_dimensions": [
+        2170,
+        725
+      ],
+      "source_sha256": "0f3c2781d0da41b1c564b7af319803f784e3afe7c49a94430db4d21f61cc66f0"
+    },
+    {
+      "path": "workbench.webp",
+      "crop": [
+        768,
+        768,
+        1536,
+        1024
+      ],
+      "dimensions": [
+        768,
+        256
+      ],
+      "bytes": 70924,
+      "sha256": "cbdd630de951318501163bd897a7c61f9afe1c66830398a012ffe7b809947d04",
+      "git_blob": "4586552b033813c32c2a218b8601fa7631540311"
+    }
+  ],
+  "total_webp_bytes": 479868
+}

@@ -1,0 +1,119 @@
+{
+  "dialogue": "/tmp/ye-lou-v094/compare/dialogue-master-v094.png",
+  "events": "/tmp/ye-lou-v094/compare/events-master-v094.png",
+  "workbench": "/tmp/ye-lou-v094/compare/workbench-v092-v094.png",
+  "source_screenshots": [
+    {
+      "path": "/tmp/ye-lou-v094/baseline/act1-master-event-1.png",
+      "sha256": "5a04baf33af84e4e3494f1fee5223d05e3e7d1d8b7c26090296bc6d0d653e7f7",
+      "size": [
+        342,
+        107
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/baseline/act1-master-event-2.png",
+      "sha256": "46ce5e593574bd27013f8ecde474d0acbf44fa4f2e8f69f2d85031887cbeb009",
+      "size": [
+        342,
+        107
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/baseline/act1-master-event-3.png",
+      "sha256": "d01a484a8ed9d23a9ee446388a42b356b8a9b76121743d799c514b105a669018",
+      "size": [
+        342,
+        106
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/baseline/act1-master-portrait.png",
+      "sha256": "9949b855c77ce88bfe316f4d9213340f0a3d806ef8f298b58a383ebcadb15350",
+      "size": [
+        358,
+        144
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/baseline/act2-program-workbench.png",
+      "sha256": "0aeae2abfc7ad77aa0d1b97aa60e22e2d794df430a3d7bafb3ed40e7fbfdcfc7",
+      "size": [
+        340,
+        766
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-dialogue.png",
+      "sha256": "64686fdbb74c4bd4984e979e20788412c4d49aa1fbce5bde743ffcaf02a78d85",
+      "size": [
+        358,
+        144
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-event-1.png",
+      "sha256": "c25e4ee59785ec9bcc79563b01d57255f91ffbe6595cc4160dbf25a42a4c6cb7",
+      "size": [
+        342,
+        113
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-event-2.png",
+      "sha256": "059a81fe04f84ce46ee44adbe09235ea0edd02a42dd4efe524af584709a47384",
+      "size": [
+        342,
+        112
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-event-3.png",
+      "sha256": "57e5d14465fcc3ff49eaf549068c8456bf5306f3005158d66e8fcb7a539da329",
+      "size": [
+        342,
+        112
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-event-4.png",
+      "sha256": "b4622a76dba02e53ec6eddd0328db46a5de9925dd7b7ffef71665fa6c21439b9",
+      "size": [
+        340,
+        111
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-event-5.png",
+      "sha256": "b8f3919bd74a8cfb82847d0d9f00f87717a836dcdafa1905be747b2dfbd5bfa1",
+      "size": [
+        340,
+        111
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-event-6.png",
+      "sha256": "b81d779e00756327fbbb699d5a31ca92427b8d0ae22095926aa98661825d59b7",
+      "size": [
+        340,
+        110
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-workbench-top.png",
+      "sha256": "791915c89e7438a7d3db4e6f836d0bf5c0b643ce30bc0754b1d6efb75373c0c8",
+      "size": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "/tmp/ye-lou-v094/candidate/390x844-workbench.png",
+      "sha256": "a0f9d980369d57eb636a7090fe9de665da2b34b6fc3a7b292f066d8cbfec197c",
+      "size": [
+        340,
+        766
+      ]
+    }
+  ]
+}

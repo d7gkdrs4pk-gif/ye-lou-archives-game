@@ -1,0 +1,54 @@
+{
+  "scope": "Independent visual review of 8 new raster artworks plus actual rendered candidate screenshots, against V0.8.2.2 first-act browser screenshots",
+  "art_reference": "ye-lou-act1-comic-v082.html, Git Blob f4ceeb59caf333161e6938e940b0717d3e93e221",
+  "candidate_reference": "V0.9.4 art over V0.9.2 program; rejected V0.9.3 never used as art standard",
+  "comparison_files": [
+    "dialogue-master-v094.png",
+    "events-master-v094.png",
+    "workbench-v092-v094.png"
+  ],
+  "observations": {
+    "identity": "Short black-blue hair, bangs, dark jacket, wine-red neckline/strap, facial cool rim and warm practical lights remain recognizable. Dialogue uses a new over-shoulder expression, not the same first-act portrait.",
+    "mark_making": "Variable black outline, hard shadow masses, rough/halftone-like texture and scratched equipment surfaces align with the first-act comic language; no low-detail geometric placeholders substitute for figures.",
+    "narrative": [
+      "Battery: protagonist reaches for the handle of a physical battery case.",
+      "Circuit: close-up of hand connecting red electrical lead to worn equipment.",
+      "Lift: protagonist at elevator control, door aperture with warm light and 13 display.",
+      "Alarm: deliberate hand press at red alarm panel.",
+      "Latch: hands and hooked tool at metal door latch.",
+      "Safety door: protagonist pushing door into cold-lit stairwell with spatial depth."
+    ],
+    "rendering": "Corrected CSS renders each narrative at full intended card framing; lift and latch content remain identifiable at 320 and 390. HTML titles and route labels are readable on a lower dark band. Dialogue text is readable without clipping.",
+    "workbench": "Illustrated investigation props now share the scene palette/material work. Existing schematic network and real control labels remain visible, rather than being replaced by painted controls."
+  },
+  "remaining_subjective_review": [
+    "New scenes use denser wear/grain details than some first-act event cards.",
+    "The calibrated portrait remains a newly generated close-up with a different expression and lens/angle; matching the character identity is subject to the user's final art approval.",
+    "The dialogue background is not pixel-identical to the pre-calibration candidate; six dedicated narrative event scenes still supply lift/fire-door context.",
+    "These observations support an art-review candidate, not a claim that the user has accepted final art quality."
+  ],
+  "real_iphone_verified": false,
+  "project_files_changed_by_reviewer": false,
+  "dialogue_calibration": {
+    "asset_sha256": "e490de1354bc8a9f85cf0c28185a5525d5daf5082cd584a325a62c03d7f1cd78",
+    "browser_recapture": "/tmp/ye-lou-v094/candidate/dialogue-recapture.json",
+    "viewports": [
+      [
+        320,
+        568
+      ],
+      [
+        375,
+        667
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "page_errors": [],
+    "text_clipping": "none observed; dimensions match scroll extents",
+    "identity_observation": "Calibrated smaller angular jaw, closer-fitting short hair, and eye/nose/mouth proportions are visibly nearer to the first-act master than the previous candidate portrait. The earlier round-face/full-hair caveat no longer describes the current asset.",
+    "background_observation": "The source-image background also changed: the previous explicit elevator 13/warm doorway is no longer clear, replaced by a cool corridor/stairwell and pink wall. Most of this area is behind the HTML dialogue bubble. Do not claim a pixel-identical background."
+  }
+}
