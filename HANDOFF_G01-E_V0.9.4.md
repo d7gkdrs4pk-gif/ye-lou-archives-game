@@ -6,6 +6,7 @@
 
 - 唯一仓库：`d7gkdrs4pk-gif/ye-lou-archives-game`。本批只访问此仓库，不访问或修改其他游戏项目。
 - 分支：`art/g01-e-v094-act2-master-correction`，基于 main `1623c4fa48468b020405fb1fe60ef13e314048dc`。
+- 审核入口：[本仓库 Draft PR #1](https://github.com/d7gkdrs4pk-gif/ye-lou-archives-game/pull/1)，Open/Unmerged，未部署；不得自动合并。
 - **程序母版：** `ye-lou-act2-puzzle-v092.html`，Blob `b4c5bdc28bb785a2569324aa57bd580a8a055876`，SHA-256 `7135e0b820ae02a67006ec0d4dcb6cd9a46dc9a3a71807ad99a2649149cf7731`。
 - **冻结美术母版：** `ye-lou-act1-comic-v082.html`，V0.8.2.2，Blob `f4ceeb59caf333161e6938e940b0717d3e93e221`，SHA-256 `aff372655f539ad2075823e18fd9b5dfdfc20b70b4081baf1dce10b2e4f4262c`。
 - **V0.9.3：用户美术验收未通过的历史候选，不得作为下一轮美术基准。** 原 HTML、CSS 及交接单保留，不覆盖；只用来分析失败原因。

@@ -3,6 +3,7 @@
 更新时间：2026-11-01（北京时间）
 
 ## G01-E V0.9.4 第二幕画稿纠正（仅修复分支，待用户美术审核）
+- **Draft PR：** [本仓库 #1](https://github.com/d7gkdrs4pk-gif/ye-lou-archives-game/pull/1)，Open/Unmerged；只供画面对照审核，不自动合并或发布。
 - **唯一执行仓库：** `d7gkdrs4pk-gif/ye-lou-archives-game`；本轮不访问或修改其他项目仓库。
 - **双母版：** 程序固定 `ye-lou-act2-puzzle-v092.html`，Blob `b4c5bdc28bb785a2569324aa57bd580a8a055876`；美术固定 `ye-lou-act1-comic-v082.html`（V0.8.2.2），Blob `f4ceeb59caf333161e6938e940b0717d3e93e221`。二者均已核对，原文件不改。
 - **本分支唯一候选：** `ye-lou-act2-puzzle-v094.html`，SHA-256 `db275f681e44fd8819996fc27d6a4d91a4fbc8e762fa83b64a01a2086912fb2a`，Blob `df74006dbe1110740a56a3238495ba842aa4072d`；分支 `art/g01-e-v094-act2-master-correction`，实现提交 `d334c815300f50e39cf22d2d58701ef326eac340`。
