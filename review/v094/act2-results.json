@@ -1,0 +1,1166 @@
+{
+  "source": "Complete V0.9.2 candidate HTML with unchanged act2-workshop-v090.js; local HTTP, no stubs",
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "tests": [
+    {
+      "name": "lift complete page HTTP",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lift real module initialized",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "unused record: alternate stairs is locked",
+      "passed": true,
+      "details": {
+        "stage": 2,
+        "primary": "lift",
+        "usable": {
+          "lift": true,
+          "stairs": false
+        },
+        "solved": {
+          "lift": false,
+          "stairs": false
+        },
+        "secret": false,
+        "rooms": {
+          "A": null,
+          "B": null
+        },
+        "item": null,
+        "attempts": 0
+      }
+    },
+    {
+      "name": "old map cannot bypass workshop",
+      "passed": true,
+      "details": "房门已经对齐，但维修机关尚未解除。请先解开上方双房间维修台，再试逃脱。"
+    },
+    {
+      "name": "uninspected power rejected",
+      "passed": true,
+      "details": "配电柜尚未检查，无法确认备用电路允许的规格。"
+    },
+    {
+      "name": "wrong 20A rejected",
+      "passed": true,
+      "details": "20A保险丝与15A设备铭牌不匹配，保护装置拒绝合闸。"
+    },
+    {
+      "name": "wrong hook for lift rejected",
+      "passed": true,
+      "details": "电梯回路需要正确规格的熔断器。"
+    },
+    {
+      "name": "missing lift safety probe rejected",
+      "passed": true,
+      "details": "蓝线中断或安全探针无信号。检查 A 是否能接通左侧输入、右侧 B 及上方探针；B 还应连接下方电梯继电器。"
+    },
+    {
+      "name": "unsolved workshop inventory/rooms survive refresh",
+      "passed": true,
+      "details": {
+        "before": {
+          "stage": 2,
+          "primary": "lift",
+          "usable": {
+            "lift": true,
+            "stairs": false
+          },
+          "solved": {
+            "lift": false,
+            "stairs": false
+          },
+          "secret": false,
+          "rooms": {
+            "A": {
+              "type": "straight",
+              "rotation": 1
+            },
+            "B": {
+              "type": "corner",
+              "rotation": 2
+            }
+          },
+          "item": "fuse15",
+          "attempts": 4
+        },
+        "after": {
+          "stage": 2,
+          "primary": null,
+          "usable": {
+            "lift": false,
+            "stairs": false
+          },
+          "solved": {
+            "lift": false,
+            "stairs": false
+          },
+          "secret": false,
+          "rooms": {
+            "A": {
+              "type": "straight",
+              "rotation": 1
+            },
+            "B": {
+              "type": "corner",
+              "rotation": 2
+            }
+          },
+          "item": "fuse15",
+          "attempts": 4
+        }
+      }
+    },
+    {
+      "name": "lift two-room correct wiring accepted",
+      "passed": true,
+      "details": "✓ 北侧电梯机关已解除！A、B 两室完成联动。现在到下方3×3地图拼接最后一个出口；可另选路线探索不同结局。"
+    },
+    {
+      "name": "radio hidden clue unlocks without reward inflation",
+      "passed": true,
+      "details": {
+        "state": {
+          "stage": 2,
+          "primary": "lift",
+          "usable": {
+            "lift": true,
+            "stairs": false
+          },
+          "solved": {
+            "lift": true,
+            "stairs": false
+          },
+          "secret": true,
+          "rooms": {
+            "A": {
+              "type": "tee",
+              "rotation": 0
+            },
+            "B": {
+              "type": "corner",
+              "rotation": 2
+            }
+          },
+          "item": "fuse15",
+          "attempts": 5
+        },
+        "score": {
+          "clues": 1,
+          "badges": 1,
+          "completed": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "achievementKeys": [
+            "power"
+          ],
+          "relicsUsed": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "hiddenEndingKeys": [],
+          "truthSolved": false,
+          "decisions": []
+        }
+      }
+    },
+    {
+      "name": "lift integrated escape succeeds",
+      "passed": true,
+      "details": "逃脱成功！获得结局记录。"
+    },
+    {
+      "name": "lift grants one stage fragment",
+      "passed": true,
+      "details": {
+        "clues": 2,
+        "badges": 2,
+        "completed": [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "power",
+          "lift"
+        ],
+        "relicsUsed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "lift",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "lift replay cannot duplicate fragment or badge",
+      "passed": true,
+      "details": {
+        "clues": 2,
+        "badges": 2,
+        "completed": [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "power",
+          "lift"
+        ],
+        "relicsUsed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "lift",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "solved lift and original achievements survive refresh",
+      "passed": true,
+      "details": {
+        "state": {
+          "stage": 2,
+          "primary": null,
+          "usable": {
+            "lift": false,
+            "stairs": false
+          },
+          "solved": {
+            "lift": true,
+            "stairs": false
+          },
+          "secret": true,
+          "rooms": {
+            "A": {
+              "type": "tee",
+              "rotation": 0
+            },
+            "B": {
+              "type": "corner",
+              "rotation": 2
+            }
+          },
+          "item": "fuse15",
+          "attempts": 5
+        },
+        "score": {
+          "clues": 2,
+          "badges": 2,
+          "completed": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "achievementKeys": [
+            "power",
+            "lift"
+          ],
+          "relicsUsed": [
+            false,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "hiddenEndingKeys": [],
+          "truthSolved": false,
+          "decisions": [
+            null,
+            {
+              "gate": "lift",
+              "variant": "canonical"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "stairs complete page HTTP",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "stairs real module initialized",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "stairs primary locks unused lift",
+      "passed": true,
+      "details": {
+        "stage": 2,
+        "primary": "stairs",
+        "usable": {
+          "lift": false,
+          "stairs": true
+        },
+        "solved": {
+          "lift": false,
+          "stairs": false
+        },
+        "secret": false,
+        "rooms": {
+          "A": null,
+          "B": null
+        },
+        "item": null,
+        "attempts": 0
+      }
+    },
+    {
+      "name": "stairs rejects fuse instead of hook",
+      "passed": true,
+      "details": "消防门闩不能靠熔断器解除，需要机械解锁钩。"
+    },
+    {
+      "name": "stairs missing warning lamp rejected",
+      "passed": true,
+      "details": "橙线仍不通或联动灯未亮。检查 A 能否连接左右两室；B 必须接左侧 A、上方消防门锁和下方提示灯。"
+    },
+    {
+      "name": "stairs correct dual-room connections accepted",
+      "passed": true,
+      "details": "✓ 东侧消防门机关已解除！A、B 两室完成联动。现在到下方3×3地图拼接最后一个出口；可另选路线探索不同结局。"
+    },
+    {
+      "name": "stairs integrated escape succeeds",
+      "passed": true,
+      "details": "逃脱成功！获得结局记录。"
+    },
+    {
+      "name": "stairs grants one fragment and stairs badge",
+      "passed": true,
+      "details": {
+        "clues": 2,
+        "badges": 2,
+        "completed": [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "power",
+          "stairs"
+        ],
+        "relicsUsed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "stairs",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "stairs replay reward remains stable",
+      "passed": true,
+      "details": {
+        "clues": 2,
+        "badges": 2,
+        "completed": [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "power",
+          "stairs"
+        ],
+        "relicsUsed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "stairs",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "legacy-no-record complete page HTTP",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "legacy-no-record real module initialized",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "legacy checkpoint without record has no relic panel",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "legacy checkpoint cannot select unavailable stairs",
+      "passed": true,
+      "details": {
+        "stage": 2,
+        "primary": "lift",
+        "usable": {
+          "lift": true,
+          "stairs": false
+        },
+        "solved": {
+          "lift": false,
+          "stairs": false
+        },
+        "secret": false,
+        "rooms": {
+          "A": null,
+          "B": null
+        },
+        "item": null,
+        "attempts": 0
+      }
+    },
+    {
+      "name": "no old record still allows primary lift escape",
+      "passed": true,
+      "details": {
+        "clues": 1,
+        "badges": 1,
+        "completed": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "lift"
+        ],
+        "relicsUsed": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "lift",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "alternate-lift-to-stairs complete page HTTP",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "alternate-lift-to-stairs real module initialized",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "lift record enables both workshops",
+      "passed": true,
+      "details": {
+        "stage": 2,
+        "primary": "lift",
+        "usable": {
+          "lift": true,
+          "stairs": true
+        },
+        "solved": {
+          "lift": false,
+          "stairs": false
+        },
+        "secret": false,
+        "rooms": {
+          "A": null,
+          "B": null
+        },
+        "item": null,
+        "attempts": 0
+      }
+    },
+    {
+      "name": "lift alternate stairs can be repaired",
+      "passed": true,
+      "details": {
+        "stage": 2,
+        "primary": "lift",
+        "usable": {
+          "lift": true,
+          "stairs": true
+        },
+        "solved": {
+          "lift": false,
+          "stairs": true
+        },
+        "secret": false,
+        "rooms": {
+          "A": {
+            "type": "straight",
+            "rotation": 1
+          },
+          "B": {
+            "type": "tee",
+            "rotation": 3
+          }
+        },
+        "item": "hook",
+        "attempts": 1
+      }
+    },
+    {
+      "name": "lift alternate integrated escape succeeds",
+      "passed": true,
+      "details": {
+        "clues": 2,
+        "badges": 3,
+        "completed": [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "power",
+          "lift"
+        ],
+        "relicsUsed": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "stairs",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "lift alternate maintenance reward granted once",
+      "passed": true,
+      "details": {
+        "before": {
+          "clues": 1,
+          "badges": 1,
+          "completed": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "achievementKeys": [
+            "power"
+          ],
+          "relicsUsed": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "hiddenEndingKeys": [],
+          "truthSolved": false,
+          "decisions": []
+        },
+        "after": {
+          "clues": 2,
+          "badges": 3,
+          "completed": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "achievementKeys": [
+            "power",
+            "lift"
+          ],
+          "relicsUsed": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "hiddenEndingKeys": [],
+          "truthSolved": false,
+          "decisions": [
+            null,
+            {
+              "gate": "stairs",
+              "variant": "canonical"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "lift alternate replay prevents duplicate reward",
+      "passed": true,
+      "details": {
+        "clues": 2,
+        "badges": 3,
+        "completed": [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "power",
+          "lift"
+        ],
+        "relicsUsed": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "stairs",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "lift record/repair/rewards survive reload",
+      "passed": true,
+      "details": {
+        "state": {
+          "stage": 2,
+          "primary": null,
+          "usable": {
+            "lift": true,
+            "stairs": true
+          },
+          "solved": {
+            "lift": false,
+            "stairs": true
+          },
+          "secret": false,
+          "rooms": {
+            "A": {
+              "type": "straight",
+              "rotation": 1
+            },
+            "B": {
+              "type": "tee",
+              "rotation": 3
+            }
+          },
+          "item": "hook",
+          "attempts": 1
+        },
+        "score": {
+          "clues": 2,
+          "badges": 3,
+          "completed": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "achievementKeys": [
+            "power",
+            "lift"
+          ],
+          "relicsUsed": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "hiddenEndingKeys": [],
+          "truthSolved": false,
+          "decisions": [
+            null,
+            {
+              "gate": "stairs",
+              "variant": "canonical"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "alternate-stairs-to-lift complete page HTTP",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "alternate-stairs-to-lift real module initialized",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "stairs record enables both workshops",
+      "passed": true,
+      "details": {
+        "stage": 2,
+        "primary": "stairs",
+        "usable": {
+          "lift": true,
+          "stairs": true
+        },
+        "solved": {
+          "lift": false,
+          "stairs": false
+        },
+        "secret": false,
+        "rooms": {
+          "A": null,
+          "B": null
+        },
+        "item": null,
+        "attempts": 0
+      }
+    },
+    {
+      "name": "stairs alternate lift can be repaired",
+      "passed": true,
+      "details": {
+        "stage": 2,
+        "primary": "stairs",
+        "usable": {
+          "lift": true,
+          "stairs": true
+        },
+        "solved": {
+          "lift": true,
+          "stairs": false
+        },
+        "secret": false,
+        "rooms": {
+          "A": {
+            "type": "tee",
+            "rotation": 0
+          },
+          "B": {
+            "type": "corner",
+            "rotation": 2
+          }
+        },
+        "item": "fuse15",
+        "attempts": 1
+      }
+    },
+    {
+      "name": "stairs alternate integrated escape succeeds",
+      "passed": true,
+      "details": {
+        "clues": 2,
+        "badges": 3,
+        "completed": [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "power",
+          "stairs"
+        ],
+        "relicsUsed": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "lift",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "stairs alternate maintenance reward granted once",
+      "passed": true,
+      "details": {
+        "before": {
+          "clues": 1,
+          "badges": 1,
+          "completed": [
+            true,
+            false,
+            false,
+            false,
+            false,
+            false
+          ],
+          "achievementKeys": [
+            "power"
+          ],
+          "relicsUsed": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "hiddenEndingKeys": [],
+          "truthSolved": false,
+          "decisions": []
+        },
+        "after": {
+          "clues": 2,
+          "badges": 3,
+          "completed": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "achievementKeys": [
+            "power",
+            "stairs"
+          ],
+          "relicsUsed": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "hiddenEndingKeys": [],
+          "truthSolved": false,
+          "decisions": [
+            null,
+            {
+              "gate": "lift",
+              "variant": "canonical"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "stairs alternate replay prevents duplicate reward",
+      "passed": true,
+      "details": {
+        "clues": 2,
+        "badges": 3,
+        "completed": [
+          true,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "achievementKeys": [
+          "power",
+          "stairs"
+        ],
+        "relicsUsed": [
+          false,
+          true,
+          false,
+          false,
+          false,
+          false
+        ],
+        "hiddenEndingKeys": [],
+        "truthSolved": false,
+        "decisions": [
+          null,
+          {
+            "gate": "lift",
+            "variant": "canonical"
+          }
+        ]
+      }
+    },
+    {
+      "name": "stairs record/repair/rewards survive reload",
+      "passed": true,
+      "details": {
+        "state": {
+          "stage": 2,
+          "primary": null,
+          "usable": {
+            "lift": true,
+            "stairs": true
+          },
+          "solved": {
+            "lift": true,
+            "stairs": false
+          },
+          "secret": false,
+          "rooms": {
+            "A": {
+              "type": "tee",
+              "rotation": 0
+            },
+            "B": {
+              "type": "corner",
+              "rotation": 2
+            }
+          },
+          "item": "fuse15",
+          "attempts": 1
+        },
+        "score": {
+          "clues": 2,
+          "badges": 3,
+          "completed": [
+            true,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "achievementKeys": [
+            "power",
+            "stairs"
+          ],
+          "relicsUsed": [
+            false,
+            true,
+            false,
+            false,
+            false,
+            false
+          ],
+          "hiddenEndingKeys": [],
+          "truthSolved": false,
+          "decisions": [
+            null,
+            {
+              "gate": "lift",
+              "variant": "canonical"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "cases": [
+    {
+      "name": "lift",
+      "seed": {
+        "schema": 1,
+        "stage": 1,
+        "achievements": {
+          "power": true
+        },
+        "decisions": []
+      },
+      "setup": "seeded only existing story checkpoint in isolated browser profile; mechanisms and route interactions via UI",
+      "status": "completed",
+      "console_page_errors": [],
+      "last_url": "http://127.0.0.1:46141/ye-lou-act2-puzzle-v094.html",
+      "final_storage": {
+        "g01-story-chapter.v0.1": "{\"schema\":1,\"stage\":1,\"achievements\":{\"power\":true,\"power_echo\":false,\"power_witness\":false,\"power_alarm\":false,\"lift\":true,\"lift_echo\":false,\"lift_witness\":false,\"lift_alarm\":false,\"stairs\":false,\"stairs_echo\":false,\"stairs_witness\":false,\"stairs_alarm\":false,\"archive\":false,\"archive_echo\":false,\"archive_witness\":false,\"archive_alarm\":false,\"intercom\":false,\"intercom_echo\":false,\"intercom_witness\":false,\"intercom_alarm\":false,\"tower\":false,\"tower_echo\":false,\"tower_witness\":false,\"tower_alarm\":false,\"service\":false,\"service_echo\":false,\"service_witness\":false,\"service_alarm\":false,\"monitor\":false,\"monitor_echo\":false,\"monitor_witness\":false,\"monitor_alarm\":false,\"hidden\":false,\"hidden_echo\":false,\"hidden_witness\":false,\"hidden_alarm\":false,\"floor13\":false,\"floor13_echo\":false,\"floor13_witness\":false,\"floor13_alarm\":false,\"office\":false,\"office_echo\":false,\"office_witness\":false,\"office_alarm\":false},\"decisions\":[null,{\"variant\":\"canonical\",\"badge\":\"lift\",\"gate\":\"lift\",\"clue\":\"电梯显示过13，但按钮上这个数字被拆掉。\"}]}",
+        "g01-act2-workshop.v0.9": "{\"route\":\"lift\",\"selected\":\"A\",\"rooms\":{\"A\":{\"type\":\"tee\",\"rotation\":0},\"B\":{\"type\":\"corner\",\"rotation\":2}},\"inspected\":{\"power\":true,\"tools\":true,\"fire\":false,\"radio\":true},\"item\":\"fuse15\",\"solved\":{\"lift\":true,\"stairs\":false},\"secret\":true,\"attempts\":5,\"note\":\"隐藏发现：两份广播使用了同一段底噪，但一份提前了两秒。有人在故意制造互相矛盾的出口指示。\"}"
+      }
+    },
+    {
+      "name": "stairs",
+      "seed": {
+        "schema": 1,
+        "stage": 1,
+        "achievements": {
+          "power": true
+        },
+        "decisions": []
+      },
+      "setup": "seeded only existing story checkpoint in isolated browser profile; mechanisms and route interactions via UI",
+      "status": "completed",
+      "console_page_errors": [],
+      "last_url": "http://127.0.0.1:46141/ye-lou-act2-puzzle-v094.html",
+      "final_storage": {
+        "g01-story-chapter.v0.1": "{\"schema\":1,\"stage\":1,\"achievements\":{\"power\":true,\"power_echo\":false,\"power_witness\":false,\"power_alarm\":false,\"lift\":false,\"lift_echo\":false,\"lift_witness\":false,\"lift_alarm\":false,\"stairs\":true,\"stairs_echo\":false,\"stairs_witness\":false,\"stairs_alarm\":false,\"archive\":false,\"archive_echo\":false,\"archive_witness\":false,\"archive_alarm\":false,\"intercom\":false,\"intercom_echo\":false,\"intercom_witness\":false,\"intercom_alarm\":false,\"tower\":false,\"tower_echo\":false,\"tower_witness\":false,\"tower_alarm\":false,\"service\":false,\"service_echo\":false,\"service_witness\":false,\"service_alarm\":false,\"monitor\":false,\"monitor_echo\":false,\"monitor_witness\":false,\"monitor_alarm\":false,\"hidden\":false,\"hidden_echo\":false,\"hidden_witness\":false,\"hidden_alarm\":false,\"floor13\":false,\"floor13_echo\":false,\"floor13_witness\":false,\"floor13_alarm\":false,\"office\":false,\"office_echo\":false,\"office_witness\":false,\"office_alarm\":false},\"decisions\":[null,{\"variant\":\"canonical\",\"badge\":\"stairs\",\"gate\":\"stairs\",\"clue\":\"消防楼梯的数字从12直接跳到14，中间留着一块新漆。\"}]}",
+        "g01-act2-workshop.v0.9": "{\"route\":\"stairs\",\"selected\":\"B\",\"rooms\":{\"A\":{\"type\":\"straight\",\"rotation\":1},\"B\":{\"type\":\"tee\",\"rotation\":3}},\"inspected\":{\"power\":false,\"tools\":true,\"fire\":true,\"radio\":false},\"item\":\"hook\",\"solved\":{\"lift\":false,\"stairs\":true},\"secret\":false,\"attempts\":3,\"note\":\"✓ 东侧消防门机关已解除！A、B 两室完成联动。现在到下方3×3地图拼接最后一个出口；可另选路线探索不同结局。\"}"
+      }
+    },
+    {
+      "name": "legacy-no-record",
+      "seed": {
+        "schema": 1,
+        "stage": 1,
+        "achievements": {
+          "lift": true
+        },
+        "decisions": []
+      },
+      "setup": "seeded only existing story checkpoint in isolated browser profile; mechanisms and route interactions via UI",
+      "status": "completed",
+      "console_page_errors": [],
+      "last_url": "http://127.0.0.1:46141/ye-lou-act2-puzzle-v094.html",
+      "final_storage": {
+        "g01-story-chapter.v0.1": "{\"schema\":1,\"stage\":1,\"achievements\":{\"power\":false,\"power_echo\":false,\"power_witness\":false,\"power_alarm\":false,\"lift\":true,\"lift_echo\":false,\"lift_witness\":false,\"lift_alarm\":false,\"stairs\":false,\"stairs_echo\":false,\"stairs_witness\":false,\"stairs_alarm\":false,\"archive\":false,\"archive_echo\":false,\"archive_witness\":false,\"archive_alarm\":false,\"intercom\":false,\"intercom_echo\":false,\"intercom_witness\":false,\"intercom_alarm\":false,\"tower\":false,\"tower_echo\":false,\"tower_witness\":false,\"tower_alarm\":false,\"service\":false,\"service_echo\":false,\"service_witness\":false,\"service_alarm\":false,\"monitor\":false,\"monitor_echo\":false,\"monitor_witness\":false,\"monitor_alarm\":false,\"hidden\":false,\"hidden_echo\":false,\"hidden_witness\":false,\"hidden_alarm\":false,\"floor13\":false,\"floor13_echo\":false,\"floor13_witness\":false,\"floor13_alarm\":false,\"office\":false,\"office_echo\":false,\"office_witness\":false,\"office_alarm\":false},\"decisions\":[null,{\"variant\":\"canonical\",\"badge\":\"lift\",\"gate\":\"lift\",\"clue\":\"电梯显示过13，但按钮上这个数字被拆掉。\"}]}",
+        "g01-act2-workshop.v0.9": "{\"route\":\"lift\",\"selected\":\"B\",\"rooms\":{\"A\":{\"type\":\"tee\",\"rotation\":0},\"B\":{\"type\":\"corner\",\"rotation\":2}},\"inspected\":{\"power\":true,\"tools\":true,\"fire\":false,\"radio\":false},\"item\":\"fuse15\",\"solved\":{\"lift\":true,\"stairs\":false},\"secret\":false,\"attempts\":1,\"note\":\"✓ 北侧电梯机关已解除！A、B 两室完成联动。现在到下方3×3地图拼接最后一个出口；可另选路线探索不同结局。\"}"
+      }
+    },
+    {
+      "name": "alternate-lift-to-stairs",
+      "seed": {
+        "schema": 1,
+        "stage": 1,
+        "achievements": {
+          "power": true
+        },
+        "decisions": []
+      },
+      "setup": "seeded only existing story checkpoint in isolated browser profile; mechanisms and route interactions via UI",
+      "status": "completed",
+      "console_page_errors": [],
+      "last_url": "http://127.0.0.1:46141/ye-lou-act2-puzzle-v094.html",
+      "final_storage": {
+        "g01-act2-workshop.v0.9": "{\"route\":\"stairs\",\"selected\":\"B\",\"rooms\":{\"A\":{\"type\":\"straight\",\"rotation\":1},\"B\":{\"type\":\"tee\",\"rotation\":3}},\"inspected\":{\"power\":false,\"tools\":true,\"fire\":true,\"radio\":false},\"item\":\"hook\",\"solved\":{\"lift\":false,\"stairs\":true},\"secret\":false,\"attempts\":1,\"note\":\"✓ 东侧消防门机关已解除！A、B 两室完成联动。现在到下方3×3地图拼接最后一个出口；可另选路线探索不同结局。\"}",
+        "g01-story-chapter.v0.1": "{\"schema\":1,\"stage\":1,\"achievements\":{\"power\":true,\"power_echo\":false,\"power_witness\":false,\"power_alarm\":false,\"lift\":true,\"lift_echo\":false,\"lift_witness\":false,\"lift_alarm\":false,\"stairs\":false,\"stairs_echo\":false,\"stairs_witness\":false,\"stairs_alarm\":false,\"archive\":false,\"archive_echo\":false,\"archive_witness\":false,\"archive_alarm\":false,\"intercom\":false,\"intercom_echo\":false,\"intercom_witness\":false,\"intercom_alarm\":false,\"tower\":false,\"tower_echo\":false,\"tower_witness\":false,\"tower_alarm\":false,\"service\":false,\"service_echo\":false,\"service_witness\":false,\"service_alarm\":false,\"monitor\":false,\"monitor_echo\":false,\"monitor_witness\":false,\"monitor_alarm\":false,\"hidden\":false,\"hidden_echo\":false,\"hidden_witness\":false,\"hidden_alarm\":false,\"floor13\":false,\"floor13_echo\":false,\"floor13_witness\":false,\"floor13_alarm\":false,\"office\":false,\"office_echo\":false,\"office_witness\":false,\"office_alarm\":false},\"decisions\":[null,{\"variant\":\"canonical\",\"badge\":\"lift\",\"gate\":\"stairs\",\"clue\":\"电梯显示过13，但按钮上这个数字被拆掉。\"}]}",
+        "g01-story-relics.v0.3": "{\"schema\":1,\"used\":[false,true,false,false,false,false],\"secret\":{\"maintenance\":true,\"timestamp\":false,\"observer\":false},\"truthSolved\":false,\"truthBadges\":{\"witness\":false,\"breaker\":false}}"
+      }
+    },
+    {
+      "name": "alternate-stairs-to-lift",
+      "seed": {
+        "schema": 1,
+        "stage": 1,
+        "achievements": {
+          "power": true
+        },
+        "decisions": []
+      },
+      "setup": "seeded only existing story checkpoint in isolated browser profile; mechanisms and route interactions via UI",
+      "status": "completed",
+      "console_page_errors": [],
+      "last_url": "http://127.0.0.1:46141/ye-lou-act2-puzzle-v094.html",
+      "final_storage": {
+        "g01-act2-workshop.v0.9": "{\"route\":\"lift\",\"selected\":\"B\",\"rooms\":{\"A\":{\"type\":\"tee\",\"rotation\":0},\"B\":{\"type\":\"corner\",\"rotation\":2}},\"inspected\":{\"power\":true,\"tools\":true,\"fire\":false,\"radio\":false},\"item\":\"fuse15\",\"solved\":{\"lift\":true,\"stairs\":false},\"secret\":false,\"attempts\":1,\"note\":\"✓ 北侧电梯机关已解除！A、B 两室完成联动。现在到下方3×3地图拼接最后一个出口；可另选路线探索不同结局。\"}",
+        "g01-story-chapter.v0.1": "{\"schema\":1,\"stage\":1,\"achievements\":{\"power\":true,\"power_echo\":false,\"power_witness\":false,\"power_alarm\":false,\"lift\":false,\"lift_echo\":false,\"lift_witness\":false,\"lift_alarm\":false,\"stairs\":true,\"stairs_echo\":false,\"stairs_witness\":false,\"stairs_alarm\":false,\"archive\":false,\"archive_echo\":false,\"archive_witness\":false,\"archive_alarm\":false,\"intercom\":false,\"intercom_echo\":false,\"intercom_witness\":false,\"intercom_alarm\":false,\"tower\":false,\"tower_echo\":false,\"tower_witness\":false,\"tower_alarm\":false,\"service\":false,\"service_echo\":false,\"service_witness\":false,\"service_alarm\":false,\"monitor\":false,\"monitor_echo\":false,\"monitor_witness\":false,\"monitor_alarm\":false,\"hidden\":false,\"hidden_echo\":false,\"hidden_witness\":false,\"hidden_alarm\":false,\"floor13\":false,\"floor13_echo\":false,\"floor13_witness\":false,\"floor13_alarm\":false,\"office\":false,\"office_echo\":false,\"office_witness\":false,\"office_alarm\":false},\"decisions\":[null,{\"variant\":\"canonical\",\"badge\":\"stairs\",\"gate\":\"lift\",\"clue\":\"消防楼梯的数字从12直接跳到14，中间留着一块新漆。\"}]}",
+        "g01-story-relics.v0.3": "{\"schema\":1,\"used\":[false,true,false,false,false,false],\"secret\":{\"maintenance\":true,\"timestamp\":false,\"observer\":false},\"truthSolved\":false,\"truthBadges\":{\"witness\":false,\"breaker\":false}}"
+      }
+    }
+  ],
+  "page_errors": [],
+  "browser_version": "154.0.8037.57",
+  "summary": {
+    "checks": 45,
+    "passed": 45,
+    "failed": 0,
+    "case_errors": []
+  }
+}

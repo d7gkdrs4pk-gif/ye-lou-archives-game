@@ -1,0 +1,2635 @@
+{
+  "candidate": "ye-lou-act2-puzzle-v094.html",
+  "viewports": [
+    [
+      320,
+      568
+    ],
+    [
+      375,
+      667
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "source": "complete repository HTML and unmodified second-act module; no page stubs",
+  "storage": "isolated browser contexts; only later-act access uses seeded existing badge fields",
+  "checks": [
+    {
+      "name": "320x568 fresh first-to-second real first-act escape",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "320x568 fresh first-to-second second-act start is at top",
+      "passed": true,
+      "details": {
+        "previous": {
+          "top": 309,
+          "max": 309,
+          "descendants": []
+        },
+        "new": {
+          "top": 0,
+          "max": 694,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 fresh first-to-second comic and caption are unobstructed",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 239,
+        "speechY": 160.1875,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "320x568 act2 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act2 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 694,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "320x568 act2 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 239,
+        "speechY": 160.1875,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "320x568 act2 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 968,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act2 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 711,
+          "max": 711,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 711,
+          "max": 711,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 act2 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 69,
+          "max": 711,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 69,
+          "max": 694,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 act2 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 694,
+          "max": 694,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 694,
+          "max": 694,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 act3 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act3 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 586,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act3 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 215,
+        "speechY": 128.828125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "320x568 act3 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 206,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act3 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 603,
+          "max": 603,
+          "descendants": []
+        },
+        "after": {
+          "top": 603,
+          "max": 603,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "320x568 act3 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 43,
+          "max": 603,
+          "descendants": []
+        },
+        "after": {
+          "top": 43,
+          "max": 586,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "320x568 act3 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 586,
+          "max": 586,
+          "descendants": []
+        },
+        "after": {
+          "top": 586,
+          "max": 586,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "320x568 act4 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act4 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 632,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "320x568 act4 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 215,
+        "speechY": 128.828125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "320x568 act4 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 206,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act4 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 632,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 632,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 act4 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 43,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 43,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 act4 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 632,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 632,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 act5 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act5 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 586,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act5 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 215,
+        "speechY": 128.828125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "320x568 act5 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 206,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act5 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 586,
+          "max": 586,
+          "descendants": []
+        },
+        "after": {
+          "top": 586,
+          "max": 586,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "320x568 act5 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 43,
+          "max": 586,
+          "descendants": []
+        },
+        "after": {
+          "top": 43,
+          "max": 586,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "320x568 act5 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 586,
+          "max": 586,
+          "descendants": []
+        },
+        "after": {
+          "top": 586,
+          "max": 586,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "320x568 act6 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act6 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 632,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "320x568 act6 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 215,
+        "speechY": 128.828125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "320x568 act6 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 206,
+        "descendants": []
+      }
+    },
+    {
+      "name": "320x568 act6 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 632,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 632,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 act6 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 43,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 43,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 act6 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 632,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 632,
+          "max": 632,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "320x568 replay starts clean without losing earned progress",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 632,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "320x568 topbar full visible archive area receives pointer input",
+      "passed": true,
+      "details": [
+        {
+          "x": 30,
+          "y": 26,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 22.185625,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 22.185625,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 22.185625,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 31.464062499999997,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 31.464062499999997,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 31.464062499999997,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 41.7734375,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 41.7734375,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 41.7734375,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 52.082812499999996,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 52.082812499999996,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 52.082812499999996,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 61.36125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 61.36125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 61.36125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        }
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 1 opens archive",
+      "passed": true,
+      "details": [
+        30,
+        26
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 2 opens archive",
+      "passed": true,
+      "details": [
+        22.185625,
+        17.3
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 3 opens archive",
+      "passed": true,
+      "details": [
+        22.185625,
+        27.5
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 4 opens archive",
+      "passed": true,
+      "details": [
+        22.185625,
+        37.7
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 5 opens archive",
+      "passed": true,
+      "details": [
+        31.464062499999997,
+        17.3
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 6 opens archive",
+      "passed": true,
+      "details": [
+        31.464062499999997,
+        27.5
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 7 opens archive",
+      "passed": true,
+      "details": [
+        31.464062499999997,
+        37.7
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 8 opens archive",
+      "passed": true,
+      "details": [
+        41.7734375,
+        17.3
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 9 opens archive",
+      "passed": true,
+      "details": [
+        41.7734375,
+        27.5
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 10 opens archive",
+      "passed": true,
+      "details": [
+        41.7734375,
+        37.7
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 11 opens archive",
+      "passed": true,
+      "details": [
+        52.082812499999996,
+        17.3
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 12 opens archive",
+      "passed": true,
+      "details": [
+        52.082812499999996,
+        27.5
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 13 opens archive",
+      "passed": true,
+      "details": [
+        52.082812499999996,
+        37.7
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 14 opens archive",
+      "passed": true,
+      "details": [
+        61.36125,
+        17.3
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 15 opens archive",
+      "passed": true,
+      "details": [
+        61.36125,
+        27.5
+      ]
+    },
+    {
+      "name": "320x568 topbar archive sample 16 opens archive",
+      "passed": true,
+      "details": [
+        61.36125,
+        37.7
+      ]
+    },
+    {
+      "name": "320x568 topbar motion control remains clickable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "320x568 topbar archive/motion actions do not change game records",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "320x568 topbar back control navigates to unchanged main entry",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "375x667 fresh first-to-second real first-act escape",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "375x667 fresh first-to-second second-act start is at top",
+      "passed": true,
+      "details": {
+        "previous": {
+          "top": 202,
+          "max": 202,
+          "descendants": []
+        },
+        "new": {
+          "top": 0,
+          "max": 607,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 fresh first-to-second comic and caption are unobstructed",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 239,
+        "speechY": 149.328125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "375x667 act2 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act2 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 607,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "375x667 act2 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 239,
+        "speechY": 149.328125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "375x667 act2 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 899,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act2 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 607,
+          "max": 607,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 607,
+          "max": 607,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 act2 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 19,
+          "max": 607,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 19,
+          "max": 607,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 act2 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 607,
+          "max": 607,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 607,
+          "max": 607,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 act3 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act3 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 501,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act3 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 229,
+        "speechY": 136.3125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "375x667 act3 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 100,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act3 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 501,
+          "max": 501,
+          "descendants": []
+        },
+        "after": {
+          "top": 501,
+          "max": 501,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "375x667 act3 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 7,
+          "max": 501,
+          "descendants": []
+        },
+        "after": {
+          "top": 7,
+          "max": 501,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "375x667 act3 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 501,
+          "max": 501,
+          "descendants": []
+        },
+        "after": {
+          "top": 501,
+          "max": 501,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "375x667 act4 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act4 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 547,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "375x667 act4 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 229,
+        "speechY": 136.3125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "375x667 act4 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 100,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act4 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 547,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 547,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 act4 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 7,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 7,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 act4 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 547,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 547,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 act5 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act5 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 501,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act5 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 229,
+        "speechY": 136.3125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "375x667 act5 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 100,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act5 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 501,
+          "max": 501,
+          "descendants": []
+        },
+        "after": {
+          "top": 501,
+          "max": 501,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "375x667 act5 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 7,
+          "max": 501,
+          "descendants": []
+        },
+        "after": {
+          "top": 7,
+          "max": 501,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "375x667 act5 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 501,
+          "max": 501,
+          "descendants": []
+        },
+        "after": {
+          "top": 501,
+          "max": 501,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "375x667 act6 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act6 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 547,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "375x667 act6 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 229,
+        "speechY": 136.3125,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "375x667 act6 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 118,
+        "descendants": []
+      }
+    },
+    {
+      "name": "375x667 act6 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 547,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 547,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 act6 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 7,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 7,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 act6 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 547,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 547,
+          "max": 547,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "375x667 replay starts clean without losing earned progress",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 547,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "375x667 topbar full visible archive area receives pointer input",
+      "passed": true,
+      "details": [
+        {
+          "x": 208.108125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 208.108125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 208.108125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 220.528125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 220.528125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 220.528125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 234.328125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 234.328125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 234.328125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 248.128125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 248.128125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 248.128125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 260.548125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 260.548125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 260.548125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        }
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 1 opens archive",
+      "passed": true,
+      "details": [
+        208.108125,
+        17.3
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 2 opens archive",
+      "passed": true,
+      "details": [
+        208.108125,
+        27.5
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 3 opens archive",
+      "passed": true,
+      "details": [
+        208.108125,
+        37.7
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 4 opens archive",
+      "passed": true,
+      "details": [
+        220.528125,
+        17.3
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 5 opens archive",
+      "passed": true,
+      "details": [
+        220.528125,
+        27.5
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 6 opens archive",
+      "passed": true,
+      "details": [
+        220.528125,
+        37.7
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 7 opens archive",
+      "passed": true,
+      "details": [
+        234.328125,
+        17.3
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 8 opens archive",
+      "passed": true,
+      "details": [
+        234.328125,
+        27.5
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 9 opens archive",
+      "passed": true,
+      "details": [
+        234.328125,
+        37.7
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 10 opens archive",
+      "passed": true,
+      "details": [
+        248.128125,
+        17.3
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 11 opens archive",
+      "passed": true,
+      "details": [
+        248.128125,
+        27.5
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 12 opens archive",
+      "passed": true,
+      "details": [
+        248.128125,
+        37.7
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 13 opens archive",
+      "passed": true,
+      "details": [
+        260.548125,
+        17.3
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 14 opens archive",
+      "passed": true,
+      "details": [
+        260.548125,
+        27.5
+      ]
+    },
+    {
+      "name": "375x667 topbar archive sample 15 opens archive",
+      "passed": true,
+      "details": [
+        260.548125,
+        37.7
+      ]
+    },
+    {
+      "name": "375x667 topbar motion control remains clickable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "375x667 topbar archive/motion actions do not change game records",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "375x667 topbar back control navigates to unchanged main entry",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "390x844 fresh first-to-second real first-act escape",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "390x844 fresh first-to-second second-act start is at top",
+      "passed": true,
+      "details": {
+        "previous": {
+          "top": 66,
+          "max": 66,
+          "descendants": []
+        },
+        "new": {
+          "top": 0,
+          "max": 481,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 fresh first-to-second comic and caption are unobstructed",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 256.46875,
+        "speechY": 164.5,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "390x844 act2 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act2 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 481,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "390x844 act2 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 256.46875,
+        "speechY": 164.5,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "390x844 act2 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 710,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act2 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 481,
+          "max": 481,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 481,
+          "max": 481,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 act2 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 0,
+          "max": 481,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 0,
+          "max": 481,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 act2 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 481,
+          "max": 481,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 481,
+          "max": 481,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 act3 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act3 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 355,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act3 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 229,
+        "speechY": 133.921875,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "390x844 act3 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act3 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 355,
+          "max": 355,
+          "descendants": []
+        },
+        "after": {
+          "top": 355,
+          "max": 355,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "390x844 act3 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 0,
+          "max": 355,
+          "descendants": []
+        },
+        "after": {
+          "top": 0,
+          "max": 355,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "390x844 act3 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 355,
+          "max": 355,
+          "descendants": []
+        },
+        "after": {
+          "top": 355,
+          "max": 355,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "390x844 act4 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act4 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 401,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "390x844 act4 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 229,
+        "speechY": 133.921875,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "390x844 act4 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act4 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 401,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 401,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 act4 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 0,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 0,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 act4 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 401,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 401,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 act5 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act5 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 355,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act5 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 229,
+        "speechY": 133.921875,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "390x844 act5 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act5 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 355,
+          "max": 355,
+          "descendants": []
+        },
+        "after": {
+          "top": 355,
+          "max": 355,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "390x844 act5 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 0,
+          "max": 355,
+          "descendants": []
+        },
+        "after": {
+          "top": 0,
+          "max": 355,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "390x844 act5 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 355,
+          "max": 355,
+          "descendants": []
+        },
+        "after": {
+          "top": 355,
+          "max": 355,
+          "descendants": []
+        }
+      }
+    },
+    {
+      "name": "390x844 act6 new landing at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act6 new story/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 401,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "390x844 act6 comic/caption remain visible",
+      "passed": true,
+      "details": {
+        "portraitY": 113,
+        "portraitBottom": 229,
+        "speechY": 133.921875,
+        "barBottom": 104,
+        "visible": true,
+        "comic": true,
+        "overflow": false
+      }
+    },
+    {
+      "name": "390x844 act6 new route/nested scrolling at top",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 0,
+        "descendants": []
+      }
+    },
+    {
+      "name": "390x844 act6 return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 401,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 401,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 act6 ordinary render does not force top",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 0,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 0,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 act6 cover return preserves reading position",
+      "passed": true,
+      "details": {
+        "before": {
+          "top": 401,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        },
+        "after": {
+          "top": 401,
+          "max": 401,
+          "descendants": [
+            {
+              "id": "relicPanel",
+              "className": "relic-panel",
+              "top": 0
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "390x844 replay starts clean without losing earned progress",
+      "passed": true,
+      "details": {
+        "top": 0,
+        "max": 401,
+        "descendants": [
+          {
+            "id": "relicPanel",
+            "className": "relic-panel",
+            "top": 0
+          }
+        ]
+      }
+    },
+    {
+      "name": "390x844 topbar full visible archive area receives pointer input",
+      "passed": true,
+      "details": [
+        {
+          "x": 223.108125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 223.108125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 223.108125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 235.528125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 235.528125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 235.528125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 249.328125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 249.328125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 249.328125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 263.128125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 263.128125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 263.128125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 275.548125,
+          "y": 17.3,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 275.548125,
+          "y": 27.5,
+          "id": "archiveShortcut"
+        },
+        {
+          "x": 275.548125,
+          "y": 37.7,
+          "id": "archiveShortcut"
+        }
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 1 opens archive",
+      "passed": true,
+      "details": [
+        223.108125,
+        17.3
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 2 opens archive",
+      "passed": true,
+      "details": [
+        223.108125,
+        27.5
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 3 opens archive",
+      "passed": true,
+      "details": [
+        223.108125,
+        37.7
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 4 opens archive",
+      "passed": true,
+      "details": [
+        235.528125,
+        17.3
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 5 opens archive",
+      "passed": true,
+      "details": [
+        235.528125,
+        27.5
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 6 opens archive",
+      "passed": true,
+      "details": [
+        235.528125,
+        37.7
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 7 opens archive",
+      "passed": true,
+      "details": [
+        249.328125,
+        17.3
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 8 opens archive",
+      "passed": true,
+      "details": [
+        249.328125,
+        27.5
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 9 opens archive",
+      "passed": true,
+      "details": [
+        249.328125,
+        37.7
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 10 opens archive",
+      "passed": true,
+      "details": [
+        263.128125,
+        17.3
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 11 opens archive",
+      "passed": true,
+      "details": [
+        263.128125,
+        27.5
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 12 opens archive",
+      "passed": true,
+      "details": [
+        263.128125,
+        37.7
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 13 opens archive",
+      "passed": true,
+      "details": [
+        275.548125,
+        17.3
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 14 opens archive",
+      "passed": true,
+      "details": [
+        275.548125,
+        27.5
+      ]
+    },
+    {
+      "name": "390x844 topbar archive sample 15 opens archive",
+      "passed": true,
+      "details": [
+        275.548125,
+        37.7
+      ]
+    },
+    {
+      "name": "390x844 topbar motion control remains clickable",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "390x844 topbar archive/motion actions do not change game records",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "390x844 topbar back control navigates to unchanged main entry",
+      "passed": true,
+      "details": null
+    },
+    {
+      "name": "no JavaScript page errors",
+      "passed": true,
+      "details": []
+    }
+  ],
+  "cases": [
+    {
+      "name": "normal_progression",
+      "viewport": [
+        320,
+        568
+      ],
+      "completed": true
+    },
+    {
+      "name": "common_navigation",
+      "viewport": [
+        320,
+        568
+      ],
+      "completed": true
+    },
+    {
+      "name": "topbar",
+      "viewport": [
+        320,
+        568
+      ],
+      "completed": true
+    },
+    {
+      "name": "normal_progression",
+      "viewport": [
+        375,
+        667
+      ],
+      "completed": true
+    },
+    {
+      "name": "common_navigation",
+      "viewport": [
+        375,
+        667
+      ],
+      "completed": true
+    },
+    {
+      "name": "topbar",
+      "viewport": [
+        375,
+        667
+      ],
+      "completed": true
+    },
+    {
+      "name": "normal_progression",
+      "viewport": [
+        390,
+        844
+      ],
+      "completed": true
+    },
+    {
+      "name": "common_navigation",
+      "viewport": [
+        390,
+        844
+      ],
+      "completed": true
+    },
+    {
+      "name": "topbar",
+      "viewport": [
+        390,
+        844
+      ],
+      "completed": true
+    }
+  ],
+  "page_errors": [],
+  "limitations": [
+    "Chromium simulation only; real iPhone Safari and WeChat are not verified"
+  ],
+  "browser_version": "154.0.8037.57",
+  "summary": {
+    "checks": 176,
+    "passed": 176,
+    "failed": 0,
+    "completed_cases": 9
+  }
+}

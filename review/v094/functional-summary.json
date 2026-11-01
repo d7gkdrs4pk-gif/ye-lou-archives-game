@@ -1,0 +1,85 @@
+{
+  "art": {
+    "summary": {
+      "checks": 208,
+      "passed": 208,
+      "failed": 0,
+      "case_errors": []
+    },
+    "page_errors": [],
+    "browser_version": "154.0.8037.57"
+  },
+  "flow": {
+    "summary": {
+      "checks": 176,
+      "passed": 176,
+      "failed": 0,
+      "completed_cases": 9
+    },
+    "page_errors": [],
+    "browser_version": "154.0.8037.57"
+  },
+  "act2": {
+    "summary": {
+      "checks": 45,
+      "passed": 45,
+      "failed": 0,
+      "case_errors": []
+    },
+    "page_errors": [],
+    "browser_version": "154.0.8037.57"
+  },
+  "total_assertions": 429,
+  "candidate_sha256": "db275f681e44fd8819996fc27d6a4d91a4fbc8e762fa83b64a01a2086912fb2a",
+  "css_sha256": "bc19d394e9bc0fdbdd38908b186b31d020d07695a309172b01993dc71d635813",
+  "limitations": [
+    "Chromium mobile viewport/touch simulation only. Real iPhone Safari and WeChat unverified.",
+    "Checks establish resource delivery, script freeze and interaction/layout behavior, not user aesthetic approval.",
+    "Original 45-check suite runner source description mentions V092 because it is reused unchanged; each recorded URL is the V094 candidate."
+  ],
+  "art_reverified_after_dialogue_update": true,
+  "tested_input_sha256": {
+    "ye-lou-act2-puzzle-v094.html": "db275f681e44fd8819996fc27d6a4d91a4fbc8e762fa83b64a01a2086912fb2a",
+    "act2-comic-art-v094.css": "bc19d394e9bc0fdbdd38908b186b31d020d07695a309172b01993dc71d635813",
+    "assets/act2-v094/dialogue.webp": "e490de1354bc8a9f85cf0c28185a5525d5daf5082cd584a325a62c03d7f1cd78",
+    "assets/act2-v094/art-manifest.json": "285fc5921f9be8d253093be439525e88e1dbe4c53e89978ede36c5495c0ba11a"
+  },
+  "asset_manifest_sha256": "285fc5921f9be8d253093be439525e88e1dbe4c53e89978ede36c5495c0ba11a",
+  "dialogue_sha256": "e490de1354bc8a9f85cf0c28185a5525d5daf5082cd584a325a62c03d7f1cd78",
+  "asset_hashes": {
+    "battery.webp": {
+      "sha256": "dbeb61568bc0c791d52c8455e859417750cb010e5ed0642e47dc2dc0dfb25664",
+      "bytes": 64458
+    },
+    "circuit.webp": {
+      "sha256": "b77eda9ccbe0826c96fb913093dc10811a11feda4ad7a7de1d43e4703af88fa6",
+      "bytes": 59346
+    },
+    "lift.webp": {
+      "sha256": "1c7940dc6bf2d8c4445e17cb4101002edbadd788de54c0acc22f41be220a12f8",
+      "bytes": 61280
+    },
+    "alarm.webp": {
+      "sha256": "808844785a9ef58a6d0ef83ae6fab38f9b06e664a945b9b3e32b4bcae5fdd3a2",
+      "bytes": 61292
+    },
+    "latch.webp": {
+      "sha256": "5897fd5d281dbfec1d93af0af918a2d6f916a74978b2741d3d20d1257d13538b",
+      "bytes": 55370
+    },
+    "door.webp": {
+      "sha256": "a3b0fdde4d3263a589f928db68cdbf88d43a1f188f1937d7cc8377376443435c",
+      "bytes": 74390
+    },
+    "dialogue.webp": {
+      "sha256": "e490de1354bc8a9f85cf0c28185a5525d5daf5082cd584a325a62c03d7f1cd78",
+      "bytes": 32808
+    },
+    "workbench.webp": {
+      "sha256": "cbdd630de951318501163bd897a7c61f9afe1c66830398a012ffe7b809947d04",
+      "bytes": 70924
+    }
+  },
+  "total_webp_bytes": 479868,
+  "reuse_note": "Only the 208 artwork/layout/pointer checks were repeated after dialogue artwork replacement. The unchanged 176 flow and 45 mechanism results were reused without additional browser runs."
+}
