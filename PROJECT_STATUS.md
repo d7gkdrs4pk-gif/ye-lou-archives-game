@@ -2,13 +2,21 @@
 
 更新时间：2026-11-01（北京时间）
 
-## 独立仓库迁移状态｜V1.0（当前唯一执行入口）
+## G01-E V0.9.3 第二幕美术一致性修复（当前唯一研发试玩候选）
+- **触发：** 用户在独立新仓库 iPhone 实测发现第二幕视觉与第一幕差异明显。根因已从源码确认：第一幕使用精细 WebP 人物和道具插画，第二幕只有简化 SVG 场景与渐变/Emoji 事件卡；此前 292/292 与 45/45 自动测试不等于美术一致性通过。
+- **本轮候选文件：** [ye-lou-act2-puzzle-v093.html](./ye-lou-act2-puzzle-v093.html)，SHA-256 `7ca1ab3e700a999993dccfd79db0da73dbe4f54ec9a3eac7af10faf1bcc4430d`，Git Blob `40fec8d5d8120e284cebe0a186904c635e9960d0`。在 V0.9.2 母版基础上仅变更版本标题并增加一处 CSS 链接。
+- **新增美术覆盖层：** [act2-comic-art-v093.css](./act2-comic-art-v093.css)，SHA-256 `839049128cb7bb38b991bf97d9d91830cd6122c3fe104c9d7c2a758dd9280189`，Git Blob `10dfee8be2c4315d86f9a776cc808472be6a8249`。第二幕人物特写使用第一幕原角色 WebP 作为身份基准并叠加第二幕电梯环境；新增 6 张事件专属有景深的原创 SVG 漫画画面，维修现场增加场景感；均限制 `body[data-comic-visual="true"][data-act="2"]`。
+- **冻结验证：** V0.9.3 的 11 个内联游戏脚本与 V0.9.2 **逐字一致**；原外部 `act2-workshop-v090.js` 引用及源码 Blob 不变。检查 6/6 事件图、SVG 语法结构 8/8、资源 CSS 链接存在通过。未执行本轮 Chromium 真正画面 QA 和 45 项逻辑重跑，不能虚报已通过。
+- **待验收：** GitHub Pages 真实发布及 iPhone Safari 实际视觉对比。V0.9.3 仅为美术候选，不是商业正式版；与 V0.9.2 的美术表现是否达到一致仍由真机验收确认。第一幕、第三至六幕与旧游戏原文件均保持，第三至六幕独立素材缺口仍不在本轮。
+- **交接单：** [HANDOFF_G01-E_V0.9.3.md](./HANDOFF_G01-E_V0.9.3.md)，为本仓库当前唯一研发接续指针；V0.9.2 与旧迁移交接归档，退出普通执行链。
+
+## 独立仓库迁移状态｜V1.0（已完成，历史基线）
 - **新仓库：** [ye-lou-archives-game](https://github.com/d7gkdrs4pk-gif/ye-lou-archives-game)，从原 [roompath-game](https://github.com/d7gkdrs4pk-gif/roompath-game) 按需复制。原仓库原样保留，不删除、不替换；原仓库 Pages 旧部署锁与本仓库相互独立。
-- **唯一当前 G01-E 试玩工作母版：** `ye-lou-act2-puzzle-v092.html`，SHA-256 `7135e0b820ae02a67006ec0d4dcb6cd9a46dc9a3a71807ad99a2649149cf7731`、Git Blob `b4c5bdc28bb785a2569324aa57bd580a8a055876`；与原仓库逐字节一致。V0.9.1 文件同哈希保留回退；V0.8.2.2 视觉参照未变。
+- **上一期已验证、用于回退的 G01-E 试玩母版：** `ye-lou-act2-puzzle-v092.html`，SHA-256 `7135e0b820ae02a67006ec0d4dcb6cd9a46dc9a3a71807ad99a2649149cf7731`、Git Blob `b4c5bdc28bb785a2569324aa57bd580a8a055876`；与原仓库逐字节一致。V0.9.1 文件同哈希保留回退；V0.8.2.2 视觉参照未变。
 - **原20关/60星：** `index.html` 保留游戏规则与存档结构，仅更新新仓库分享海报指向和悬疑章节入口链接（原 Git Blob `6527bf699df1a3714de82c2eb64bc0d8cc0d3a2f` → 新 Git Blob `49651e6204fa174d370c3da21c5c9e1fdb03e93e`）。独立备用分享脚本 `share-poster.js` 仅替换两处旧仓库 URL（原 `e94e0cf2f4f228e0f8a7754fbcaeb0a6a3978f61` → 新 `2f485c7fd1d019a8cf5a7f17cc92616619646910`）。
 - **依赖/冻结：** `act2-workshop-v090.js`、V0.9.1、V0.8.2.2、两份 V0.9.2 自动化回归脚本与官方 `frontend-design` Skill 原文件哈希一致。第二幕已有 45/45、视觉与交互针对性 292/292 结果来自迁移前 Chromium 验收，**不是新仓库 Pages 或真机验收**。
 - **发布：** 新仓库于迁移时尚未启用 GitHub Pages。需在本仓库 `Settings → Pages → Build and deployment → Deploy from a branch → main / (root)` 正式开启，并独立验证网站 HTTP 200、机关 JS HTTP 200 及 iPhone Safari；不得把预定链接当成功地址。优先静态源发布，禁止拷贝旧仓库失败的 Pages 解锁工作流。
-- **唯一现行交接单：** [HANDOFF_G01-E_REPOSITORY_MIGRATION_V1.0.md](./HANDOFF_G01-E_REPOSITORY_MIGRATION_V1.0.md)；旧 G01-E V0.9.2 交接单作为冻结修复历史。以下各模块若仍提到 `roompath-game` 的旧部署/旧分支，均为迁移前历史记录，不代表新仓库状态。
+- **迁移完成记录（历史）：** [HANDOFF_G01-E_REPOSITORY_MIGRATION_V1.0.md](./HANDOFF_G01-E_REPOSITORY_MIGRATION_V1.0.md)；旧 G01-E V0.9.2 交接单作为冻结修复历史。以下各模块若仍提到 `roompath-game` 的旧部署/旧分支，均为迁移前历史记录，不代表新仓库状态。
 
 ## 项目执行红线（用户明确确认，所有后续修改必须遵守）
 - **漫画视觉冻结：** 六幕及新增内容必须统一沿用用户确认的第一幕漫画2.5D夜楼风格（深蓝建筑、粉紫霓虹、漫画构图、大字号、电影化剧情卡）。任何玩法/机关/剧情升级均不得退回旧网页卡片风格；视觉修改要跨幕检查，第二至六幕不得因CSS第一幕作用域而遗漏。
@@ -26,15 +34,16 @@
 - **下一步：** Skill 合并阶段在此封口；游戏研发任务继续依据下一节 G01-E V0.9.1 当前游戏交接单执行真实手机跨幕视觉及第二幕双房机关验收，**不得因为安装 Skill 擅自开始视觉改版**。
 
 ## 当前交接单（唯一游戏研发入口）
-- [当前唯一迁移交接单 V1.0](./HANDOFF_G01-E_REPOSITORY_MIGRATION_V1.0.md)：新仓库运行文件和 Pages 待验收，V0.9.2 继续作为唯一 G01-E 母版。
+- [**当前唯一 G01-E V0.9.3 候选交接单**](./HANDOFF_G01-E_V0.9.3.md)：只修复第二幕人物剧情插画、六张事件卡及维修台视觉，等待真机美术验收。
+- [独立仓库迁移交接单 V1.0](./HANDOFF_G01-E_REPOSITORY_MIGRATION_V1.0.md)：已完成迁移的历史记录，旧版 Pages 状态不再代表当前状态。
 - [迁移前 V0.9.2 修复交接单](./HANDOFF_G01-E_V0.9.2.md)：保留原 PR #2 与 337 项迁移前回归记录，仅作为历史证明；旧仓库部署异常不代表新仓库发布成功。
-- 当前 `main` 唯一 G01-E 研发试玩母版：`ye-lou-act2-puzzle-v092.html`（SHA-256：`7135e0b820ae02a67006ec0d4dcb6cd9a46dc9a3a71807ad99a2649149cf7731`；Blob：`b4c5bdc28bb785a2569324aa57bd580a8a055876`）。实现提交：`7c3be4ad5c770dc60820fd0a393608f27a41c0de`；分支 `fix/g01-e-v092-scroll-and-topbar`，基于最新 main `da9b55bdced2e9f6645807c9aec1e82493db75e0`。
+- 当前唯一 G01-E 研发试玩候选：`ye-lou-act2-puzzle-v093.html`（已写入 main，待 Pages 与真机验收）；上一期完整回退文件为 `ye-lou-act2-puzzle-v092.html`（SHA-256：`7135e0b820ae02a67006ec0d4dcb6cd9a46dc9a3a71807ad99a2649149cf7731`；Blob：`b4c5bdc28bb785a2569324aa57bd580a8a055876`）。实现提交：`7c3be4ad5c770dc60820fd0a393608f27a41c0de`；分支 `fix/g01-e-v092-scroll-and-topbar`，基于最新 main `da9b55bdced2e9f6645807c9aec1e82493db75e0`。
 - 原已发布及仍可回退的旧母版为 `ye-lou-act2-puzzle-v091.html`（SHA-256：`5757bb07084d9b588d456832a55d0d82b31ae364715ba0e24c33046eda28e398`；Blob：`11775607dc78a2ff8afda5f7d80d2be215d324cd`），原文件及 [V0.9.1 交接单](./HANDOFF_G01-E_V0.9.1.md) 完整保留；不能把候选提交当作网站发布。
 
 ## 当前正式母版与预览
 - G01 主线当前稳定母版：`index.html`，G01-C V0.6，20关、60星，原好友榜与海报代码未改动。
 - G01-D 既有两关实验室：`story-lab.html`，V0.2，独立保留不覆盖。
-- G01-E `main` 当前唯一研发试玩工作母版：`ye-lou-act2-puzzle-v092.html`，V0.9.2《夜楼档案》，仅修复跨幕滚动位置和 320px 顶栏装饰层点击遮挡；**已合并，Pages 部署仍需完成确认**。已发布及回退母版 `ye-lou-act2-puzzle-v091.html`、V0.9.0 历史候选和冻结的 V0.8.2.2 漫画母版均不覆盖。双房机关继续引用原版 `act2-workshop-v090.js`。仍属测试候选，尚未冻结商业版。
+- G01-E 当前唯一研发试玩候选：`ye-lou-act2-puzzle-v093.html`，V0.9.3《夜楼档案》（仅第二幕美术覆盖，需真机评估）；前一正式可回退的 V0.9.2《夜楼档案》，仅修复跨幕滚动位置和 320px 顶栏装饰层点击遮挡；**已合并，Pages 部署仍需完成确认**。已发布及回退母版 `ye-lou-act2-puzzle-v091.html`、V0.9.0 历史候选和冻结的 V0.8.2.2 漫画母版均不覆盖。双房机关继续引用原版 `act2-workshop-v090.js`。仍属测试候选，尚未冻结商业版。
 - 备选G03《三格改结局》仍独立保留，未并入代码仓库作为第二款产品。
 
 ## 以下为原仓库历史研发记录（只读）
@@ -94,4 +103,4 @@
 - 下一次判断：先拿真实手机比较原V0.4与独立2.5D样机，再决定是否将轻量动效增量合入主游戏。优先保留低性能设备的降级开关。
 
 ## 下一步唯一任务
-本独立仓库首先配置 GitHub Pages 分支发布（`main / (root)`），核验 V0.9.2 实际 HTTPS 可访问及 `act2-workshop-v090.js` 正常加载。只有实际发布成功后才进行真实 iPhone Safari/微信的跨幕滚动、顶栏点击、第二幕机关、保存/奖励与分享实测。旧仓库保持冻结，不额外制造版本或空提交。
+先核验 GitHub Pages V0.9.3 独立候选已发布且 SVG/WEBP 画面正常加载；再用真实 iPhone Safari 对比第一幕与第二幕的角色形象、笔触、场景深度、六张事件卡、维修台和滚动/按钮交互。必须确认原45项第二幕机关逻辑、保存和奖励不受影响；若美术仍不匹配，将问题登记为 V0.9.3 视觉缺口并仅修订第二幕画稿，不改逻辑或 V0.9.2。
